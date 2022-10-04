@@ -534,6 +534,10 @@
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="grid--container container-aside"><div class="grid">
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item"><div class="extensions extensions--video">
+  <iframe src="https://www.youtube.com/embed/tzEwzT_HmXM?rel=0&amp;showinfo=0" frameborder="0" scrolling="no" allowfullscreen=""></iframe>
+</div><div class="video-descr">How to create a NER project in Annotation Lab. Suvrat Joshi - September, 2022</div></div></div>
+
+<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item"><div class="extensions extensions--video">
   <iframe src="https://www.youtube.com/embed/jgUylZlz3uA?rel=0&amp;showinfo=0" frameborder="0" scrolling="no" allowfullscreen=""></iframe>
 </div><div class="video-descr">End-to-End No-Code Development of NER model for Text with Annotation Lab. Dia Trambitas - April, 2022</div></div></div>
 
@@ -1190,8 +1194,10 @@ if(document.querySelector('.btn.disable')) {
   window.Lazyload.js(SOURCES.jquery, function() {
     function toc(options) {
       var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
-        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        selectors = 'h1,h2,h3',  container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
         headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+        
 
       function setOptions(options) {
         var _options = options || {};
@@ -1233,7 +1239,8 @@ if(document.querySelector('.btn.disable')) {
           $root.append($tocUl);
           $headings.each(function() {
             var $this = $(this);
-            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName')
+              .toLowerCase() + ' ' + $this.prop('className'))
               .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
           });
           $tocLi = $tocUl.children('li');
