@@ -534,6 +534,10 @@
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="grid--container container-aside"><div class="grid">
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item"><div class="extensions extensions--video">
+  <iframe src="https://www.youtube.com/embed/ycrJX_UMA6I?rel=0&amp;showinfo=0" frameborder="0" scrolling="no" allowfullscreen=""></iframe>
+</div><div class="video-descr">Programmatic labeling in Annotation Lab. Suvrat Joshi - October, 2022</div></div></div>
+
+<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item"><div class="extensions extensions--video">
   <iframe src="https://www.youtube.com/embed/tzEwzT_HmXM?rel=0&amp;showinfo=0" frameborder="0" scrolling="no" allowfullscreen=""></iframe>
 </div><div class="video-descr">How to create a NER project in Annotation Lab. Suvrat Joshi - September, 2022</div></div></div>
 
@@ -631,6 +635,64 @@ defer(function () { // load inital language
 }); */
 
 
+if(document.querySelectorAll('.model-wrap').length !== 0) {
+
+    let tabLi = document.querySelectorAll('.tab-li'),
+        tabLiTopF = document.querySelectorAll('.top_tab_li');
+
+    tabLiTopF.forEach(e => {        
+        e.nextElementSibling.classList.add('active');
+    });
+
+    tabLi.forEach(element => {
+        element.addEventListener('click', function(e) {
+            e.preventDefault();
+            let tabAttribute = element.getAttribute('data-type'),
+                tabLiInner = element.parentNode.querySelectorAll('.tab-li'),
+                tabBoxInner = element.parentNode.parentNode.parentNode.querySelectorAll('.highlighter-rouge');
+            
+            //remove active class
+            tabBoxInner.forEach(item => {
+                item.classList.remove('active');
+                if(item.classList.contains('nlu-block')) {
+                    item.classList.remove('language-python');
+                }  
+                
+            });
+            tabLiInner.forEach(el => {
+                el.classList.remove('active');
+                el.classList.remove('code-selector-active');
+            });
+            element.classList.add('active');
+    
+            //add active class
+            switch (tabAttribute) {
+                case "python":
+                    tabBoxInner.forEach(item => {
+                        if(item.classList.contains('language-python')) {
+                            item.classList.add('active');
+                        }                    
+                    });
+                    break;
+                case "scala":
+                    tabBoxInner.forEach(item => {
+                        if(item.classList.contains('language-scala')) {
+                            item.classList.add('active');
+                        }                    
+                    });
+                  break;
+                  case "nlu":
+                    tabBoxInner.forEach(item => {
+                        if(item.classList.contains('nlu-block')) {
+                            item.classList.add('active');
+                        }                    
+                    });
+                  break;
+                default:              
+              }
+        });
+    });
+}
 
 //Second tabs
 if(document.querySelectorAll('.tab-li-second')) {
@@ -683,7 +745,6 @@ if(document.querySelectorAll('.tab-li-inner')) {
         tabLiTop = document.querySelectorAll('.toptab-second'),
         tabLi = document.querySelectorAll('.toptab-second p');
 
-        console.log(tabLiTop);
 
     tabLiTop.forEach(e => {        
         e.nextElementSibling.classList.add('active');
