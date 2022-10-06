@@ -642,7 +642,37 @@ A simple Labeling Config with Assertion Status defined should look like the foll
     &lt;Relation <span class="nv">value</span><span class="o">=</span><span class="s2">"MetastasisLocation"</span>/&gt;
   &lt;/Relations&gt;
 </code></pre></div></div>
-<p>No other constraints can currently be enforced on the labels linked by the defined relations so the annotators must be extra careful and follow the annotation guidelines that specify how the defined relations can be used.</p>
+
+<h3 id="constraints-for-relation-labeling">Constraints for relation labeling</h3>
+
+<p>While annotating projects with Relations between Entities, defining constraints (the direction, the domain, the co-domain) of relations is important. Annotation Lab offers a way to define such constraints by editing the Project Configuration. The Project Owner or Project Managers can specify which Relation needs to be bound to which Labels and in which direction. This will hide some Relations in Labeling Page for NER Labels which will simplify the annotation process and will avoid the creation of any incorrect relations in the scope of the project.
+To define such constraint, add allowed attribute to the <Relation> tag:</Relation></p>
+<ul>
+  <li>L1&gt;L2 means Relation can be created in the direction from Label L1 to Label L2, but not the other way around</li>
+  <li>L1&lt;&gt;L2 means Relation can be created in either direction between Label L1 to Label L2</li>
+</ul>
+
+<p>If the allowed attribute is not present in the tag, there is no such restriction.</p>
+
+<p>Bellow you can find a sample Project Configuration with Constraints for Relation Labels:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;View&gt; 
+&lt;Header <span class="nv">value</span><span class="o">=</span><span class="s2">"Sample Project Configuration for Relations Annotation"</span>/&gt; 
+&lt;Relations&gt; 
+    &lt;Relation <span class="nv">value</span><span class="o">=</span><span class="s2">"Was In"</span> <span class="nv">allowed</span><span class="o">=</span><span class="s2">"PERSON&gt;LOC"</span>/&gt; 
+    &lt;Relation <span class="nv">value</span><span class="o">=</span><span class="s2">"Has Function"</span> <span class="nv">allowed</span><span class="o">=</span><span class="s2">"LOC&gt;EVENT,PERSON&gt;MEDICINE"</span>/&gt; 
+    &lt;Relation <span class="nv">value</span><span class="o">=</span><span class="s2">"Involved In"</span> <span class="nv">allowed</span><span class="o">=</span><span class="s2">"PERSON&lt;&gt;EVENT"</span>/&gt; 
+    &lt;Relation <span class="nv">value</span><span class="o">=</span><span class="s2">"No Constraints"</span>/&gt; 
+&lt;/Relations&gt; 
+&lt;Labels <span class="nv">name</span><span class="o">=</span><span class="s2">"label"</span> <span class="nv">toName</span><span class="o">=</span><span class="s2">"text"</span><span class="o">&gt;</span> 
+    &lt;Label <span class="nv">value</span><span class="o">=</span><span class="s2">"PERSON"</span>/&gt; 
+    &lt;Label <span class="nv">value</span><span class="o">=</span><span class="s2">"EVENT"</span>/&gt; 
+    &lt;Label <span class="nv">value</span><span class="o">=</span><span class="s2">"MEDICINE"</span>/&gt; 
+    &lt;Label <span class="nv">value</span><span class="o">=</span><span class="s2">"LOC"</span>/&gt; 
+&lt;/Labels&gt; 
+&lt;Text <span class="nv">name</span><span class="o">=</span><span class="s2">"text"</span> <span class="nv">value</span><span class="o">=</span><span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>/&gt; 
+&lt;/View&gt;
+</code></pre></div></div>
 
 <h2 id="project-validations">Project Validations</h2>
 
