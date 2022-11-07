@@ -531,7 +531,19 @@
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Installation"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="deploy-on-a-dedicated-server">Deploy on a dedicated server</h2>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><style>
+bl {
+  font-weight: 400;
+}
+th {
+  width: 200px;
+  text-align: left;
+  background-color: #f7f7f7;
+  vertical-align: "top";
+}
+</style>
+
+<h2 id="dedicated-server">Dedicated Server</h2>
 
 <p>Install Annotation Lab on a dedicated server to reduce the likelihood of conflicts or unexpected behavior.</p>
 
@@ -539,21 +551,26 @@
 
 <p>To install Annotation Lab run the following command:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://setup.johnsnowlabs.com/annotationlab/install.sh <span class="nt">-O</span> - | <span class="nb">sudo </span>bash <span class="nt">-s</span> VERSION
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://setup.johnsnowlabs.com/annotationlab/install.sh <span class="nt">-O</span> - | <span class="nb">sudo </span>bash <span class="nt">-s</span> <span class="nv">$VERSION</span>
 </code></pre></div></div>
+
+<p>Replace <code class="language-plaintext highlighter-rouge">$VERSION</code> in the above one liners with the version you want to install.</p>
 
 <p>For installing the latest available version of the Annotation Lab use:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://setup.johnsnowlabs.com/annotationlab/install.sh <span class="nt">-O</span> - | <span class="nb">sudo </span>bash <span class="nt">-s</span> <span class="nt">--</span>
 </code></pre></div></div>
 
-<p>To upgrade your Annotation Lab installation to a newer version, run the following command on a terminal:</p>
+<p><br /></p>
 
 <h3 id="upgrade">Upgrade</h3>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://setup.johnsnowlabs.com/annotationlab/upgrade.sh <span class="nt">-O</span> - | <span class="nb">sudo </span>bash <span class="nt">-s</span> VERSION
+<p>To upgrade your Annotation Lab installation to a newer version, run the following command on a terminal:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://setup.johnsnowlabs.com/annotationlab/upgrade.sh <span class="nt">-O</span> - | <span class="nb">sudo </span>bash <span class="nt">-s</span> <span class="nv">$VERSION</span>
 </code></pre></div></div>
-<p>Replace VERSION within the above one liners with the version you want to install.</p>
+
+<p>Replace <code class="language-plaintext highlighter-rouge">$VERSION</code> in the above one liners with the version you want to upgrade to.</p>
 
 <p>For upgrading to the latest version of the Annotation Lab, use:</p>
 
@@ -561,16 +578,16 @@
 </code></pre></div></div>
 
 <blockquote>
-  <p><strong>NOTE:</strong>  The install/upgrade script displays the login credentials for the admin user on the terminal.</p>
+  <p><strong>NOTE:</strong> The install/upgrade script displays the login credentials for the <em>admin</em> user on the terminal.</p>
 </blockquote>
 
-<p>After running the install/upgrade script the Annotation Lab is available at http://INSTANCE_IP  or https://INSTANCE_IP</p>
+<p>After running the install/upgrade script, the Annotation Lab is available at http://INSTANCE_IP or https://INSTANCE_IP</p>
 
 <p><img class="image image--xl image__shadow" src="/assets/images/annotation_lab/4.1.0/loginScreenALAB.png" style="width:100%;" /></p>
 
-<p>We have an aesthetically pleasing Login Page with a section highlighting the key features of Annotation Lab. Sign-In page highlights main features of Annotation Lab with animated GIFs.</p>
+<p>We have an aesthetically pleasing Sign-In Page with a section highlighting the key features of Annotation Lab using animated GIFs.</p>
 
-<h2 id="deploy-on-the-aws-marketplace">Deploy on the AWS Marketplace</h2>
+<h2 id="aws-marketplace">AWS Marketplace</h2>
 
 <p>Visit the <a href="https://aws.amazon.com/marketplace/pp/prodview-nsww5rdpvou4w?sr=0-1&amp;ref_=beagle&amp;applicationId=AWSMPContessa">product page on AWS Marketplace</a> and follow the instructions on the video below to subscribe and deploy.</p>
 
@@ -578,7 +595,7 @@
   <iframe src="https://www.youtube.com/embed/ebaewU4BcQA?rel=0&amp;showinfo=0" frameborder="0" scrolling="no" allowfullscreen=""></iframe>
 </div><div class="video-descr">Deploy Annotation Lab via AWS Marketplace</div></div></div>
 
-<h2 id="deploy-on-the-azure-marketplace">Deploy on the Azure Marketplace</h2>
+<h2 id="azure-marketplace">Azure Marketplace</h2>
 
 <p>Visit the <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.annotation_lab?tab=Overview">product page on Azure Marketplace</a> and follow the instructions on the video below to subscribe and deploy.</p>
 
@@ -586,68 +603,103 @@
   <iframe src="https://www.youtube.com/embed/e6aB3z5tB0k?rel=0&amp;showinfo=0" frameborder="0" scrolling="no" allowfullscreen=""></iframe>
 </div><div class="video-descr">Deploy Annotation Lab via Azure Marketplace</div></div></div>
 
-<h2 id="deploy-on-airgap-environment">Deploy on AirGap environment</h2>
+<h2 id="airgap-environment">AirGap Environment</h2>
 
-<h3 id="get-artifact">Get artifact</h3>
+<h3 id="get-artifact">Get Artifact</h3>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://s3.amazonaws.com/auxdata.johnsnowlabs.com/annotationlab/annotationlab-VERSION.tar.gz
+<p>Run the following command on a terminal to fetch the compressed artifact (<em>tarball</em>) of the Annotation Lab.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://s3.amazonaws.com/auxdata.johnsnowlabs.com/annotationlab/annotationlab-<span class="nv">$VERSION</span>.tar.gz
 </code></pre></div></div>
-<p>replace VERSION with the version you want to download and install.</p>
 
-<h3 id="fresh-installation">Fresh installation</h3>
+<p>Extract the tarball and the change directory to the extracted folder (<em>artifacts</em>):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tar</span> <span class="nt">-xzf</span> annotationlab-<span class="nv">$VERSION</span>.tar.gz
+<span class="nb">cd </span>artifacts
+</code></pre></div></div>
+
+<p>Replace <code class="language-plaintext highlighter-rouge">$VERSION</code> with the version you want to download and install.</p>
+
+<p><br /></p>
+
+<h3 id="fresh-install-1">Fresh Install</h3>
+
+<p>Run the installer script <code class="language-plaintext highlighter-rouge">annotationlab-installer.sh</code> with <code class="language-plaintext highlighter-rouge">sudo</code> privileges.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>su
 <span class="nv">$ </span>./annotationlab-installer.sh
 </code></pre></div></div>
-<h3 id="upgrade-version">Upgrade version</h3>
+
+<p><br /></p>
+
+<h3 id="upgrade-1">Upgrade</h3>
+
+<p>Run the upgrade script <code class="language-plaintext highlighter-rouge">annotationlab-updater.sh</code> with <code class="language-plaintext highlighter-rouge">sudo</code> privileges.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>su
 <span class="nv">$ </span>./annotationlab-updater.sh
 </code></pre></div></div>
+
+<p><br /></p>
+
 <h3 id="work-over-proxy">Work over proxy</h3>
 
-<ul>
-  <li>Custom CA certificate</li>
-</ul>
+<p><strong>Custom CA certificate</strong></p>
 
-<p>You can provide a custom CA certificate chain to be included into the deployment. To do it add <code class="language-plaintext highlighter-rouge">--set-file custom_cacert=./cachain.pem</code> options to <code class="language-plaintext highlighter-rouge">helm install/upgrade</code> command inside <code class="language-plaintext highlighter-rouge">annotationlab-installer.sh</code> and <code class="language-plaintext highlighter-rouge">annotationlab-updater.sh</code> files.
-cachain.pem must include a certificate in the following format:</p>
+<p>You can provide a custom CA certificate chain to be included into the deployment. To do it add <code class="language-plaintext highlighter-rouge">--set-file custom_cacert=./cachain.pem</code> options to <code class="language-plaintext highlighter-rouge">helm install/upgrade</code> command inside <code class="language-plaintext highlighter-rouge">annotationlab-installer.sh</code> and <code class="language-plaintext highlighter-rouge">annotationlab-updater.sh</code> files.</p>
+
+<p><em>cachain.pem</em> must include a certificate in the following format:</p>
+
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-----BEGIN</span> CERTIFICATE-----
 ....
 <span class="nt">-----END</span> CERTIFICATE-----
 </code></pre></div></div>
 
-<ul>
-  <li>Proxy env variables</li>
-</ul>
+<p><br /></p>
+
+<p><strong>Proxy env variables</strong></p>
 
 <p>You can provide a proxy to use for external communications. To do that add</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`--set proxy.http=[protocol://]&lt;host&gt;[:port]`, 
-`--set proxy.https=[protocol://]&lt;host&gt;[:port]`, 
-`--set proxy.no=&lt;comma-separated list of hosts/domains&gt;` 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`--set proxy.http=[protocol://]&lt;host&gt;[:port]`,
+`--set proxy.https=[protocol://]&lt;host&gt;[:port]`,
+`--set proxy.no=&lt;comma-separated list of hosts/domains&gt;`
 </code></pre></div></div>
 
 <p>commands inside <code class="language-plaintext highlighter-rouge">annotationlab-installer.sh</code> and <code class="language-plaintext highlighter-rouge">annotationlab-updater.sh</code> files.</p>
 
 <h2 id="recommended-configurations">Recommended Configurations</h2>
 
-<p><strong>System requirements</strong>. You can install Annotation Lab on a Ubuntu 20+ machine.</p>
+<table>
+  <tr>
+    <th>System requirements</th>
+    <td>You can install Annotation Lab on a Ubuntu 20+ machine.</td>
+  </tr>
+  <tr>
+    <th>Port requirements</th>
+    <td>Annotation Lab expects ports <bl>443</bl> and <bl>80</bl> to be open by default.</td>
+  </tr>
+  <tr>
+    <th>Server requirements</th>
+    <td>The minimal required configuration is <bl>32GB RAM, 8 Core CPU, 512 SSD</bl>.<br /><br />
 
-<p><strong>Port requirements</strong>. Annotation Lab expects ports 443 and 80 to be open by default.</p>
+    The ideal configuration in case model training and preannotations are required on a large number of tasks is <bl>64 GiB, 16 Core CPU, 2TB HDD, 512 SSD</bl>.
+    </td>
 
-<p><strong>Server requirements</strong>. The minimal required configuration is <strong>32GB RAM, 8 Core CPU, 512 SSD</strong>. 
-The ideal configuration in case model training and preannotations are required on a large number of tasks is <strong>64 GiB, 16 Core CPU, 2TB HDD, 512 SSD</strong>.</p>
-
-<p><strong>Web browser support</strong>. Annotation Lab is tested with the latest version of Google Chrome and is expected to work in the latest versions of:</p>
-
-<p>•   Google Chrome</p>
-
-<p>•   Apple Safari</p>
-
-<p>•   Mozilla Firefox</p>
+  </tr>
+  <tr>
+    <th>Web browser support</th>
+    <td>Annotation Lab is tested with the latest version of Google Chrome and is expected to work in the latest versions of:
+      <ul>
+      <li>Google Chrome</li>
+      <li>Apple Safari</li>
+      <li>Mozilla Firefox</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2021-09-29T00:00:00+00:00">Sep 29, 2021</time>
+      <time itemprop="dateModified" datetime="2022-11-06T00:00:00+00:00">Nov 06, 2022</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

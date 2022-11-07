@@ -9,7 +9,7 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Export</title><meta property="og:title" content="Annotation Lab | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Annotations Export</title><meta property="og:title" content="Annotation Lab | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
@@ -521,14 +521,14 @@
 <!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Export</li>
+    <li>Annotations Export</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Export</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Annotations Export</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
             href="https://github.com/johnsnowlabs/spark-nlp/tree/master/docs/en/alab/export.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Export"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Annotations Export"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><style>
@@ -536,17 +536,25 @@ bl {
   font-weight: 400;
 }
 
+es {
+  font-weight: 400;
+  font-style: italic;
+}
+
 pre {
   max-height: 500px;
 }
 </style>
 
-<h2 id="supported-formats">Supported Formats</h2>
+<p>Annotations can be exported in various format for storage and later use. You can export the annotations applied to the tasks of any project by going to the <bl>Tasks</bl> page and clicking on the <code class="language-plaintext highlighter-rouge">Export</code> button on the top-right corner of this page. You will be navigated to the Export page and from there you can select the format and configure the export options to export the annotations to a file/s.</p>
+
+<h2 id="supported-formats-for-text-projects">Supported Formats for Text Projects</h2>
 
 <p>The completions and predictions are stored in a database for fast search and access. Completions and predictions can be exported into the formats described below.</p>
 
 <h3 id="json">JSON</h3>
-<p>You can convert and export the completions and predictions to JSON format using the JSON option on the Export page. 
+
+<p>You can convert and export the completions and predictions to JSON format using the JSON option on the Export page.
 The obtained format is the following:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>
@@ -1235,11 +1243,19 @@ The obtained format is the following:</p>
 <span class="o">]</span>
 </code></pre></div></div>
 
+<p><br /></p>
+
 <h3 id="csv">CSV</h3>
+
 <p>Results are stored in a comma-separated tabular file with column names specified by “from_name” and “to_name” values.</p>
 
+<p><br /></p>
+
 <h3 id="tsv">TSV</h3>
-<p>Results are stored in a tab-separated tabular file with column names specified by “from_name” and  “to_name” values.</p>
+
+<p>Results are stored in a tab-separated tabular file with column names specified by “from_name” and “to_name” values.</p>
+
+<p><br /></p>
 
 <h3 id="conll2003">CoNLL2003</h3>
 
@@ -1298,6 +1314,1006 @@ insulin <span class="nt">-X-</span> _ O
 
 <p>Users can specify if only starred completions should be included in the output file by checking the <em>Only ground truth</em> option before generating the export.</p>
 
+<p><br /></p>
+
+<h2 id="supported-formats-for-visual-ner-projects">Supported Formats for Visual NER Projects</h2>
+
+<p>The process of annotations export from Visual NER projects is similar to that of text projects.</p>
+
+<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/export_visual_ner_project.gif" style="width:100%;" /></p>
+
+<p>When exporting the Visual NER annotations users have two additional formats available: <bl>COCO</bl> and <bl>VOC</bl>. 
+For Visual NER projects, the image documents annotated as part of each task are included in the project export archive under the images folder.</p>
+
+<h3 id="coco">COCO</h3>
+
+<p>The COCO format is a specific JSON structure dictating how labels and metadata are saved for an image dataset. It is a large-scale object detection, segmentation, and captioning dataset. Exporting in COCO format is available for Visual NER projects only.</p>
+
+<p>Below is a sample format:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+  <span class="s2">"images"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"width"</span>: 6.588235294117647,
+      <span class="s2">"height"</span>: 0.9396786905122766,
+      <span class="s2">"id"</span>: 0,
+      <span class="s2">"file_name"</span>: <span class="o">[</span>
+        <span class="s2">"/images/19/0160023239a-1655481445_0.png"</span>,
+        <span class="s2">"/images/19/0160023239a-1655481445_1.png"</span>
+      <span class="o">]</span>
+    <span class="o">}</span>
+  <span class="o">]</span>,
+  <span class="s2">"categories"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 0,
+      <span class="s2">"name"</span>: <span class="s2">"OGSContractNumber"</span>,
+      <span class="s2">"supercategory"</span>: <span class="s2">"OGSContractNumber"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 1,
+      <span class="s2">"name"</span>: <span class="s2">"Contractor"</span>,
+      <span class="s2">"supercategory"</span>: <span class="s2">"Contractor"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 2,
+      <span class="s2">"name"</span>: <span class="s2">"FederalID"</span>,
+      <span class="s2">"supercategory"</span>: <span class="s2">"FederalID"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 3,
+      <span class="s2">"name"</span>: <span class="s2">"VendorID"</span>,
+      <span class="s2">"supercategory"</span>: <span class="s2">"VendorID"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 4,
+      <span class="s2">"name"</span>: <span class="s2">"Title"</span>,
+      <span class="s2">"supercategory"</span>: <span class="s2">"Title"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 5,
+      <span class="s2">"name"</span>: <span class="s2">"AwardNumber"</span>,
+      <span class="s2">"supercategory"</span>: <span class="s2">"AwardNumber"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 6,
+      <span class="s2">"name"</span>: <span class="s2">"ContractPeriod"</span>,
+      <span class="s2">"supercategory"</span>: <span class="s2">"ContractPeriod"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 7,
+      <span class="s2">"name"</span>: <span class="s2">"BidOpeningDate"</span>,
+      <span class="s2">"supercategory"</span>: <span class="s2">"BidOpeningDate"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 8,
+      <span class="s2">"name"</span>: <span class="s2">"DateOfIssue"</span>,
+      <span class="s2">"supercategory"</span>: <span class="s2">"DateOfIssue"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 9,
+      <span class="s2">"name"</span>: <span class="s2">"SpecificationReference"</span>,
+      <span class="s2">"supercategory"</span>: <span class="s2">"SpecificationReference"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 10,
+      <span class="s2">"name"</span>: <span class="s2">"GroupNumber"</span>,
+      <span class="s2">"supercategory"</span>: <span class="s2">"GroupNumber"</span>
+    <span class="o">}</span>
+  <span class="o">]</span>,
+  <span class="s2">"annotations"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 0,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 0,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        0,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"PC69434"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 1,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 0,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        0,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"PC69435"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 2,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 0,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        0,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"PC69436"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 3,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 1,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        1,
+        0,
+        1,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"Cream-O-Land Dairies, LLC"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 4,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 1,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        1,
+        0,
+        1,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"Hudson Valley Fresh Dairy, LLC"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 5,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 1,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        1,
+        0,
+        1,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"Upstate Niagara Inc."</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 6,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 2,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        3,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"223629742"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 7,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 2,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        3,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"461053272"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 8,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 2,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        3,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"160845625"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 9,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 3,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        5,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"1100070111"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 10,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 3,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        5,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"1100212977"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 11,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 3,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        5,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"1000014941"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 12,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 1,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        4,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"Cream-O-Land - LLC"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 13,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 0,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        5,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"PC69434"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 14,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 1,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        4,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"Hudson Valley Fresh Dairy, LLC"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 15,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 0,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        5,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"PC69435"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 16,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 0,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        5,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"PC69436"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 17,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 1,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        4,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"Upstate Niagara Cooperative, Inc."</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 18,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 1,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        4,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"; Upstate Niagara Cooperative,"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 19,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 0,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        5,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"PC69436"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 20,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 4,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        3,
+        0,
+        1,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"Milk, Fluid (Statewide)"</span>,
+      <span class="s2">"pageNumber"</span>: 1
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 21,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 5,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        2,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"23239"</span>,
+      <span class="s2">"pageNumber"</span>: 1
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 22,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 6,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        2,
+        0,
+        2,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"September 21, 2021 Through September 20, 2026"</span>,
+      <span class="s2">"pageNumber"</span>: 1
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 23,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 7,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        2,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"June 10, 2021"</span>,
+      <span class="s2">"pageNumber"</span>: 1
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 24,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 8,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        2,
+        0,
+        1,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"September 14, 2021"</span>,
+      <span class="s2">"pageNumber"</span>: 1
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 27,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 10,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        2,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"Group"</span>,
+      <span class="s2">"pageNumber"</span>: 1
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 29,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 4,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        3,
+        0,
+        1,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"Milk, Fluid (Statewide)"</span>,
+      <span class="s2">"pageNumber"</span>: 1
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 30,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 5,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        2,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"23239"</span>,
+      <span class="s2">"pageNumber"</span>: 1
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 31,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 6,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        2,
+        0,
+        2,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"September 21, 2021 Through September 20, 2026"</span>,
+      <span class="s2">"pageNumber"</span>: 1
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 32,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 6,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        2,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"June 10, 2021"</span>,
+      <span class="s2">"pageNumber"</span>: 1
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 33,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 6,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        2,
+        0,
+        1,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"September 14, 2021"</span>,
+      <span class="s2">"pageNumber"</span>: 1
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 34,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 5,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        2,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"23239"</span>,
+      <span class="s2">"pageNumber"</span>: 1
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 35,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 0,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        0,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"PC69434"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 36,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 1,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        1,
+        0,
+        1,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"Cream-O-Land Dairies, LLC"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 38,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 3,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        5,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"1100070111"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 39,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 0,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        0,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"PC69435"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 41,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 2,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        3,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"461053272"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 43,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 0,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        0,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"PC69436"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 45,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 2,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        3,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"160845625"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 47,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 1,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        4,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"Cream-O-Land"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 49,
+      <span class="s2">"image_id"</span>: 0,
+      <span class="s2">"category_id"</span>: 0,
+      <span class="s2">"segmentation"</span>: <span class="o">[]</span>,
+      <span class="s2">"bbox"</span>: <span class="o">[</span>
+        5,
+        0,
+        0,
+        0
+      <span class="o">]</span>,
+      <span class="s2">"ignore"</span>: 0,
+      <span class="s2">"iscrowd"</span>: 0,
+      <span class="s2">"area"</span>: 0,
+      <span class="s2">"text"</span>: <span class="s2">"PC69434"</span>,
+      <span class="s2">"pageNumber"</span>: 2
+    <span class="o">}</span>
+  <span class="o">]</span>,
+  <span class="s2">"info"</span>: <span class="o">{</span>
+    <span class="s2">"year"</span>: 2022,
+    <span class="s2">"version"</span>: <span class="s2">"1.0"</span>,
+    <span class="s2">"contributor"</span>: <span class="s2">"Annotation Lab Converter"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="pascal-voc-xml">Pascal VOC XML</h3>
+
+<p>Pascal Visual Object Classes(VOC) is an XML file that contains the image details, bounding box details, classes, pose, truncated, and other data. For each image of the task there will be an XML annotation file. Exporting in VOC format is available for Visual NER projects only.</p>
+
+<p>Below is a sample format:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;annotation&gt;</span>
+    <span class="nt">&lt;folder&gt;</span>images<span class="nt">&lt;/folder&gt;</span>
+    <span class="nt">&lt;filename&gt;</span>0160023239a-1655481445_0.png<span class="nt">&lt;/filename&gt;</span>
+    <span class="nt">&lt;source&gt;</span>
+        <span class="nt">&lt;database&gt;</span>ALABDB<span class="nt">&lt;/database&gt;</span>
+    <span class="nt">&lt;/source&gt;</span>
+    <span class="nt">&lt;owner&gt;</span>
+        <span class="nt">&lt;name&gt;</span>AnnotationLab<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;/owner&gt;</span>
+    <span class="nt">&lt;size&gt;</span>
+        <span class="nt">&lt;width&gt;</span>2550<span class="nt">&lt;/width&gt;</span>
+        <span class="nt">&lt;height&gt;</span>3299<span class="nt">&lt;/height&gt;</span>
+        <span class="nt">&lt;depth&gt;</span>1<span class="nt">&lt;/depth&gt;</span>
+    <span class="nt">&lt;/size&gt;</span>
+    <span class="nt">&lt;segmented&gt;</span>0<span class="nt">&lt;/segmented&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+        <span class="nt">&lt;name&gt;</span>Title<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;pose&gt;</span>Unspecified<span class="nt">&lt;/pose&gt;</span>
+        <span class="nt">&lt;truncated&gt;</span>0<span class="nt">&lt;/truncated&gt;</span>
+        <span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span>
+        <span class="nt">&lt;bndbox&gt;</span>
+            <span class="nt">&lt;xmin&gt;</span>1305<span class="nt">&lt;/xmin&gt;</span>
+            <span class="nt">&lt;ymin&gt;</span>660<span class="nt">&lt;/ymin&gt;</span>
+            <span class="nt">&lt;xmax&gt;</span>1780<span class="nt">&lt;/xmax&gt;</span>
+            <span class="nt">&lt;ymax&gt;</span>703<span class="nt">&lt;/ymax&gt;</span>
+        <span class="nt">&lt;/bndbox&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+        <span class="nt">&lt;name&gt;</span>AwardNumber<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;pose&gt;</span>Unspecified<span class="nt">&lt;/pose&gt;</span>
+        <span class="nt">&lt;truncated&gt;</span>0<span class="nt">&lt;/truncated&gt;</span>
+        <span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span>
+        <span class="nt">&lt;bndbox&gt;</span>
+            <span class="nt">&lt;xmin&gt;</span>973<span class="nt">&lt;/xmin&gt;</span>
+            <span class="nt">&lt;ymin&gt;</span>791<span class="nt">&lt;/ymin&gt;</span>
+            <span class="nt">&lt;xmax&gt;</span>1099<span class="nt">&lt;/xmax&gt;</span>
+            <span class="nt">&lt;ymax&gt;</span>834<span class="nt">&lt;/ymax&gt;</span>
+        <span class="nt">&lt;/bndbox&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+        <span class="nt">&lt;name&gt;</span>ContractPeriod<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;pose&gt;</span>Unspecified<span class="nt">&lt;/pose&gt;</span>
+        <span class="nt">&lt;truncated&gt;</span>0<span class="nt">&lt;/truncated&gt;</span>
+        <span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span>
+        <span class="nt">&lt;bndbox&gt;</span>
+            <span class="nt">&lt;xmin&gt;</span>974<span class="nt">&lt;/xmin&gt;</span>
+            <span class="nt">&lt;ymin&gt;</span>903<span class="nt">&lt;/ymin&gt;</span>
+            <span class="nt">&lt;xmax&gt;</span>2038<span class="nt">&lt;/xmax&gt;</span>
+            <span class="nt">&lt;ymax&gt;</span>946<span class="nt">&lt;/ymax&gt;</span>
+        <span class="nt">&lt;/bndbox&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+        <span class="nt">&lt;name&gt;</span>BidOpeningDate<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;pose&gt;</span>Unspecified<span class="nt">&lt;/pose&gt;</span>
+        <span class="nt">&lt;truncated&gt;</span>0<span class="nt">&lt;/truncated&gt;</span>
+        <span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span>
+        <span class="nt">&lt;bndbox&gt;</span>
+            <span class="nt">&lt;xmin&gt;</span>974<span class="nt">&lt;/xmin&gt;</span>
+            <span class="nt">&lt;ymin&gt;</span>1013<span class="nt">&lt;/ymin&gt;</span>
+            <span class="nt">&lt;xmax&gt;</span>1263<span class="nt">&lt;/xmax&gt;</span>
+            <span class="nt">&lt;ymax&gt;</span>1054<span class="nt">&lt;/ymax&gt;</span>
+        <span class="nt">&lt;/bndbox&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+        <span class="nt">&lt;name&gt;</span>DateOfIssue<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;pose&gt;</span>Unspecified<span class="nt">&lt;/pose&gt;</span>
+        <span class="nt">&lt;truncated&gt;</span>0<span class="nt">&lt;/truncated&gt;</span>
+        <span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span>
+        <span class="nt">&lt;bndbox&gt;</span>
+            <span class="nt">&lt;xmin&gt;</span>974<span class="nt">&lt;/xmin&gt;</span>
+            <span class="nt">&lt;ymin&gt;</span>1124<span class="nt">&lt;/ymin&gt;</span>
+            <span class="nt">&lt;xmax&gt;</span>1393<span class="nt">&lt;/xmax&gt;</span>
+            <span class="nt">&lt;ymax&gt;</span>1166<span class="nt">&lt;/ymax&gt;</span>
+        <span class="nt">&lt;/bndbox&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+        <span class="nt">&lt;name&gt;</span>SpecificationReference<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;pose&gt;</span>Unspecified<span class="nt">&lt;/pose&gt;</span>
+        <span class="nt">&lt;truncated&gt;</span>0<span class="nt">&lt;/truncated&gt;</span>
+        <span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span>
+        <span class="nt">&lt;bndbox&gt;</span>
+            <span class="nt">&lt;xmin&gt;</span>973<span class="nt">&lt;/xmin&gt;</span>
+            <span class="nt">&lt;ymin&gt;</span>1235<span class="nt">&lt;/ymin&gt;</span>
+            <span class="nt">&lt;xmax&gt;</span>1729<span class="nt">&lt;/xmax&gt;</span>
+            <span class="nt">&lt;ymax&gt;</span>1277<span class="nt">&lt;/ymax&gt;</span>
+        <span class="nt">&lt;/bndbox&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+        <span class="nt">&lt;name&gt;</span>GroupNumber<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;pose&gt;</span>Unspecified<span class="nt">&lt;/pose&gt;</span>
+        <span class="nt">&lt;truncated&gt;</span>0<span class="nt">&lt;/truncated&gt;</span>
+        <span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span>
+        <span class="nt">&lt;bndbox&gt;</span>
+            <span class="nt">&lt;xmin&gt;</span>974<span class="nt">&lt;/xmin&gt;</span>
+            <span class="nt">&lt;ymin&gt;</span>660<span class="nt">&lt;/ymin&gt;</span>
+            <span class="nt">&lt;xmax&gt;</span>1248<span class="nt">&lt;/xmax&gt;</span>
+            <span class="nt">&lt;ymax&gt;</span>702<span class="nt">&lt;/ymax&gt;</span>
+        <span class="nt">&lt;/bndbox&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+        <span class="nt">&lt;name&gt;</span>GroupNumber<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;pose&gt;</span>Unspecified<span class="nt">&lt;/pose&gt;</span>
+        <span class="nt">&lt;truncated&gt;</span>0<span class="nt">&lt;/truncated&gt;</span>
+        <span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span>
+        <span class="nt">&lt;bndbox&gt;</span>
+            <span class="nt">&lt;xmin&gt;</span>974<span class="nt">&lt;/xmin&gt;</span>
+            <span class="nt">&lt;ymin&gt;</span>660<span class="nt">&lt;/ymin&gt;</span>
+            <span class="nt">&lt;xmax&gt;</span>1108<span class="nt">&lt;/xmax&gt;</span>
+            <span class="nt">&lt;ymax&gt;</span>702<span class="nt">&lt;/ymax&gt;</span>
+        <span class="nt">&lt;/bndbox&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+        <span class="nt">&lt;name&gt;</span>AwardNumber<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;pose&gt;</span>Unspecified<span class="nt">&lt;/pose&gt;</span>
+        <span class="nt">&lt;truncated&gt;</span>0<span class="nt">&lt;/truncated&gt;</span>
+        <span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span>
+        <span class="nt">&lt;bndbox&gt;</span>
+            <span class="nt">&lt;xmin&gt;</span>1125<span class="nt">&lt;/xmin&gt;</span>
+            <span class="nt">&lt;ymin&gt;</span>660<span class="nt">&lt;/ymin&gt;</span>
+            <span class="nt">&lt;xmax&gt;</span>1248<span class="nt">&lt;/xmax&gt;</span>
+            <span class="nt">&lt;ymax&gt;</span>694<span class="nt">&lt;/ymax&gt;</span>
+        <span class="nt">&lt;/bndbox&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+        <span class="nt">&lt;name&gt;</span>Title<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;pose&gt;</span>Unspecified<span class="nt">&lt;/pose&gt;</span>
+        <span class="nt">&lt;truncated&gt;</span>0<span class="nt">&lt;/truncated&gt;</span>
+        <span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span>
+        <span class="nt">&lt;bndbox&gt;</span>
+            <span class="nt">&lt;xmin&gt;</span>1304<span class="nt">&lt;/xmin&gt;</span>
+            <span class="nt">&lt;ymin&gt;</span>660<span class="nt">&lt;/ymin&gt;</span>
+            <span class="nt">&lt;xmax&gt;</span>1780<span class="nt">&lt;/xmax&gt;</span>
+            <span class="nt">&lt;ymax&gt;</span>703<span class="nt">&lt;/ymax&gt;</span>
+        <span class="nt">&lt;/bndbox&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+        <span class="nt">&lt;name&gt;</span>AwardNumber<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;pose&gt;</span>Unspecified<span class="nt">&lt;/pose&gt;</span>
+        <span class="nt">&lt;truncated&gt;</span>0<span class="nt">&lt;/truncated&gt;</span>
+        <span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span>
+        <span class="nt">&lt;bndbox&gt;</span>
+            <span class="nt">&lt;xmin&gt;</span>974<span class="nt">&lt;/xmin&gt;</span>
+            <span class="nt">&lt;ymin&gt;</span>791<span class="nt">&lt;/ymin&gt;</span>
+            <span class="nt">&lt;xmax&gt;</span>1097<span class="nt">&lt;/xmax&gt;</span>
+            <span class="nt">&lt;ymax&gt;</span>825<span class="nt">&lt;/ymax&gt;</span>
+        <span class="nt">&lt;/bndbox&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+        <span class="nt">&lt;name&gt;</span>ContractPeriod<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;pose&gt;</span>Unspecified<span class="nt">&lt;/pose&gt;</span>
+        <span class="nt">&lt;truncated&gt;</span>0<span class="nt">&lt;/truncated&gt;</span>
+        <span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span>
+        <span class="nt">&lt;bndbox&gt;</span>
+            <span class="nt">&lt;xmin&gt;</span>974<span class="nt">&lt;/xmin&gt;</span>
+            <span class="nt">&lt;ymin&gt;</span>902<span class="nt">&lt;/ymin&gt;</span>
+            <span class="nt">&lt;xmax&gt;</span>2038<span class="nt">&lt;/xmax&gt;</span>
+            <span class="nt">&lt;ymax&gt;</span>945<span class="nt">&lt;/ymax&gt;</span>
+        <span class="nt">&lt;/bndbox&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+        <span class="nt">&lt;name&gt;</span>ContractPeriod<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;pose&gt;</span>Unspecified<span class="nt">&lt;/pose&gt;</span>
+        <span class="nt">&lt;truncated&gt;</span>0<span class="nt">&lt;/truncated&gt;</span>
+        <span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span>
+        <span class="nt">&lt;bndbox&gt;</span>
+            <span class="nt">&lt;xmin&gt;</span>974<span class="nt">&lt;/xmin&gt;</span>
+            <span class="nt">&lt;ymin&gt;</span>1013<span class="nt">&lt;/ymin&gt;</span>
+            <span class="nt">&lt;xmax&gt;</span>1264<span class="nt">&lt;/xmax&gt;</span>
+            <span class="nt">&lt;ymax&gt;</span>1054<span class="nt">&lt;/ymax&gt;</span>
+        <span class="nt">&lt;/bndbox&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+        <span class="nt">&lt;name&gt;</span>ContractPeriod<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;pose&gt;</span>Unspecified<span class="nt">&lt;/pose&gt;</span>
+        <span class="nt">&lt;truncated&gt;</span>0<span class="nt">&lt;/truncated&gt;</span>
+        <span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span>
+        <span class="nt">&lt;bndbox&gt;</span>
+            <span class="nt">&lt;xmin&gt;</span>974<span class="nt">&lt;/xmin&gt;</span>
+            <span class="nt">&lt;ymin&gt;</span>1124<span class="nt">&lt;/ymin&gt;</span>
+            <span class="nt">&lt;xmax&gt;</span>1393<span class="nt">&lt;/xmax&gt;</span>
+            <span class="nt">&lt;ymax&gt;</span>1166<span class="nt">&lt;/ymax&gt;</span>
+        <span class="nt">&lt;/bndbox&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+    <span class="nt">&lt;object&gt;</span>
+        <span class="nt">&lt;name&gt;</span>AwardNumber<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;pose&gt;</span>Unspecified<span class="nt">&lt;/pose&gt;</span>
+        <span class="nt">&lt;truncated&gt;</span>0<span class="nt">&lt;/truncated&gt;</span>
+        <span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span>
+        <span class="nt">&lt;bndbox&gt;</span>
+            <span class="nt">&lt;xmin&gt;</span>791<span class="nt">&lt;/xmin&gt;</span>
+            <span class="nt">&lt;ymin&gt;</span>2246<span class="nt">&lt;/ymin&gt;</span>
+            <span class="nt">&lt;xmax&gt;</span>903<span class="nt">&lt;/xmax&gt;</span>
+            <span class="nt">&lt;ymax&gt;</span>2276<span class="nt">&lt;/ymax&gt;</span>
+        <span class="nt">&lt;/bndbox&gt;</span>
+    <span class="nt">&lt;/object&gt;</span>
+<span class="nt">&lt;/annotation&gt;</span>
+</code></pre></div></div>
+
 <h2 id="export-options">Export Options</h2>
 
 <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/annotation_export.png" style="width:100%;" /></p>
@@ -1313,6 +2329,7 @@ insulin <span class="nt">-X-</span> _ O
 <p><strong>Exclude tasks without Completions</strong></p>
 
 <p>Previous versions of the Annotation Lab only allowed the export of tasks that contained completions. From version <bl>2.8.0</bl> on, the tasks without any completions can be exported as this can be necessary for cloning projects. In the case where only tasks with completions are required in the export, users can enable the <em>Exclude tasks without Completions</em> option on the Export page.</p>
+
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2022-10-31T00:00:00+00:00">Oct 31, 2022</time>
     </span><!-- start custom article footer snippet -->
