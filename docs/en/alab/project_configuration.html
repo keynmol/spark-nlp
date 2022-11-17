@@ -583,6 +583,74 @@ A simple Labeling Config with Assertion Status defined should look like the foll
   <p><strong>NOTE:</strong>  Notice assertion=”true” in <strong>Absent</strong> and <strong>Past</strong> labels, which marks each of those labels as Assertion Status Labels.</p>
 </blockquote>
 
+<h3 id="classification">Classification</h3>
+<p>The choices tag is used as part of the classification projects to create a group of choices. It can be used for a single or multiple-class classification. According to the parameters used along with the choices tag, annotators can select single or multiple choices.</p>
+
+<p><strong>Parameters</strong></p>
+
+<p>The Choices tag supports the following parameters/attributes:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>required</td>
+      <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+      <td>Verify if a choice is selected</td>
+    </tr>
+    <tr>
+      <td>requiredMessage</td>
+      <td><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td> </td>
+      <td>Show a message if the required validation fails</td>
+    </tr>
+    <tr>
+      <td>choice</td>
+      <td><code class="language-plaintext highlighter-rouge">single</code> | <code class="language-plaintext highlighter-rouge">multiple</code></td>
+      <td><code class="language-plaintext highlighter-rouge">single</code></td>
+      <td>Allow user to select single or multiple answer</td>
+    </tr>
+    <tr>
+      <td>showInline</td>
+      <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+      <td>Show choices in a single visual line</td>
+    </tr>
+    <tr>
+      <td>perRegion</td>
+      <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+      <td> </td>
+      <td>Use this attribute to select an option for a specific region rather than the entire task</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;<span class="o">!</span><span class="nt">--text</span> classification labeling config--&gt;
+&lt;View&gt;
+  &lt;Text <span class="nv">name</span><span class="o">=</span><span class="s2">"text"</span> <span class="nv">value</span><span class="o">=</span><span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>/&gt;
+  &lt;Choices <span class="nv">name</span><span class="o">=</span><span class="s2">"surprise"</span> <span class="nv">toName</span><span class="o">=</span><span class="s2">"text"</span> <span class="nv">choice</span><span class="o">=</span><span class="s2">"single"</span> <span class="nv">required</span><span class="o">=</span><span class="s1">'true'</span> <span class="nv">requiredMessage</span><span class="o">=</span><span class="s1">'Please select choice'</span><span class="o">&gt;</span>
+    &lt;Choice <span class="nv">value</span><span class="o">=</span><span class="s2">"surprise"</span>/&gt;
+    &lt;Choice <span class="nv">value</span><span class="o">=</span><span class="s2">"sadness"</span>/&gt;
+    &lt;Choice <span class="nv">value</span><span class="o">=</span><span class="s2">"fear"</span>/&gt;
+    &lt;Choice <span class="nv">value</span><span class="o">=</span><span class="s2">"joy"</span>/&gt;
+  &lt;/Choices&gt;
+&lt;/View&gt;
+</code></pre></div></div>
+
+<p><img src="https://user-images.githubusercontent.com/45035063/196096241-c155f4cb-df5c-4b1c-a19b-0a5e349a756e.gif" alt="choices-example" /></p>
+
+<p>When using the <code class="language-plaintext highlighter-rouge">perRegion</code> attribute, choices can be defined for each chunk annotation as shown below:</p>
+
+<p><img src="https://user-images.githubusercontent.com/45035063/197151637-fa9034b1-0d09-4658-b1bb-7c47e68f435c.gif" alt="perRegion" /></p>
+
 <h3 id="relation-extraction">Relation Extraction</h3>
 <p>Annotation Lab also offers support for relation extraction. Relations are introduced by simply specifying their label in the project configuration.</p>
 

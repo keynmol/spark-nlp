@@ -558,6 +558,98 @@
 <p>A user with the admin privilege can change the login credentials for another user by navigating to the <em>Credentials</em> section of the edit user page and defining a new (temporary) password. For extra protection, the user with the admin privilege can enforce the password change on the next login.</p>
 
 <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/user_credentials.png" style="width:110%;" /></p>
+
+<h2 id="saml-integration">SAML Integration</h2>
+
+<p>AnnotationLab supports Security Assertion Markup Language (SAML). To login to AnnotationLab using SAML, follow the steps below.</p>
+
+<h3 id="saml-server-setup">SAML Server Setup</h3>
+
+<p>Run the following command to setup a sample SAML server in a Docker environment:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run --rm --name mysamlserver -p 8081:8080 -p 8443:8443 -e SIMPLESAMLPHP_SP_ENTITY_ID=http://{IP}/auth/realms/master -e SIMPLESAMLPHP_SP_ASSERTION_CONSUMER_SERVICE=http://{IP}/auth/realms/master/broker/saml/endpoint --network annotationlab kristophjunge/test-saml-idp
+</code></pre></div></div>
+
+<h3 id="saml-configuration">SAML Configuration</h3>
+
+<p>Follow the steps described below to setup a SAML connection.</p>
+
+<p>1) Goto AnnotationLab Keyclock console and navigate to <code class="language-plaintext highlighter-rouge">Identity Providers</code> under <code class="language-plaintext highlighter-rouge">Configure</code> on the left-side menu.</p>
+
+<p>2) Choose <code class="language-plaintext highlighter-rouge">SAML v2.0</code> from Add Provider drop-down menu and a configuration page should appear.</p>
+
+<p><img src="https://user-images.githubusercontent.com/17021686/154219230-726c3787-ce1e-4902-a90e-0228859a71b6.png" alt="Screen Shot 2022-02-16 at 11 52 23 AM" /></p>
+
+<p>3) Provide values for <code class="language-plaintext highlighter-rouge">Alias</code>(e.g: saml) and <code class="language-plaintext highlighter-rouge">Display Name</code>(e.g: SAML). The value for <code class="language-plaintext highlighter-rouge">Display Name</code> will be seen in the login page.</p>
+
+<p>4) Now, set the value of the following attributes as shown below:</p>
+<ul>
+  <li>Enabled: On</li>
+  <li>Store Tokens: On</li>
+  <li>First Login Flow : first broker login</li>
+  <li>Sync Mode: force</li>
+</ul>
+
+<p>5) Under SAML Config specify values for the following parameters as provided by SAML sever:</p>
+<ul>
+  <li>Service Provider Entity ID</li>
+  <li>Single Sign-On Service URL</li>
+  <li>Single Logout Service URL</li>
+</ul>
+
+<p>6) Choose a <code class="language-plaintext highlighter-rouge">Principal Type</code>(e.g: Attribute[Name]) and add value to <code class="language-plaintext highlighter-rouge">Principal Attribute</code>(e.g. email) according to the data provided by SAML server</p>
+
+<p>7) Click on the <code class="language-plaintext highlighter-rouge">Save</code> button to save the changes.</p>
+
+<h3 id="identity-provider-mapper">Identity Provider Mapper</h3>
+
+<p>An Identity Provider Mapper must be defined for importing SAML data provided by the External Identity Provider (IDP) and using it for authenticating into Annotation Lab. This allows user profile and other user information to be imported and made available into Annotation Lab.</p>
+
+<p>On Identity Providers &gt; SAML page click on the <code class="language-plaintext highlighter-rouge">Mappers</code> tab located next to the <code class="language-plaintext highlighter-rouge">Settings</code> tab and follow the steps  below:</p>
+
+<ol>
+  <li>Click on <code class="language-plaintext highlighter-rouge">Create</code>. This should open a form to add a new <code class="language-plaintext highlighter-rouge">Identity Provider Mapper</code></li>
+  <li>Set the value for the following attributes:
+    <ul>
+      <li>Name(e.g: uma_protection mapper)</li>
+      <li>Sync Mode Override: inherit</li>
+      <li>Mapper Type: Hardcoded Role</li>
+    </ul>
+  </li>
+  <li>Click on the <code class="language-plaintext highlighter-rouge">Select Role</code> button and under the <code class="language-plaintext highlighter-rouge">Client Roles</code> menu put <code class="language-plaintext highlighter-rouge">annotationlab</code>. Now, select <code class="language-plaintext highlighter-rouge">uma_protection</code> and click on <code class="language-plaintext highlighter-rouge">Select client role</code>. <code class="language-plaintext highlighter-rouge">annotationlab.uma_protection</code> should be the value displayed for <code class="language-plaintext highlighter-rouge">Role</code></li>
+  <li>Save the changes</li>
+</ol>
+
+<h3 id="default-group">Default Group</h3>
+
+<p>Default groups are used for assigning group membership automatically whenever any new user is created. Add <code class="language-plaintext highlighter-rouge">Annotators</code> as the default group using the following steps:</p>
+
+<ol>
+  <li>Goto <code class="language-plaintext highlighter-rouge">Groups</code>, on the left side panel under <code class="language-plaintext highlighter-rouge">Manages</code></li>
+  <li>Select the <code class="language-plaintext highlighter-rouge">Default Groups</code> tab</li>
+  <li>Under <code class="language-plaintext highlighter-rouge">Available Groups</code> select <code class="language-plaintext highlighter-rouge">Annotators</code> and then click on the <code class="language-plaintext highlighter-rouge">Add</code> button</li>
+</ol>
+
+<p>Now, <code class="language-plaintext highlighter-rouge">Annotators</code> should be listed under Default Groups.</p>
+
+<p><img src="https://user-images.githubusercontent.com/17021686/154219740-75a1214e-cc5f-452f-8f0b-5f8e71871c12.png" alt="Screen Shot 2022-02-16 at 12 30 23 PM" /></p>
+
+<h3 id="login-to-annotation-lab">Login to Annotation Lab</h3>
+
+<p>Goto the Annotation Lab’s login dashboard and click on the display name which was set earlier(e.g: SAML). This is displayed under <code class="language-plaintext highlighter-rouge">Or sign in with</code>.</p>
+
+<p><img src="https://user-images.githubusercontent.com/17021686/154219826-0615f052-0a81-45ff-a856-57386fc4007c.png" alt="Screen Shot 2022-02-16 at 11 59 49 AM" /></p>
+
+<p>Login with the data provided by the SAML server here:</p>
+
+<p><img src="https://user-images.githubusercontent.com/17021686/154219900-54c3f829-0041-4c33-88e1-e71c4231e8f9.png" alt="Screen Shot 2022-02-16 at 10 50 02 AM" /></p>
+
+<p>The user account information is updated and the user is redirected to Annotation Lab and presented with the <code class="language-plaintext highlighter-rouge">Project</code> dashboard.</p>
+
+<blockquote>
+  <p>NOTES: Users added as an IDP will be available in the <code class="language-plaintext highlighter-rouge">Users</code> tab on the left side under <code class="language-plaintext highlighter-rouge">Manages</code></p>
+</blockquote>
+
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2021-10-12T00:00:00+00:00">Oct 12, 2021</time>
     </span><!-- start custom article footer snippet -->

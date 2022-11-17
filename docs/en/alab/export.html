@@ -554,696 +554,891 @@ pre {
 
 <h3 id="json">JSON</h3>
 
-<p>You can convert and export the completions and predictions to JSON format using the JSON option on the Export page.
-The obtained format is the following:</p>
+<p>You can export the manual annotations (completions) and automatic annotations (predictions) to JSON format using the JSON option on the Export page.
+An example of JSON export file is shown below:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>
-  <span class="o">{</span>
-    <span class="s2">"completions"</span>: <span class="o">[</span>
-      <span class="o">{</span>
-        <span class="s2">"created_username"</span>: <span class="s2">"eric"</span>,
-        <span class="s2">"created_ago"</span>: <span class="s2">"2022-10-29T14:42:50.867Z"</span>,
-        <span class="s2">"lead_time"</span>: 82,
-        <span class="s2">"result"</span>: <span class="o">[</span>
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 175,
-              <span class="s2">"end"</span>: 187,
-              <span class="s2">"text"</span>: <span class="s2">"tuberculosis"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.9524
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"zgam2AbdmY"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 213,
-              <span class="s2">"end"</span>: 239,
-              <span class="s2">"text"</span>: <span class="s2">"Mycobacterium tuberculosis"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.904775
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"1v76SqlWtj"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 385,
-              <span class="s2">"end"</span>: 394,
-              <span class="s2">"text"</span>: <span class="s2">"pneumonia"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.91655
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"CURKae4Eca"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 436,
-              <span class="s2">"end"</span>: 449,
-              <span class="s2">"text"</span>: <span class="s2">"Streptococcus"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.9157500000000001
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"cM5BvAsZL4"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 454,
-              <span class="s2">"end"</span>: 465,
-              <span class="s2">"text"</span>: <span class="s2">"Pseudomonas"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.91495
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"KGOLhb8OPV"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 532,
-              <span class="s2">"end"</span>: 540,
-              <span class="s2">"text"</span>: <span class="s2">"Shigella"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.91655
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"JCIhVQTDZl"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 542,
-              <span class="s2">"end"</span>: 555,
-              <span class="s2">"text"</span>: <span class="s2">"Campylobacter"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.9163
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"CkxrbwvFzb"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 561,
-              <span class="s2">"end"</span>: 571,
-              <span class="s2">"text"</span>: <span class="s2">"Salmonella"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.9164000000000001
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"c6ev6McH4Z"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 623,
-              <span class="s2">"end"</span>: 630,
-              <span class="s2">"text"</span>: <span class="s2">"tetanus"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.97
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"9ZmEaJnqKG"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 632,
-              <span class="s2">"end"</span>: 645,
-              <span class="s2">"text"</span>: <span class="s2">"typhoid fever"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.976675
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"Uo5CWzdd1S"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 647,
-              <span class="s2">"end"</span>: 657,
-              <span class="s2">"text"</span>: <span class="s2">"diphtheria"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.9737
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"7nc71jXT3P"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 659,
-              <span class="s2">"end"</span>: 667,
-              <span class="s2">"text"</span>: <span class="s2">"syphilis"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.97355
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"nIKfsOWNyE"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 673,
-              <span class="s2">"end"</span>: 689,
-              <span class="s2">"text"</span>: <span class="s2">"Hansen's disease"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.899025
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"SyuVYMn7ax"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 30,
-              <span class="s2">"end"</span>: 38,
-              <span class="s2">"text"</span>: <span class="s2">"bacteria"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 1
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"lq7qtJj1yX"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 98,
-              <span class="s2">"end"</span>: 106,
-              <span class="s2">"text"</span>: <span class="s2">"bacteria"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 1
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"kxaB_gMstN"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>
-        <span class="o">]</span>,
-        <span class="s2">"honeypot"</span>: <span class="nb">true</span>,
-        <span class="s2">"copied_from"</span>: <span class="s2">"prediction: 11001"</span>,
-        <span class="s2">"id"</span>: 11001,
-        <span class="s2">"confidence_range"</span>: <span class="o">[</span>
-          0,
-          1
-        <span class="o">]</span>,
-        <span class="s2">"copy"</span>: <span class="nb">true</span>,
-        <span class="s2">"cid"</span>: <span class="s2">"11001"</span>,
-        <span class="s2">"data_type"</span>: <span class="s2">"prediction"</span>,
-        <span class="s2">"updated_at"</span>: <span class="s2">"2022-10-29T15:13:03.445569Z"</span>,
-        <span class="s2">"updated_by"</span>: <span class="s2">"eric"</span>,
-        <span class="s2">"submitted_at"</span>: <span class="s2">"2022-10-30T20:57:54.303"</span>
-      <span class="o">}</span>,
-      <span class="o">{</span>
-        <span class="s2">"created_username"</span>: <span class="s2">"jenny"</span>,
-        <span class="s2">"created_ago"</span>: <span class="s2">"2022-10-29T15:03:51.669Z"</span>,
-        <span class="s2">"lead_time"</span>: 0,
-        <span class="s2">"result"</span>: <span class="o">[</span>
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 175,
-              <span class="s2">"end"</span>: 187,
-              <span class="s2">"text"</span>: <span class="s2">"tuberculosis"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.9524
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"zgam2AbdmY"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 213,
-              <span class="s2">"end"</span>: 239,
-              <span class="s2">"text"</span>: <span class="s2">"Mycobacterium tuberculosis"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.904775
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"1v76SqlWtj"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 385,
-              <span class="s2">"end"</span>: 394,
-              <span class="s2">"text"</span>: <span class="s2">"pneumonia"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.91655
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"CURKae4Eca"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 436,
-              <span class="s2">"end"</span>: 449,
-              <span class="s2">"text"</span>: <span class="s2">"Streptococcus"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.9157500000000001
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"cM5BvAsZL4"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 454,
-              <span class="s2">"end"</span>: 465,
-              <span class="s2">"text"</span>: <span class="s2">"Pseudomonas"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.91495
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"KGOLhb8OPV"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 532,
-              <span class="s2">"end"</span>: 540,
-              <span class="s2">"text"</span>: <span class="s2">"Shigella"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.91655
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"JCIhVQTDZl"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 542,
-              <span class="s2">"end"</span>: 555,
-              <span class="s2">"text"</span>: <span class="s2">"Campylobacter"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.9163
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"CkxrbwvFzb"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 561,
-              <span class="s2">"end"</span>: 571,
-              <span class="s2">"text"</span>: <span class="s2">"Salmonella"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.9164000000000001
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"c6ev6McH4Z"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 623,
-              <span class="s2">"end"</span>: 630,
-              <span class="s2">"text"</span>: <span class="s2">"tetanus"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.97
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"9ZmEaJnqKG"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 632,
-              <span class="s2">"end"</span>: 645,
-              <span class="s2">"text"</span>: <span class="s2">"typhoid fever"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.976675
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"Uo5CWzdd1S"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 647,
-              <span class="s2">"end"</span>: 657,
-              <span class="s2">"text"</span>: <span class="s2">"diphtheria"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.9737
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"7nc71jXT3P"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 659,
-              <span class="s2">"end"</span>: 667,
-              <span class="s2">"text"</span>: <span class="s2">"syphilis"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.97355
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"nIKfsOWNyE"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"start"</span>: 673,
-              <span class="s2">"end"</span>: 689,
-              <span class="s2">"text"</span>: <span class="s2">"Hansen's disease"</span>,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"confidence"</span>: 0.899025
-            <span class="o">}</span>,
-            <span class="s2">"id"</span>: <span class="s2">"SyuVYMn7ax"</span>,
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>
-          <span class="o">}</span>
-        <span class="o">]</span>,
-        <span class="s2">"honeypot"</span>: <span class="nb">true</span>,
-        <span class="s2">"confidence_range"</span>: <span class="o">[</span>
-          0,
-          1
-        <span class="o">]</span>,
-        <span class="s2">"submitted_at"</span>: <span class="s2">"2022-10-29T20:48:51.669"</span>,
-        <span class="s2">"id"</span>: 11002
-      <span class="o">}</span>
-    <span class="o">]</span>,
-    <span class="s2">"predictions"</span>: <span class="o">[</span>
-      <span class="o">{</span>
-        <span class="s2">"created_username"</span>: <span class="s2">"SparkNLP Pre-annotation"</span>,
-        <span class="s2">"result"</span>: <span class="o">[</span>
-          <span class="o">{</span>
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"id"</span>: <span class="s2">"zgam2AbdmY"</span>,
-            <span class="s2">"source"</span>: <span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>,
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"end"</span>: 187,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"start"</span>: 175,
-              <span class="s2">"text"</span>: <span class="s2">"tuberculosis"</span>,
-              <span class="s2">"confidence"</span>: <span class="s2">"0.9524"</span>
-            <span class="o">}</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"id"</span>: <span class="s2">"1v76SqlWtj"</span>,
-            <span class="s2">"source"</span>: <span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>,
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"end"</span>: 239,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"start"</span>: 213,
-              <span class="s2">"text"</span>: <span class="s2">"Mycobacterium tuberculosis"</span>,
-              <span class="s2">"confidence"</span>: <span class="s2">"0.904775"</span>
-            <span class="o">}</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"id"</span>: <span class="s2">"CURKae4Eca"</span>,
-            <span class="s2">"source"</span>: <span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>,
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"end"</span>: 394,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"start"</span>: 385,
-              <span class="s2">"text"</span>: <span class="s2">"pneumonia"</span>,
-              <span class="s2">"confidence"</span>: <span class="s2">"0.91655"</span>
-            <span class="o">}</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"id"</span>: <span class="s2">"cM5BvAsZL4"</span>,
-            <span class="s2">"source"</span>: <span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>,
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"end"</span>: 449,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"start"</span>: 436,
-              <span class="s2">"text"</span>: <span class="s2">"Streptococcus"</span>,
-              <span class="s2">"confidence"</span>: <span class="s2">"0.9157500000000001"</span>
-            <span class="o">}</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"id"</span>: <span class="s2">"KGOLhb8OPV"</span>,
-            <span class="s2">"source"</span>: <span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>,
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"end"</span>: 465,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"start"</span>: 454,
-              <span class="s2">"text"</span>: <span class="s2">"Pseudomonas"</span>,
-              <span class="s2">"confidence"</span>: <span class="s2">"0.91495"</span>
-            <span class="o">}</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"id"</span>: <span class="s2">"JCIhVQTDZl"</span>,
-            <span class="s2">"source"</span>: <span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>,
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"end"</span>: 540,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"start"</span>: 532,
-              <span class="s2">"text"</span>: <span class="s2">"Shigella"</span>,
-              <span class="s2">"confidence"</span>: <span class="s2">"0.91655"</span>
-            <span class="o">}</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"id"</span>: <span class="s2">"CkxrbwvFzb"</span>,
-            <span class="s2">"source"</span>: <span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>,
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"end"</span>: 555,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"start"</span>: 542,
-              <span class="s2">"text"</span>: <span class="s2">"Campylobacter"</span>,
-              <span class="s2">"confidence"</span>: <span class="s2">"0.9163"</span>
-            <span class="o">}</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"id"</span>: <span class="s2">"c6ev6McH4Z"</span>,
-            <span class="s2">"source"</span>: <span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>,
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"end"</span>: 571,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"Pathogen"</span>
-              <span class="o">]</span>,
-              <span class="s2">"start"</span>: 561,
-              <span class="s2">"text"</span>: <span class="s2">"Salmonella"</span>,
-              <span class="s2">"confidence"</span>: <span class="s2">"0.9164000000000001"</span>
-            <span class="o">}</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"id"</span>: <span class="s2">"9ZmEaJnqKG"</span>,
-            <span class="s2">"source"</span>: <span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>,
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"end"</span>: 630,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"start"</span>: 623,
-              <span class="s2">"text"</span>: <span class="s2">"tetanus"</span>,
-              <span class="s2">"confidence"</span>: <span class="s2">"0.97"</span>
-            <span class="o">}</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"id"</span>: <span class="s2">"Uo5CWzdd1S"</span>,
-            <span class="s2">"source"</span>: <span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>,
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"end"</span>: 645,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"start"</span>: 632,
-              <span class="s2">"text"</span>: <span class="s2">"typhoid fever"</span>,
-              <span class="s2">"confidence"</span>: <span class="s2">"0.976675"</span>
-            <span class="o">}</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"id"</span>: <span class="s2">"7nc71jXT3P"</span>,
-            <span class="s2">"source"</span>: <span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>,
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"end"</span>: 657,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"start"</span>: 647,
-              <span class="s2">"text"</span>: <span class="s2">"diphtheria"</span>,
-              <span class="s2">"confidence"</span>: <span class="s2">"0.9737"</span>
-            <span class="o">}</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"id"</span>: <span class="s2">"nIKfsOWNyE"</span>,
-            <span class="s2">"source"</span>: <span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>,
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"end"</span>: 667,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"start"</span>: 659,
-              <span class="s2">"text"</span>: <span class="s2">"syphilis"</span>,
-              <span class="s2">"confidence"</span>: <span class="s2">"0.97355"</span>
-            <span class="o">}</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-            <span class="s2">"from_name"</span>: <span class="s2">"label"</span>,
-            <span class="s2">"id"</span>: <span class="s2">"SyuVYMn7ax"</span>,
-            <span class="s2">"source"</span>: <span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>,
-            <span class="s2">"to_name"</span>: <span class="s2">"text"</span>,
-            <span class="s2">"type"</span>: <span class="s2">"labels"</span>,
-            <span class="s2">"value"</span>: <span class="o">{</span>
-              <span class="s2">"end"</span>: 689,
-              <span class="s2">"labels"</span>: <span class="o">[</span>
-                <span class="s2">"MedicalCondition"</span>
-              <span class="o">]</span>,
-              <span class="s2">"start"</span>: 673,
-              <span class="s2">"text"</span>: <span class="s2">"Hansen's disease"</span>,
-              <span class="s2">"confidence"</span>: <span class="s2">"0.899025"</span>
-            <span class="o">}</span>
-          <span class="o">}</span>
-        <span class="o">]</span>,
-        <span class="s2">"created_ago"</span>: <span class="s2">"2022-10-29T14:07:58.553246Z"</span>,
-        <span class="s2">"id"</span>: 11001
-      <span class="o">}</span>
-    <span class="o">]</span>,
-    <span class="s2">"created_at"</span>: <span class="s2">"2022-10-29 14:07:12"</span>,
-    <span class="s2">"created_by"</span>: <span class="s2">"admin"</span>,
-    <span class="s2">"data"</span>: <span class="o">{</span>
-      <span class="s2">"text"</span>: <span class="s2">"Although the vast majority of bacteria are harmless or beneficial to one's body, a few pathogenic bacteria can cause infectious diseases. The most common bacterial disease is tuberculosis, caused by the bacterium Mycobacterium tuberculosis, which affects about 2 million people mostly in sub-Saharan Africa. Pathogenic bacteria contribute to other globally important diseases, such as pneumonia, which can be caused by bacteria such as Streptococcus and Pseudomonas, and foodborne illnesses, which can be caused by bacteria such as Shigella, Campylobacter, and Salmonella. Pathogenic bacteria also cause infections such as tetanus, typhoid fever, diphtheria, syphilis, and Hansen's disease. They typically range between 1 and 5 micrometers in length."</span>,
-      <span class="s2">"title"</span>: <span class="s2">"cord19-11.txt"</span>
-    <span class="o">}</span>,
-    <span class="s2">"id"</span>: 11
-  <span class="o">}</span>
-<span class="o">]</span>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"completions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eric"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_ago"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-29T14:42:50.867Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lead_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">82</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">175</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">187</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tuberculosis"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9524</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zgam2AbdmY"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">213</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">239</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mycobacterium tuberculosis"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.904775</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1v76SqlWtj"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">385</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">394</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pneumonia"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.91655</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURKae4Eca"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">436</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">449</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Streptococcus"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9157500000000001</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cM5BvAsZL4"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">454</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">465</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pseudomonas"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.91495</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KGOLhb8OPV"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">532</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">540</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shigella"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.91655</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JCIhVQTDZl"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">542</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">555</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campylobacter"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9163</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CkxrbwvFzb"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">561</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">571</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Salmonella"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9164000000000001</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c6ev6McH4Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">623</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">630</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tetanus"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.97</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9ZmEaJnqKG"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">632</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">645</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"typhoid fever"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.976675</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Uo5CWzdd1S"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">647</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">657</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"diphtheria"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9737</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7nc71jXT3P"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">659</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">667</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"syphilis"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.97355</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nIKfsOWNyE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">673</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">689</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hansen's disease"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.899025</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SyuVYMn7ax"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">38</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bacteria"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lq7qtJj1yX"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">98</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">106</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bacteria"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kxaB_gMstN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"honeypot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"copied_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prediction: 11001"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11001</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confidence_range"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="mi">1</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"copy"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11001"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prediction"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-29T15:13:03.445569Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eric"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"submitted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-30T20:57:54.303"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jenny"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_ago"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-29T15:03:51.669Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lead_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">175</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">187</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tuberculosis"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9524</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zgam2AbdmY"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">213</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">239</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mycobacterium tuberculosis"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.904775</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1v76SqlWtj"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">385</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">394</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pneumonia"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.91655</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURKae4Eca"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">436</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">449</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Streptococcus"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9157500000000001</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cM5BvAsZL4"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">454</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">465</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pseudomonas"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.91495</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KGOLhb8OPV"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">532</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">540</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shigella"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.91655</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JCIhVQTDZl"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">542</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">555</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campylobacter"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9163</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CkxrbwvFzb"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">561</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">571</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Salmonella"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9164000000000001</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c6ev6McH4Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">623</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">630</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tetanus"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.97</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9ZmEaJnqKG"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">632</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">645</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"typhoid fever"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.976675</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Uo5CWzdd1S"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">647</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">657</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"diphtheria"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9737</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7nc71jXT3P"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">659</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">667</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"syphilis"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.97355</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nIKfsOWNyE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">673</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">689</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hansen's disease"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.899025</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SyuVYMn7ax"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"honeypot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confidence_range"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="mi">1</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"submitted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-29T20:48:51.669"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11002</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"predictions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SparkNLP Pre-annotation"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zgam2AbdmY"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">187</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">175</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tuberculosis"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9524"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1v76SqlWtj"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">239</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">213</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mycobacterium tuberculosis"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.904775"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURKae4Eca"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">394</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">385</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pneumonia"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.91655"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cM5BvAsZL4"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">449</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">436</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Streptococcus"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9157500000000001"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KGOLhb8OPV"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">465</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">454</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pseudomonas"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.91495"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JCIhVQTDZl"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">540</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">532</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shigella"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.91655"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CkxrbwvFzb"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">555</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">542</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campylobacter"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9163"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c6ev6McH4Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">571</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Pathogen"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">561</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Salmonella"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9164000000000001"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9ZmEaJnqKG"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">630</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">623</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tetanus"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.97"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Uo5CWzdd1S"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">645</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">632</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"typhoid fever"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.976675"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7nc71jXT3P"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">657</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">647</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"diphtheria"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9737"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nIKfsOWNyE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">667</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">659</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"syphilis"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.97355"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SyuVYMn7ax"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">689</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"MedicalCondition"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">673</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hansen's disease"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.899025"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"created_ago"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-29T14:07:58.553246Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11001</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-29 14:07:12"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Although the vast majority of bacteria are harmless or beneficial to one's body, a few pathogenic bacteria can cause infectious diseases. The most common bacterial disease is tuberculosis, caused by the bacterium Mycobacterium tuberculosis, which affects about 2 million people mostly in sub-Saharan Africa. Pathogenic bacteria contribute to other globally important diseases, such as pneumonia, which can be caused by bacteria such as Streptococcus and Pseudomonas, and foodborne illnesses, which can be caused by bacteria such as Shigella, Campylobacter, and Salmonella. Pathogenic bacteria also cause infections such as tetanus, typhoid fever, diphtheria, syphilis, and Hansen's disease. They typically range between 1 and 5 micrometers in length."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cord19-11.txt"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+<p><br /></p>
+
+<p>Below are some explanations related to the structure of the JSON export file. The export represents a list/array of task, containing completions and/or predictions. Each task in the list has the following main elements:</p>
+
+<p><strong>TASK</strong>:</p>
+
+<p>A task can have 0 or several completions and 0 or several predictions.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"completions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">COMPLETION</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">COMPLETION</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"predictions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">PREDICTION</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">PREDICTION</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-07-04 06:17:26"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;sample_text&gt;</span><span class="s2">"
+  },
+  "</span><span class="err">id</span><span class="s2">": 1
+}
+</span></code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">completions</code>: list of completions (manual annotations)</li>
+  <li><code class="language-plaintext highlighter-rouge">predictions</code>: list of predictions (annotations generated by spark-nlp model(s))</li>
+  <li><code class="language-plaintext highlighter-rouge">created_by</code>: time stamp representing the creation time for a task</li>
+  <li><code class="language-plaintext highlighter-rouge">created_by</code>: the user who created the task</li>
+  <li><code class="language-plaintext highlighter-rouge">data</code>: input data on which the annotations/preannotation are defined (text/image/audio etc)</li>
+  <li><code class="language-plaintext highlighter-rouge">id</code>: task ID</li>
+</ul>
+
+<p><strong>COMPLETION/PREDICTION</strong>:</p>
+
+<p>Completions and predictions have the following structure:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"created_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"collaborate"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_ago"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-07-04T06:18:39.720155Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lead_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">RESULT</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">RESULT</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="err">RESULT</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="err">....</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"honeypot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1001</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-07-04T06:18:49.037150Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"collaborate"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">created_username</code>: user who created the annotation</li>
+  <li><code class="language-plaintext highlighter-rouge">created_ago</code>: timestamp of when the annotation was created</li>
+  <li><code class="language-plaintext highlighter-rouge">lead_time</code>: time taken (in seconds) to create this annotation (valid for manual completion only)</li>
+  <li><code class="language-plaintext highlighter-rouge">result</code>: list of annotated labels</li>
+  <li><code class="language-plaintext highlighter-rouge">honeypot</code>: boolean value to set/unset ground truth</li>
+  <li><code class="language-plaintext highlighter-rouge">id</code>: completion/prediction ID</li>
+  <li><code class="language-plaintext highlighter-rouge">updated_at</code>: timestamp of when the annotation was last updated</li>
+  <li><code class="language-plaintext highlighter-rouge">updated_by</code>: user who updated the annotation</li>
+</ul>
+
+<p>Each completion/prediction contains one or several results which can be seen as individual annotations.</p>
+
+<p><strong>RESULT</strong>:</p>
+
+<p>The structure of the <code class="language-plaintext highlighter-rouge">RESULT</code> dictionary differs according to the project configuration:</p>
+
+<p><strong>1. NER</strong>:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+</span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pleasant"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"FAC"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">},</span><span class="w">
+</span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iJOo_XgIao"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"labels"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">value</code>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">start</code>: start index of the annotated chunk</li>
+      <li><code class="language-plaintext highlighter-rouge">end</code>: end index of the annotated chunk</li>
+      <li><code class="language-plaintext highlighter-rouge">text</code>: annotated chunk</li>
+      <li><code class="language-plaintext highlighter-rouge">labels</code>: associated label</li>
+      <li><code class="language-plaintext highlighter-rouge">confidence</code>: confidence score (1 for manual annotation and a value between 0 and 1 for predicted annotations)</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">id</code>: id of annotation (used while creating relations between entities)</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">from_name/to_name</code>: this attribute is set according to the project config:</p>
+
+    <p><code class="language-plaintext highlighter-rouge">from_name</code> -&gt; name attribute of the Labels tag</p>
+
+    <p><code class="language-plaintext highlighter-rouge">to_name</code> -&gt; toName attribute of the Labels tag</p>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Labels <span class="nv">name</span><span class="o">=</span><span class="s2">"label"</span> <span class="nv">toName</span><span class="o">=</span><span class="s2">"text"</span><span class="o">&gt;</span>
 </code></pre></div></div>
 
-<p><br /></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">type</code>: type of the annotation (labels, choices, relations etc.)</li>
+</ul>
+
+<p><strong>2. Classification</strong>:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"sadness"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VyY-OHe_lf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"from_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"surprise"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"to_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"choices"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">value</code>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">choices</code>: the options/choises selected by users</li>
+      <li><code class="language-plaintext highlighter-rouge">confidence</code>: confidence score (1 for manual annotation and between 0 and 1 for predicted annotation)</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">id</code>: id of annotation</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">from_name/to_name</code>: this field is set according to the project config:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  `from_name` -&gt; name attribute of the Choice tag
+  `to_name` -&gt; toName attribute of the Choice tag
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">&lt;Choices</span><span class="w"> </span><span class="err">name=</span><span class="s2">"surprise"</span><span class="w"> </span><span class="err">toName=</span><span class="s2">"text"</span><span class="w"> </span><span class="err">choice=</span><span class="s2">"single"</span><span class="err">&gt;</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">type</code>: type of the annotation (labels, choices, relations etc)</li>
+</ul>
+
+<p><strong>3. Relations</strong>:</p>
+
+<p>The information below is added in the <code class="language-plaintext highlighter-rouge">RESULT</code> section:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"from_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ucfP3c4xWg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"to_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IlWac4TdFx"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"relation"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"right"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">from_id/to_id</code>: IDs of the related annotations</li>
+  <li><code class="language-plaintext highlighter-rouge">type</code>: type of the annotation (labels, choices, relations etc)</li>
+  <li><code class="language-plaintext highlighter-rouge">direction</code>: direction for the relation. The accepted values are right and left.</li>
+</ul>
+
+<p><strong>Submitted annotation</strong>:</p>
+
+<p>When a completion is submitted, it has a submitted timestamp on the <code class="language-plaintext highlighter-rouge">COMPLETION</code> dictionary (refer to the above json example):</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">    </span><span class="nl">"submitted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-07-04T12:03:48.824"</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>Reviewed annotation</strong>:</p>
+
+<p>When a completion is reviewed, the following information is added to the <code class="language-plaintext highlighter-rouge">COMPLETION</code> dictionary:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">    </span><span class="nl">"review_status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"approved"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Looks good!"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reviewer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mauro"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reviewed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-07-04T06:19:31.897Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">approved</code>: boolean value (true -&gt; approved and false -&gt; rejected)</li>
+  <li><code class="language-plaintext highlighter-rouge">comment</code>: text comment manually defined by the reviewer</li>
+  <li><code class="language-plaintext highlighter-rouge">reviewer</code>: user who reviewed the completion</li>
+  <li><code class="language-plaintext highlighter-rouge">reviewed_at</code>: review timestamp</li>
+</ul>
+
+<p><strong>Copied Annotation</strong>:</p>
+
+<p>When an annotation is copied/cloned from a specific completion/prediction, the <code class="language-plaintext highlighter-rouge">COMPLETION</code> dictionary contains the <code class="language-plaintext highlighter-rouge">copied_from</code> filed:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="nl">"copied_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prediction: 4001"</span><span class="w">
+</span></code></pre></div></div>
 
 <h3 id="csv">CSV</h3>
 
