@@ -807,7 +807,67 @@ EOF
 
 <p><br /></p>
 
-<h3 id="work-over-proxy">Work over proxy</h3>
+<h2 id="openshift">OpenShift</h2>
+
+<p>Annotation Lab can also be installed using the operator framework on an OpenShift cluster. The Annotation Lab operator can be found under the <bl>OperatorHub</bl>.</p>
+
+<p><br /></p>
+
+<h3 id="find-and-select">Find and select</h3>
+
+<p>The <bl>OperatorHub</bl> has a large list of operators that can be installed into your cluster. Search for Annotation Lab operator under AI/Machine Learning category and select it.</p>
+
+<p><img class="image image__shadow" src="/assets/images/annotation_lab/Select-Operator.png" style="width:100%;" /></p>
+
+<p><br /></p>
+
+<h3 id="install">Install</h3>
+
+<p>Some basic information about this operator is provided on the navigation panel that opens after selecting Annotation Lab on the previous step.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> Make sure you have defined shared storage such as <code class="language-plaintext highlighter-rouge">efs/nfs/cephfs</code> prior to installing the Annotation Lab Operator.</p>
+</blockquote>
+
+<p>Click on the <code class="language-plaintext highlighter-rouge">Install</code> button located on the top-left corner of this panel to start the installation process.</p>
+
+<p><img class="image image__shadow" src="/assets/images/annotation_lab/Install-Operator.png" style="width:100%;" /></p>
+
+<p>After successful installation of the Annotation Lab operator, you can access it by navigating to the <bl>Installed Operators</bl> page.</p>
+
+<p><br /></p>
+
+<h3 id="create-instance">Create Instance</h3>
+
+<p>Next step is to create a cluster instance of the Annotation Lab. For this, select the Annotation Lab operator under the <bl>Installed Operators</bl> page and then switch to <em>Annotationlab</em> tab. On this section, click on <code class="language-plaintext highlighter-rouge">Create Annotationlab</code> button to spawn a new instance of Annotation Lab.</p>
+
+<p><img class="image image__shadow" src="/assets/images/annotation_lab/Create-Instance.png" style="width:100%;" /></p>
+
+<p><strong>Define shared Storage Class</strong></p>
+
+<p>Update the <code class="language-plaintext highlighter-rouge">storageClass</code> property in the YAML configuration to define the storage class to one of <code class="language-plaintext highlighter-rouge">efs</code>, <code class="language-plaintext highlighter-rouge">nfs</code>, or <code class="language-plaintext highlighter-rouge">cephfs</code> depending upon what storage you set up before Annotation Lab operator installation.</p>
+
+<p><img class="image image__shadow" src="/assets/images/annotation_lab/Define-StorageClass.png" style="width:100%;" /></p>
+
+<p><strong>Define domain name</strong></p>
+
+<p>Update the <code class="language-plaintext highlighter-rouge">host</code> property in the YAML configuration to define the required domain name to use instead of the default hostname <code class="language-plaintext highlighter-rouge">annotationlab</code> as shown in the image below.</p>
+
+<p><img class="image image__shadow" src="/assets/images/annotation_lab/Define-Hostname.png" style="width:100%;" /></p>
+
+<p>Click on <code class="language-plaintext highlighter-rouge">Create</code> button once you have made all the necessary changes. This will also set up all the necessary resources to run the instance in addition to standing up the services themselves.</p>
+
+<p><br /></p>
+
+<h3 id="view-resources">View Resources</h3>
+
+<p>After the instance is successfully created we can visit its page to view all the resources as well as supporting resources like the secrets, configuration maps, etc that were created.</p>
+
+<p><img class="image image__shadow" src="/assets/images/annotation_lab/View-Resources.png" style="width:100%;" /></p>
+
+<p>Now, we can access the Annotation Lab from the provided domain name or also from the location defined for this service under the <code class="language-plaintext highlighter-rouge">Networking &gt; Routes</code> page</p>
+
+<h2 id="work-over-proxy">Work over proxy</h2>
 
 <p><strong>Custom CA certificate</strong></p>
 
