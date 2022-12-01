@@ -535,25 +535,22 @@
 
 <h3 id="resource-allocation-for-training-and-preannotation">Resource allocation for Training and Preannotation</h3>
 
-<p>Since version 2.8.0, Annotation Lab gives users the ability to change the configuration for the training and pre-annotation processes. This is done from the <code class="language-plaintext highlighter-rouge">Settings</code> &gt; <code class="language-plaintext highlighter-rouge">Infrastructure</code> page. The settings can be edited by <em>admin</em> user and they are read-only for the other users. The Infrastructure page consists of three sections namely <code class="language-plaintext highlighter-rouge">Resource For Training</code>, <code class="language-plaintext highlighter-rouge">Resource For Preannotation Server</code>, <code class="language-plaintext highlighter-rouge">Resources for Prenotation Pipeline</code>.</p>
+<p>Annotation Lab gives users the ability to change the configuration for the training and pre-annotation processes. This is done from the <code class="language-plaintext highlighter-rouge">Settings</code> &gt; <code class="language-plaintext highlighter-rouge">Infrastructure</code> page. The settings can be edited by <em>admin</em> user and they are read-only for the other users. The Infrastructure page consists of three sections namely <code class="language-plaintext highlighter-rouge">Resource For Training</code>, <code class="language-plaintext highlighter-rouge">Resource For Preannotation Server</code>, <code class="language-plaintext highlighter-rouge">Resources for Prenotation Pipeline</code>.</p>
 
 <p><strong>Resources Inclusion:</strong></p>
 
 <ol>
   <li>Memory Limit – Represents the maximum memory size to allocate for the training/pre-annotation processes.</li>
   <li>CPU Limit – Specifies this maximum number of CPUs to use by the training/pre-annotation server.</li>
-  <li>Spark Drive Memory – Defines the memory allocated for the Spark driver.</li>
-  <li>Spark Kryo Buff Max – Specifies the maximum memory size to allocate for the Kryo serialization buffer.</li>
-  <li>Spark Driver Maximum Result Size – Represents the total size of the serialized results of all the partitions for spark.</li>
 </ol>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/infrastructure.png" style="width:100%;" /></p>
+<p><img class="image image__shadow" src="/assets/images/annotation_lab/4.3.0/infrastructure.png" style="width:100%;" /></p>
 
 <blockquote>
   <p><strong>Note:</strong> If the specified configurations exceed the available resources, the server will not start.</p>
 </blockquote>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2022-10-13T00:00:00+00:00">Oct 13, 2022</time>
+      <time itemprop="dateModified" datetime="2022-11-28T00:00:00+00:00">Nov 28, 2022</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

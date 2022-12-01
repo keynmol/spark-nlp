@@ -531,7 +531,7 @@
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Project Configuration"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>Annotation Lab currently supports multiple predefined project configurations. The most popular ones are <code class="language-plaintext highlighter-rouge">Text Classification</code>, <code class="language-plaintext highlighter-rouge">Named Entity Recognition</code> (NER) and  <code class="language-plaintext highlighter-rouge">Visual NER</code>. Create a setup from scratch or customize a predefined one according to your needs.</p>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>Annotation Lab currently supports multiple predefined project configurations. The most popular ones are <code class="language-plaintext highlighter-rouge">Text Classification</code>, <code class="language-plaintext highlighter-rouge">Named Entity Recognition</code> (NER) and <code class="language-plaintext highlighter-rouge">Visual NER</code>. Create a setup from scratch or customize a predefined one according to your needs.</p>
 
 <p>For customizing a predefined configuration, click on the corresponding link in the table above and then navigate to the Labeling configuration tab and manually edit or update it to contain the labels you want.</p>
 
@@ -549,18 +549,26 @@
 
 <p>For customizing a predefined configuration, choose a <code class="language-plaintext highlighter-rouge">Content Type</code> and then a template from the list. Then navigate to the <code class="language-plaintext highlighter-rouge">Customize Labels</code> tab and manually edit/update the configuration to contain the labels you need.</p>
 
+<p>Users can add custom labels and choices in the project configuration from the Visual tab for both text and Visual NER projects.</p>
+
+<p><img class="image image--xl image__shadow" src="https://user-images.githubusercontent.com/33893292/203908059-95b96598-ef34-4418-8b9a-48dd6b03b409.gif" style="width:100%;" /></p>
+
 <p>After you finish editing the labels click the “Save” button.</p>
 
 <h3 id="named-entity-recognition">Named Entity Recognition</h3>
+
 <p>Named Entity Recognition (NER) refers to the identification and classification of entities mentioned in unstructured text into pre-defined categories such as person names, organizations, locations, medical codes, time expressions, quantities, monetary values, percentages, etc.</p>
 
 <p>The <strong>Annotation Lab</strong> offers support for two types of labels:</p>
+
 <ul>
   <li>Simple labels for NER or assertion models;</li>
   <li>Binary relations for relation extraction models.</li>
 </ul>
 
 <p><img class="image image--xl image__shadow" src="/assets/images/annotation_lab/4.2.0/NER_Template.png" style="width:100%;" /></p>
+
+<p><br /></p>
 
 <h3 id="assertion-labels">Assertion Labels</h3>
 <p>The syntax for defining an Assertion Status label is the same as for the NER labels, with an additional attribute - <strong>assertion</strong> which should be set to true (see example below). This convention is defined by Annotation Lab users which we exploited for identifying the labels to include in the training and prediction of Assertion Models.
@@ -579,11 +587,15 @@ A simple Labeling Config with Assertion Status defined should look like the foll
 &lt;/View&gt;
 &lt;/View&gt;
 </code></pre></div></div>
+
 <blockquote>
-  <p><strong>NOTE:</strong>  Notice assertion=”true” in <strong>Absent</strong> and <strong>Past</strong> labels, which marks each of those labels as Assertion Status Labels.</p>
+  <p><strong>NOTE:</strong> Notice assertion=”true” in <strong>Absent</strong> and <strong>Past</strong> labels, which marks each of those labels as Assertion Status Labels.</p>
 </blockquote>
 
+<p><br /></p>
+
 <h3 id="classification">Classification</h3>
+
 <p>The choices tag is used as part of the classification projects to create a group of choices. It can be used for a single or multiple-class classification. According to the parameters used along with the choices tag, annotators can select single or multiple choices.</p>
 
 <p><strong>Parameters</strong></p>
@@ -651,7 +663,10 @@ A simple Labeling Config with Assertion Status defined should look like the foll
 
 <p><img src="https://user-images.githubusercontent.com/45035063/197151637-fa9034b1-0d09-4658-b1bb-7c47e68f435c.gif" alt="perRegion" /></p>
 
+<p><br /></p>
+
 <h3 id="relation-extraction">Relation Extraction</h3>
+
 <p>Annotation Lab also offers support for relation extraction. Relations are introduced by simply specifying their label in the project configuration.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Relations&gt;
@@ -660,10 +675,14 @@ A simple Labeling Config with Assertion Status defined should look like the foll
     &lt;Relation <span class="nv">value</span><span class="o">=</span><span class="s2">"MetastasisLocation"</span>/&gt;
   &lt;/Relations&gt;
 </code></pre></div></div>
+
+<p><br /></p>
+
 <h3 id="constraints-for-relation-labeling">Constraints for relation labeling</h3>
 
 <p>While annotating projects with Relations between Entities, defining constraints (the direction, the domain, the co-domain) of relations is important. Annotation Lab offers a way to define such constraints by editing the Project Configuration. The Project Owner or Project Managers can specify which Relation needs to be bound to which Labels and in which direction. This will hide some Relations in Labeling Page for NER Labels which will simplify the annotation process and will avoid the creation of any incorrect relations in the scope of the project.
 To define such constraint, add allowed attribute to the <Relation> tag:</Relation></p>
+
 <ul>
   <li>L1&gt;L2 means Relation can be created in the direction from Label L1 to Label L2, but not the other way around</li>
   <li>L1&lt;&gt;L2 means Relation can be created in either direction between Label L1 to Label L2</li>
@@ -673,21 +692,21 @@ To define such constraint, add allowed attribute to the <Relation> tag:</Relatio
 
 <p>Below you can find a sample Project Configuration with constraints for Relation Labels:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;View&gt; 
-&lt;Header <span class="nv">value</span><span class="o">=</span><span class="s2">"Sample Project Configuration for Relations Annotation"</span>/&gt; 
-&lt;Relations&gt; 
-    &lt;Relation <span class="nv">value</span><span class="o">=</span><span class="s2">"Was In"</span> <span class="nv">allowed</span><span class="o">=</span><span class="s2">"PERSON&gt;LOC"</span>/&gt; 
-    &lt;Relation <span class="nv">value</span><span class="o">=</span><span class="s2">"Has Function"</span> <span class="nv">allowed</span><span class="o">=</span><span class="s2">"LOC&gt;EVENT,PERSON&gt;MEDICINE"</span>/&gt; 
-    &lt;Relation <span class="nv">value</span><span class="o">=</span><span class="s2">"Involved In"</span> <span class="nv">allowed</span><span class="o">=</span><span class="s2">"PERSON&lt;&gt;EVENT"</span>/&gt; 
-    &lt;Relation <span class="nv">value</span><span class="o">=</span><span class="s2">"No Constraints"</span>/&gt; 
-&lt;/Relations&gt; 
-&lt;Labels <span class="nv">name</span><span class="o">=</span><span class="s2">"label"</span> <span class="nv">toName</span><span class="o">=</span><span class="s2">"text"</span><span class="o">&gt;</span> 
-    &lt;Label <span class="nv">value</span><span class="o">=</span><span class="s2">"PERSON"</span>/&gt; 
-    &lt;Label <span class="nv">value</span><span class="o">=</span><span class="s2">"EVENT"</span>/&gt; 
-    &lt;Label <span class="nv">value</span><span class="o">=</span><span class="s2">"MEDICINE"</span>/&gt; 
-    &lt;Label <span class="nv">value</span><span class="o">=</span><span class="s2">"LOC"</span>/&gt; 
-&lt;/Labels&gt; 
-&lt;Text <span class="nv">name</span><span class="o">=</span><span class="s2">"text"</span> <span class="nv">value</span><span class="o">=</span><span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>/&gt; 
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;View&gt;
+&lt;Header <span class="nv">value</span><span class="o">=</span><span class="s2">"Sample Project Configuration for Relations Annotation"</span>/&gt;
+&lt;Relations&gt;
+    &lt;Relation <span class="nv">value</span><span class="o">=</span><span class="s2">"Was In"</span> <span class="nv">allowed</span><span class="o">=</span><span class="s2">"PERSON&gt;LOC"</span>/&gt;
+    &lt;Relation <span class="nv">value</span><span class="o">=</span><span class="s2">"Has Function"</span> <span class="nv">allowed</span><span class="o">=</span><span class="s2">"LOC&gt;EVENT,PERSON&gt;MEDICINE"</span>/&gt;
+    &lt;Relation <span class="nv">value</span><span class="o">=</span><span class="s2">"Involved In"</span> <span class="nv">allowed</span><span class="o">=</span><span class="s2">"PERSON&lt;&gt;EVENT"</span>/&gt;
+    &lt;Relation <span class="nv">value</span><span class="o">=</span><span class="s2">"No Constraints"</span>/&gt;
+&lt;/Relations&gt;
+&lt;Labels <span class="nv">name</span><span class="o">=</span><span class="s2">"label"</span> <span class="nv">toName</span><span class="o">=</span><span class="s2">"text"</span><span class="o">&gt;</span>
+    &lt;Label <span class="nv">value</span><span class="o">=</span><span class="s2">"PERSON"</span>/&gt;
+    &lt;Label <span class="nv">value</span><span class="o">=</span><span class="s2">"EVENT"</span>/&gt;
+    &lt;Label <span class="nv">value</span><span class="o">=</span><span class="s2">"MEDICINE"</span>/&gt;
+    &lt;Label <span class="nv">value</span><span class="o">=</span><span class="s2">"LOC"</span>/&gt;
+&lt;/Labels&gt;
+&lt;Text <span class="nv">name</span><span class="o">=</span><span class="s2">"text"</span> <span class="nv">value</span><span class="o">=</span><span class="s2">"</span><span class="nv">$text</span><span class="s2">"</span>/&gt;
 &lt;/View&gt;
 </code></pre></div></div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated

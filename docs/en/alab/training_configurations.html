@@ -547,7 +547,7 @@ The running servers can be seen by visiting the <a href="docs/en/alab/cluster_ma
 <p>For training a good Named Entity Recognition (NER) model, a relevant number of annotations must exist for all labels included in the project configuration. The recommendation is to have minimum 40-50 examples for each entity. Once this requirement is met, for training a new model users need to navigate to the Train page for the current project and follow some very simple steps:</p>
 
 <ol>
-  <li>Select the type of model to train - Open source/Healthcare - and the embeddings to use;</li>
+  <li>Select the type of model to train - Open source/Healthcare/Finance/Legal - and the embeddings to use;</li>
   <li>Define the training parameters and the train/test data split;</li>
   <li>Optionally turn on the Active Learning feature;</li>
   <li>Click the <code class="language-plaintext highlighter-rouge">Train Model</code> button.</li>
@@ -566,6 +566,10 @@ The running servers can be seen by visiting the <a href="docs/en/alab/cluster_ma
 <p>Once the training is finished, it is possible to download the training logs by clicking on the download logs icon of the recently trained NER model which includes information like training parameters and TF graph used along with precision, recall, f1 score, etc.</p>
 
 <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.2.0/training_logs.png" style="width:100%;" /></p>
+
+<p>Starting from version 4.3.0, it is possible to keep track of all previous training activities executed for a project. When pressing the <code class="language-plaintext highlighter-rouge">History</code> button from the Train page, users are presented with a list of all trainings triggered for the current project. Each training event is characterized by the source (<em>manual</em>, <em>active learning</em>), data used for training, date of event, and status. Training logs can also be downloaded for each training event.</p>
+
+<p><img class="image image__shadow" src="https://user-images.githubusercontent.com/10126570/203515966-52c37515-ee27-4e94-93f3-79071f15a0cf.gif" style="width:100%;" /></p>
 
 <h3 id="training-parameters">Training parameters</h3>
 
@@ -630,6 +634,8 @@ The running servers can be seen by visiting the <a href="docs/en/alab/cluster_ma
 
 <p>The attribute name allows the naming of the different choices present in the project configuration, and thus the training of separate models based on the same project annotations. For example, in the sample configuration illustrated below, the name=”age” attribute, tells the system to only consider age-related classification information when training an Age Classifier. The value specified by the name attribute is also used to name the resulting Classification model (classification_age_annotation_manual).</p>
 
+<p><br /></p>
+
 <h3 id="attribute-choice">Attribute choice</h3>
 
 <p>The choice attribute specifies the type of model that will be trained: multiple or single. For example, in the Labeling Config below, Age and Gender are Single Choice Classification categories while the Smoking Status is Multi-Choice Classification. Depending upon the value of this attribute, the respective model will be trained as a Single Choice Classifier or Multi-Choice Classifier.</p>
@@ -657,6 +663,8 @@ The running servers can be seen by visiting the <a href="docs/en/alab/cluster_ma
   &lt;/Choices&gt;
 &lt;/View&gt;
 </code></pre></div></div>
+
+<p><br /></p>
 
 <h3 id="attribute-train">Attribute train</h3>
 
@@ -730,7 +738,7 @@ The model to be trained can also be specified by setting the train=”true” at
 <p>Users can download English, German, Spanish, Portuguese, Italian, Danish and Romanian pretrained models from the NLP Models Hub and use them for pre-annotation.
 Annotation Lab also offers support for training/tuning models in the above languages.</p>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2022-11-07T00:00:00+00:00">Nov 07, 2022</time>
+      <time itemprop="dateModified" datetime="2022-12-01T00:00:00+00:00">Dec 01, 2022</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
