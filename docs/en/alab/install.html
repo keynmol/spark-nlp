@@ -605,9 +605,11 @@ th {
 
 <h2 id="eks-deployment">EKS deployment</h2>
 
-<p>1) Create NodeGroup for a given cluster</p>
+<ol>
+  <li>
+    <p>Create NodeGroup for a given cluster</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">eksctl create nodegroup --config-file eks-nodegroup.yaml
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">eksctl create nodegroup --config-file eks-nodegroup.yaml
 
 kind: ClusterConfig
 apiVersion: eksctl.io/v1alpha5
@@ -639,41 +641,48 @@ managedNodeGroups:
     ssh:
 </span><span class="gp">      publicKeyPath: &lt;path/to/id_rsa_pub&gt;</span><span class="w">
 </span><span class="go">
-</span></code></pre></div></div>
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">eksctl utils associate-iam-oidc-provider --region=us-east-1 --cluster=&lt;cluster-name&gt;</span><span class="w"> </span><span class="nt">--approve</span>
-</code></pre></div></div>
+</span></code></pre></div>    </div>
 
-<p>2) Create an EFS as shared storage. EFS stands for Elastic File System and is a scalable storage solution that can be used for general purpose workloads.</p>
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">eksctl utils associate-iam-oidc-provider --region=us-east-1 --cluster=&lt;cluster-name&gt;</span><span class="w"> </span><span class="nt">--approve</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Create an EFS as shared storage. EFS stands for Elastic File System and is a scalable storage solution that can be used for general purpose workloads.</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">curl -S https://raw.githubusercontent.com/kubernetes-sigs/aws-efs-csi-driver/v1.2.0/docs/iam-policy-example.json -o iam-policy.json
-aws iam create-policy \ 
-  --policy-name EFSCSIControllerIAMPolicy \ 
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">curl -S https://raw.githubusercontent.com/kubernetes-sigs/aws-efs-csi-driver/v1.2.0/docs/iam-policy-example.json -o iam-policy.json
+aws iam create-policy \
+  --policy-name EFSCSIControllerIAMPolicy \
   --policy-document file://iam-policy.json
-</span></code></pre></div></div>
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">eksctl create iamserviceaccount \ 
-</span><span class="gp">  --cluster=&lt;cluster&gt;</span><span class="w"> </span><span class="se">\ </span>
-<span class="gp">  --region &lt;AWS Region&gt;</span><span class="w"> </span><span class="se">\ </span>
-<span class="go">  --namespace=kube-system \ 
-  --name=efs-csi-controller-sa \ 
-  --override-existing-serviceaccounts \ 
-</span><span class="gp">  --attach-policy-arn=arn:aws:iam::&lt;AWS account ID&gt;</span>:policy/EFSCSIControllerIAMPolicy <span class="se">\ </span>
-<span class="go">  --approve
-</span></code></pre></div></div>
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">helm repo add aws-efs-csi-driver https://kubernetes-sigs.github.io/aws-efs-csi-driver
-</span></code></pre></div></div>
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">helm repo update
-</span></code></pre></div></div>
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">helm upgrade -i aws-efs-csi-driver aws-efs-csi-driver/aws-efs-csi-driver \ 
-  --namespace kube-system \ 
-  --set image.repository=602401143452.dkr.ecr.us-east-1.amazonaws.com/eks/aws-efs-csi-driver \ 
-  --set controller.serviceAccount.create=false \ 
+</span></code></pre></div>    </div>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">eksctl create iamserviceaccount \
+  --cluster=&lt;cluster&gt;</span><span class="w"> </span><span class="se">\</span>
+  <span class="nt">--region</span> &lt;AWS Region&gt; <span class="se">\</span>
+  <span class="nt">--namespace</span><span class="o">=</span>kube-system <span class="se">\</span>
+  <span class="nt">--name</span><span class="o">=</span>efs-csi-controller-sa <span class="se">\</span>
+  <span class="nt">--override-existing-serviceaccounts</span> <span class="se">\</span>
+  <span class="nt">--attach-policy-arn</span><span class="o">=</span>arn:aws:iam::&lt;AWS account ID&gt;:policy/EFSCSIControllerIAMPolicy <span class="se">\</span>
+  <span class="nt">--approve</span>
+</code></pre></div>    </div>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">helm repo add aws-efs-csi-driver https://kubernetes-sigs.github.io/aws-efs-csi-driver
+</span></code></pre></div>    </div>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">helm repo update
+</span></code></pre></div>    </div>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">helm upgrade -i aws-efs-csi-driver aws-efs-csi-driver/aws-efs-csi-driver \
+  --namespace kube-system \
+  --set image.repository=602401143452.dkr.ecr.us-east-1.amazonaws.com/eks/aws-efs-csi-driver \
+  --set controller.serviceAccount.create=false \
   --set controller.serviceAccount.name=efs-csi-controller-sa
 
-</span></code></pre></div></div>
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Create storageClass.yaml</p>
 
-<p>3) Create storageClass.yaml</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">cat &lt;&lt;EOF &gt;</span><span class="w"> </span>storageClass.yaml
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">cat &lt;&lt;EOF &gt;</span><span class="w"> </span>storageClass.yaml
 <span class="go">kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
@@ -684,12 +693,12 @@ parameters:
 </span><span class="gp">  fileSystemId: &lt;EFS file system ID&gt;</span><span class="w">
 </span><span class="go">  directoryPerms: "700"
 EOF
-</span></code></pre></div></div>
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">kubectl apply -f storageClass.yaml
-</span></code></pre></div></div>
+</span></code></pre></div>    </div>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">helm install annotationlab annotationlab-$</span><span class="o">{</span>ANNOTATIONLAB_VERSION<span class="o">}</span>.tgz                                 <span class="se">\</span>
-    <span class="nt">--kubeconfig</span> /etc/rancher/k3s/k3s.yaml                                                            <span class="se">\</span>
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">kubectl apply -f storageClass.yaml
+</span></code></pre></div>    </div>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">helm install annotationlab annotationlab-$</span><span class="o">{</span>ANNOTATIONLAB_VERSION<span class="o">}</span>.tgz                                 <span class="se">\</span>
     <span class="nt">--set</span> image.tag<span class="o">=</span><span class="k">${</span><span class="nv">ANNOTATIONLAB_VERSION</span><span class="k">}</span>                                                          <span class="se">\</span>
     <span class="nt">--set</span> model_server.count<span class="o">=</span>1                                                                        <span class="se">\</span>
     <span class="nt">--set</span> ingress.enabled<span class="o">=</span><span class="nb">true</span>                                                                        <span class="se">\</span>
@@ -702,7 +711,6 @@ EOF
       app.kubernetes.io/name: traefik
 </span><span class="gp">      app.kubernetes.io/instance: traefik'                                                            \
     --set keycloak.postgresql.networkPolicy.enabled=true                                              \
-    --set persistence.storageClass=efs-sc                                                             \
     --set sharedData.storageClass=efs-sc                                                              \
     --set airflow.postgresql.networkPolicy.enabled=true                                               \
     --set postgresql.networkPolicy.enabled=true                                                       \
@@ -719,18 +727,20 @@ EOF
     <span class="nt">--set</span> keycloak.secrets.admincreds.stringData.user<span class="o">=</span>admin                                           <span class="se">\</span>
     <span class="nt">--set</span> keycloak.secrets.admincreds.stringData.password<span class="o">=</span><span class="si">$(</span>bash <span class="nt">-c</span> <span class="s2">"echo </span><span class="k">${</span><span class="nv">password_gen_string</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span>
 <span class="go">
-</span></code></pre></div></div>
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Install ingress Controller</p>
 
-<p>4) Install ingress Controller</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm repo add nginx-stable https://helm.nginx.com/stable
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm repo add nginx-stable https://helm.nginx.com/stable
 helm repo update
 helm install my-release nginx-stable/nginx-ingress
-</code></pre></div></div>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Apply ingress.yaml</p>
 
-<p>5) Apply ingress.yaml</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">cat &lt;&lt;EOF &gt;</span><span class="w"> </span>ingress.yaml
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">cat &lt;&lt;EOF &gt;</span><span class="w"> </span>ingress.yaml
 <span class="go">apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -763,10 +773,13 @@ spec:
                 name: http
         path: /auth
         pathType: ImplementationSpecific
-EOF  
-</span></code></pre></div></div>
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">kubectl apply -f ingress.yaml
-</span></code></pre></div></div>
+EOF
+</span></code></pre></div>    </div>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">kubectl apply -f ingress.yaml
+</span></code></pre></div>    </div>
+  </li>
+</ol>
 
 <h2 id="airgap-environment">AirGap Environment</h2>
 
