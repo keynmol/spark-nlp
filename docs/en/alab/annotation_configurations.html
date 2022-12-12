@@ -547,6 +547,7 @@ es {
 <h3 id="direct-submit">Direct Submit</h3>
 
 <p>Using the classical annotation workflow, when an annotator works on a task, a series of actions are necessary for creating a new annotation and submitting it as ground truth:</p>
+
 <ol>
   <li>Create the completion</li>
   <li>Save the completion</li>
@@ -563,6 +564,7 @@ es {
 
 <blockquote>
   <p><strong>Note:</strong></p>
+
   <ol>
     <li>Annotator can <em>Save/Update</em> completion using <code class="language-plaintext highlighter-rouge">CTRL+Enter</code></li>
     <li>Annotator can <em>Submit</em> completion using <code class="language-plaintext highlighter-rouge">ALT+Enter</code></li>
@@ -576,6 +578,10 @@ es {
 <p>When predictions are available for a task, Annotator can accept the predictions with just one click and navigate automatically to the next task. When users click on Accept Prediction, a new completion is created based on the prediction, then submitted as ground truth, and the next task in line (assigned to the current annotator/reviewer and with <es>Incomplete</es> or <es>In Progress</es> status) is automatically served.</p>
 
 <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/accept_prediction.gif" style="width:100%;" /></p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> Press backspace key (on windows) or delete key (on mac) to delete the selected relation from the labeling editor or use the delete action icon on the Relations widget.</p>
+</blockquote>
 
 <h2 id="labeling-editor-settings">Labeling editor Settings</h2>
 
@@ -713,8 +719,8 @@ es {
 <p>For obtaining the above display on a NER project, the config should look as follows:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;View&gt;
-  &lt;Filter name="fl" toName="label" hotkey="shift+f" minlength="1" /&gt;  
-  
+  &lt;Filter name="fl" toName="label" hotkey="shift+f" minlength="1" /&gt;
+
   &lt;Labels name="label" toName="text"&gt;
     &lt;Label value="CARDINAL" model="ner_onto_100" background="#af906b"/&gt;
     &lt;Label value="EVENT" model="ner_onto_100" background="#f384e1"/&gt;
@@ -734,7 +740,7 @@ es {
 
 <h3 id="resizable-label-and-text-container">Resizable label and text container</h3>
 
-<p>While annotating longer text documents annotators may need to scroll to the top of the document for selecting the label to use, and then  scroll down to create a label. Also, if the text is large, annotators have to scroll to a certain section because the textbox size is fixed. In those cases, the annotation experience can be improved by creating a scrollable labeling area and textbox area.</p>
+<p>While annotating longer text documents annotators may need to scroll to the top of the document for selecting the label to use, and then scroll down to create a label. Also, if the text is large, annotators have to scroll to a certain section because the textbox size is fixed. In those cases, the annotation experience can be improved by creating a scrollable labeling area and textbox area.</p>
 
 <p>To add the scroll bar, the <code class="language-plaintext highlighter-rouge">View</code> tag with a fixed height and <code class="language-plaintext highlighter-rouge">overflow-y:scroll</code> style property can be used as shown in the following XML config structure:</p>
 
@@ -787,9 +793,8 @@ es {
 <p>For users having multiple roles (<em>Annotator/Reviewer/Manager</em>) the labeling page can get confusing. Switch Role filter present on the top-right corner can help address this problem. This filter was introduced in Annotation Lab from version <bl>2.6.0</bl>, previously refered to as <es>View As</es> filter. When selecting <em>Annotator</em> option, the view changes to facilitate annotating the task. Similar changes to the view applies when switching to <em>Reviewer</em> or <em>Manager</em> option. The selection persists even when the tab is closed or refreshed.</p>
 
 <p><img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/switch_role.png" style="width:40%;" /></p>
-
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2022-10-29T00:00:00+00:00">Oct 29, 2022</time>
+      <time itemprop="dateModified" datetime="2022-12-11T00:00:00+00:00">Dec 11, 2022</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
