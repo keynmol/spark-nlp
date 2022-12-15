@@ -781,6 +781,161 @@ EOF
   </li>
 </ol>
 
+<h2 id="aks-deployment">AKS deployment</h2>
+
+<p>To deploy Annotation Lab on Azure Kubernetes Service (AKS) a Kubernetes cluster needs to be created in Microsoft Azure.</p>
+
+<ol>
+  <li>
+    <p>Login to your <a href="https://portal.azure.com/">Azure Portal</a> and search for Kubernetes services.</p>
+  </li>
+  <li>
+    <p>On the <bl>Kubernetes services</bl> page click on the <code class="language-plaintext highlighter-rouge">Create</code> dropdown and select <code class="language-plaintext highlighter-rouge">Create a Kubernetes cluster</code>.</p>
+  </li>
+  <li>
+    <p>On the <bl>Create Kubernetes cluster</bl> page, select the resource group and provide the name you want to give to the cluster.</p>
+
+    <p><img class="image image__shadow" src="/assets/images/annotation_lab/AKS-create-k8-cluster.png" style="width:100%;" /></p>
+  </li>
+  <li>
+    <p>You can keep the rest of the fields to default values and click on <code class="language-plaintext highlighter-rouge">Review + create</code>.</p>
+
+    <p><img class="image image__shadow" src="/assets/images/annotation_lab/AKS-cluster-validation.png" style="width:100%;" /></p>
+  </li>
+  <li>
+    <p>Click on <code class="language-plaintext highlighter-rouge">Create</code> button to start the deployment process.</p>
+
+    <p><img class="image image__shadow" src="/assets/images/annotation_lab/AKS-deployment.png" style="width:100%;" /></p>
+  </li>
+  <li>
+    <p>Once the deployment is completed, click on <code class="language-plaintext highlighter-rouge">Go to resource</code> button.</p>
+  </li>
+  <li>
+    <p>On the newly created resource page, click on <code class="language-plaintext highlighter-rouge">Connect</code> button. You will be shown a list of commands to run on the <code class="language-plaintext highlighter-rouge">Cloud Shell</code> or <code class="language-plaintext highlighter-rouge">Azure CLI</code> to connect to this resource. We will execute them successively in the following steps.</p>
+  </li>
+  <li>
+    <p>Run the following commands to connect to Azure Kubernetes Service.</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>az account <span class="nb">set</span> <span class="nt">--subscription</span> &lt;subscription-id&gt;
+</code></pre></div>    </div>
+
+    <blockquote>
+      <p><strong>NOTE:</strong> Replace <subscription-id> with your account's subscription id.</subscription-id></p>
+    </blockquote>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>az aks get-credentials <span class="nt">--resource-group</span> &lt;resource-group-name&gt; <span class="nt">--name</span> &lt;cluster-name&gt;
+</code></pre></div>    </div>
+
+    <blockquote>
+      <p><strong>NOTE:</strong> Replace <resource-group-name> and <cluster-name> with what you selected in Step 3.</cluster-name></resource-group-name></p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Check to see if <code class="language-plaintext highlighter-rouge">azurefile</code> or <code class="language-plaintext highlighter-rouge">azuredisk</code> storage class is present by running the following command:</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get storageclass
+</code></pre></div>    </div>
+
+    <p>Later in the helm script we need to update the value of <code class="language-plaintext highlighter-rouge">sharedData.storageClass</code> with the respective storage class.</p>
+  </li>
+  <li>
+    <p>Go to the <code class="language-plaintext highlighter-rouge">artifact</code> directory and from there edit the <code class="language-plaintext highlighter-rouge">annotationlab-installer.sh</code> script.</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm <span class="nb">install </span>annotationlab annotationlab-<span class="k">${</span><span class="nv">ANNOTATIONLAB_VERSION</span><span class="k">}</span>.tgz                                 <span class="se">\</span>
+    <span class="nt">--set</span> image.tag<span class="o">=</span><span class="k">${</span><span class="nv">ANNOTATIONLAB_VERSION</span><span class="k">}</span>                                                          <span class="se">\</span>
+    <span class="nt">--set</span> model_server.count<span class="o">=</span>1                                                                        <span class="se">\</span>
+    <span class="nt">--set</span> ingress.enabled<span class="o">=</span><span class="nb">true</span>                                                                        <span class="se">\</span>
+    <span class="nt">--set</span> networkPolicy.enabled<span class="o">=</span><span class="nb">true</span>                                                                  <span class="se">\</span>
+    <span class="nt">--set</span> networkPolicy.enabled<span class="o">=</span><span class="nb">true</span> <span class="nt">--set</span> <span class="nv">extraNetworkPolicies</span><span class="o">=</span><span class="s1">'- namespaceSelector:
+    matchLabels:
+      kubernetes.io/metadata.name: kube-system
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: traefik
+      app.kubernetes.io/instance: traefik'</span>                                                            <span class="se">\</span>
+    <span class="nt">--set</span> keycloak.postgresql.networkPolicy.enabled<span class="o">=</span><span class="nb">true</span>                                              <span class="se">\</span>
+    <span class="nt">--set</span> sharedData.storageClass<span class="o">=</span>azurefile                                                           <span class="se">\</span>
+    <span class="nt">--set</span> airflow.postgresql.networkPolicy.enabled<span class="o">=</span><span class="nb">true</span>                                               <span class="se">\</span>
+    <span class="nt">--set</span> postgresql.networkPolicy.enabled<span class="o">=</span><span class="nb">true</span>                                                       <span class="se">\</span>
+    <span class="nt">--set</span> airflow.networkPolicies.enabled<span class="o">=</span><span class="nb">true</span>                                                        <span class="se">\</span>
+    <span class="nt">--set</span> ingress.defaultBackend<span class="o">=</span><span class="nb">true</span>                                                                 <span class="se">\</span>
+    <span class="nt">--set</span> ingress.uploadLimitInMegabytes<span class="o">=</span>16                                                           <span class="se">\</span>
+    <span class="nt">--set</span> <span class="s1">'ingress.hosts[0].host=domain.tld'</span>                                                          <span class="se">\</span>
+    <span class="nt">--set</span> airflow.model_server.count<span class="o">=</span>1                                                                <span class="se">\</span>
+    <span class="nt">--set</span> airflow.redis.password<span class="o">=</span><span class="si">$(</span>bash <span class="nt">-c</span> <span class="s2">"echo </span><span class="k">${</span><span class="nv">password_gen_string</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span>                             <span class="se">\</span>
+    <span class="nt">--set</span> configuration.FLASK_SECRET_KEY<span class="o">=</span><span class="si">$(</span>bash <span class="nt">-c</span> <span class="s2">"echo </span><span class="k">${</span><span class="nv">password_gen_string</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span>                     <span class="se">\</span>
+    <span class="nt">--set</span> configuration.KEYCLOAK_CLIENT_SECRET_KEY<span class="o">=</span><span class="si">$(</span>bash <span class="nt">-c</span> <span class="s2">"echo </span><span class="k">${</span><span class="nv">uuid_gen_string</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span>               <span class="se">\</span>
+    <span class="nt">--set</span> postgresql.postgresqlPassword<span class="o">=</span><span class="si">$(</span>bash <span class="nt">-c</span> <span class="s2">"echo </span><span class="k">${</span><span class="nv">password_gen_string</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span>                      <span class="se">\</span>
+    <span class="nt">--set</span> keycloak.postgresql.postgresqlPassword<span class="o">=</span><span class="si">$(</span>bash <span class="nt">-c</span> <span class="s2">"echo </span><span class="k">${</span><span class="nv">password_gen_string</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span>             <span class="se">\</span>
+    <span class="nt">--set</span> keycloak.secrets.admincreds.stringData.user<span class="o">=</span>admin                                           <span class="se">\</span>
+    <span class="nt">--set</span> keycloak.secrets.admincreds.stringData.password<span class="o">=</span><span class="si">$(</span>bash <span class="nt">-c</span> <span class="s2">"echo </span><span class="k">${</span><span class="nv">password_gen_string</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Execute the <code class="language-plaintext highlighter-rouge">annotationlab-installer.sh</code> script to run the Annotation Lab installation.</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./annotationlab-installer.sh
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Verify if the installation was successful.</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Install ingress controller. This will be required for load-balancing purpose.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm repo add nginx-stable https://helm.nginx.com/stable
+helm repo update
+helm install my-release nginx-stable/nginx-ingress
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Create a YAML configuration file named <code class="language-plaintext highlighter-rouge">ingress.yaml</code> with the following configuration</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    meta.helm.sh/release-name: annotationlab
+    meta.helm.sh/release-namespace: default
+  name: annotationlab
+spec:
+  defaultBackend:
+    service:
+      name: annotationlab
+      port:
+        name: http
+  rules:
+  - host: domain.tld
+    http:
+      paths:
+      - backend:
+          service:
+              name: annotationlab
+              port:
+                name: http
+        path: /
+        pathType: ImplementationSpecific
+      - backend:
+          service:
+              name: annotationlab-keyclo-http
+              port:
+                name: http
+        path: /auth
+        pathType: ImplementationSpecific
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Apply the <code class="language-plaintext highlighter-rouge">ingress.yaml</code> by running the following command</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply <span class="nt">-f</span> ingress.yaml
+</code></pre></div>    </div>
+  </li>
+</ol>
+
 <h2 id="airgap-environment">AirGap Environment</h2>
 
 <h3 id="get-artifact">Get Artifact</h3>
