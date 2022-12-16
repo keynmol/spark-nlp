@@ -697,6 +697,7 @@ EOF
 
     <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">kubectl apply -f storageClass.yaml
 </span></code></pre></div>    </div>
+    <p>Edit annotationlab-installer.sh inside artifact folder as follows:</p>
 
     <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">helm install annotationlab annotationlab-$</span><span class="o">{</span>ANNOTATIONLAB_VERSION<span class="o">}</span>.tgz                                 <span class="se">\</span>
     <span class="nt">--set</span> image.tag<span class="o">=</span><span class="k">${</span><span class="nv">ANNOTATIONLAB_VERSION</span><span class="k">}</span>                                                          <span class="se">\</span>
@@ -727,6 +728,12 @@ EOF
     <span class="nt">--set</span> keycloak.secrets.admincreds.stringData.user<span class="o">=</span>admin                                           <span class="se">\</span>
     <span class="nt">--set</span> keycloak.secrets.admincreds.stringData.password<span class="o">=</span><span class="si">$(</span>bash <span class="nt">-c</span> <span class="s2">"echo </span><span class="k">${</span><span class="nv">password_gen_string</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span>
 <span class="go">
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Run annotationlab-installer.sh script</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">     ./artifacts/annotationlab-installer.sh
 </span></code></pre></div>    </div>
   </li>
   <li>
