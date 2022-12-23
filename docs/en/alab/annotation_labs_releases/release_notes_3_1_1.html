@@ -553,24 +553,44 @@
   <h2 id="versions">Versions</h2>
 
 </div>
-
+<ul class="pagination">
+  <li>
+      <a href="release_notes_">Version <strong id="previosver"></strong></a>
+  </li>
+  <li>
+      <strong>Version <strong id="currversion"></strong></strong>
+  </li>
+  <li>
+      <a href="release_notes_">Version <strong id="nextver"></strong></a>
+  </li>
+</ul>
 <ul class="pagination owl-carousel pagination_big">
-    <li><a href="release_notes_3_2_0">3.2.0</a></li>
-    <li class="active"><a href="release_notes_3_1_1">3.1.1</a></li>
-    <li><a href="release_notes_3_1_0">3.1.0</a></li>
-    <li><a href="release_notes_3_0_1">3.0.1</a></li>
-    <li><a href="release_notes_3_0_0">3.0.0</a></li>
-    <li><a href="release_notes_2_8_0">2.8.0</a></li>
-    <li><a href="release_notes_2_7_2">2.7.2</a></li>
-    <li><a href="release_notes_2_7_1">2.7.1</a></li>
-    <li><a href="release_notes_2_7_0">2.7.0</a></li>
-    <li><a href="release_notes_2_6_0">2.6.0</a></li>
-    <li><a href="release_notes_2_5_0">2.5.0</a></li>
-    <li><a href="release_notes_2_4_0">2.4.0</a></li>
-    <li><a href="release_notes_2_3_0">2.3.0</a></li>
-    <li><a href="release_notes_2_2_2">2.2.2</a></li>
-    <li><a href="release_notes_2_1_0">2.1.0</a></li>
-    <li><a href="release_notes_2_0_1">2.0.1</a></li>
+  <li><a href="release_notes_4_4_1">4.4.1</a></li>
+  <li><a href="release_notes_4_4_0">4.4.0</a></li>
+  <li><a href="release_notes_4_3_0">4.3.0</a></li>
+  <li><a href="release_notes_4_2_0">4.2.0</a></li>
+  <li><a href="release_notes_4_1_0">4.1.0</a></li>
+  <li><a href="release_notes_3_5_0">3.5.0</a></li>
+  <li><a href="release_notes_3_4_1">3.4.1</a></li>
+  <li><a href="release_notes_3_4_0">3.4.0</a></li>
+  <li><a href="release_notes_3_3_1">3.3.1</a></li>
+  <li><a href="release_notes_3_3_0">3.3.0</a></li>
+  <li><a href="release_notes_3_2_0">3.2.0</a></li>
+  <li><a href="release_notes_3_1_1">3.1.1</a></li>
+  <li><a href="release_notes_3_1_0">3.1.0</a></li>
+  <li><a href="release_notes_3_0_1">3.0.1</a></li>
+  <li><a href="release_notes_3_0_0">3.0.0</a></li>
+  <li><a href="release_notes_2_8_0">2.8.0</a></li>
+  <li><a href="release_notes_2_7_2">2.7.2</a></li>
+  <li><a href="release_notes_2_7_1">2.7.1</a></li>
+  <li><a href="release_notes_2_7_0">2.7.0</a></li>
+  <li><a href="release_notes_2_6_0">2.6.0</a></li>
+  <li><a href="release_notes_2_5_0">2.5.0</a></li>
+  <li><a href="release_notes_2_4_0">2.4.0</a></li>
+  <li><a href="release_notes_2_3_0">2.3.0</a></li>
+  <li><a href="release_notes_2_2_2">2.2.2</a></li>
+  <li><a href="release_notes_2_1_0">2.1.0</a></li>
+  <li><a href="release_notes_2_0_1">2.0.1</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2021-07-14T00:00:00+00:00">Jul 14, 2021</time>
@@ -1022,32 +1042,6 @@ jQuery(document).ready(function($) {
   });
 });
 
-/*TABS*/
-/* function openTabCall(cityName){
-  // Declare all variables
-  var i, tabcontent, tablinks;
-
-  // Get all elements with class="tabcontent" and hide them
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-
-  // Get all elements with class="tablinks" and remove the class "active"
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-
-  // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(cityName).style.display = "block";
-}
-
-function openTab(evt, cityName) {
-  openTabCall(cityName);
-  evt.currentTarget.className += " active";
-} */
-
 /*OPen by URL*/
 jQuery(document).ready(function () {  
   const tabName = (window.location.hash || '').replace('#', '');
@@ -1143,6 +1137,39 @@ anchors.forEach(function(item) {
         }, animationTime / framesCount);
   });
 }); 
+
+
+//Pagination active
+if(document.querySelector('.pagination_big')) {
+  let paginationItems = document.querySelectorAll('.pagination_big li'),
+      nextVersionContainer = document.querySelector('#nextver'),
+      previosVersionContainer = document.querySelector('#previosver'),
+      currentVersionContainer = document.querySelector('#currversion'),
+      currentPageTitle = document.querySelector('#section').innerText;
+
+  // Set active page and update version containers
+  for (let i = 0; i < paginationItems.length; i++) {
+    const item = paginationItems[i];
+    const itemTitle = item.firstElementChild.innerHTML;
+    if (itemTitle === currentPageTitle) {
+      item.classList.add('active');
+      currentVersionContainer.textContent = itemTitle;       
+      if(item.previousElementSibling) {
+        previosVersionContainer.textContent = item.previousElementSibling.innerText; 
+        previosVersionContainer.parentElement.href += item.previousElementSibling.innerText.replaceAll('.', '_');
+      } else {
+        previosVersionContainer.parentElement.parentElement.classList.add('hide');
+      }
+      if(item.nextElementSibling) {
+        nextVersionContainer.textContent = item.nextElementSibling.innerText;
+        nextVersionContainer.parentElement.href += item.nextElementSibling.innerText.replaceAll('.', '_');
+      } else {
+        nextVersionContainer.parentElement.parentElement.classList.add('hide');
+      }         
+      break;
+    }
+  }
+}
 
 </script></div></div>
     </div></div></div><script>(function() {

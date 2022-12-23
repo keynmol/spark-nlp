@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Release Notes</title><meta property="og:title" content="NLP Server | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Spark NLP release notes 4.0.0</title><meta property="og:title" content="Spark NLP"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<link rel="canonical" href="/docs/en/nlp_server/release_notes"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<link rel="canonical" href="/docs/en/spark_ocr_versions/release_notes_4_0_0"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -390,7 +390,7 @@
 <path d="M20.2658 26.412H8.38867V26.5781H20.2658V26.412Z" fill="#9EDEFA"/>
 </svg>
 -->
-</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">NLP Server</li><li class="toc-h2"><a href="/docs/en/nlp_server/nlp_server">Getting Started</a></li><li class="toc-h2"><a href="/docs/en/nlp_server/installation">Installation</a></li><li class="toc-h2"><a href="/docs/en/nlp_server/video_tutorials">Video Tutorials</a></li><li class="toc-h2 active"><a href="/docs/en/nlp_server/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Spark NLP</li><li class="toc-h2"><a href="/docs/en/quickstart">Getting Started</a></li><li class="toc-h2"><a href="/docs/en/install">Install Spark NLP</a></li><li class="toc-h2"><a href="/docs/en/concepts">General Concepts</a></li><li class="toc-h2"><a href="/docs/en/annotators">Annotators</a></li><li class="toc-h2"><a href="/docs/en/transformers">Transformers</a></li><li class="toc-h2"><a href="/docs/en/training">Training</a></li><li class="toc-h2"><a href="/docs/en/display">Spark NLP Display</a></li><li class="toc-h2"><a href="/docs/en/mlflow">Experiment Tracking</a></li><li class="toc-h2"><a href="/docs/en/serving_spark_nlp_via_api_databricks_mlflow">Serving Spark NLP&#58 MLFlow on Databricks</a></li><li class="toc-h2"><a href="/docs/en/hardware_acceleration">Hardware Acceleration</a></li><li class="toc-h2"><a href="/docs/en/CPUvsGPUbenchmark">GPU vs CPU Training</a></li><li class="toc-h2"><a href="/docs/en/auxiliary">Helpers</a></li><li class="toc-h2"><a href="/api/">Scala API (Scaladoc)</a></li><li class="toc-h2"><a href="/api/python/">Python API (Sphinx)</a></li><li class="toc-h2"><a href="/docs/en/developers">Developers</a></li><li class="toc-h2"><a href="/docs/en/third-party-projects">Third Party Projects</a></li><li class="toc-h2"><a href="/docs/en/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59JLR64"
@@ -521,100 +521,109 @@
 <!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Release Notes</li>
+    <li>Spark NLP release notes 4.0.0</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Release Notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Spark NLP release notes 4.0.0</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/spark-nlp/tree/master/docs/en/nlp_server/release_notes.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Release Notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/spark-nlp/tree/master/docs/en/spark_ocr_versions/release_notes_4_0_0.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Spark NLP release notes 4.0.0"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="nlp-server-071">NLP Server 0.7.1</h2>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<table>
-  <thead>
-    <tr>
-      <th>Fields</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Name</td>
-      <td>NLP Server</td>
-    </tr>
-    <tr>
-      <td>Version</td>
-      <td><code class="language-plaintext highlighter-rouge">0.7.1</code></td>
-    </tr>
-    <tr>
-      <td>Type</td>
-      <td>Patch</td>
-    </tr>
-    <tr>
-      <td>Release Date</td>
-      <td>2022-06-17</td>
-    </tr>
-  </tbody>
-</table>
+  <h2 id="section">4.0.0</h2>
 
-<p><br /></p>
+  <p>Release date: 16-07-2022</p>
 
-<h3 id="overview">Overview</h3>
+  <h4 id="overview">Overview</h4>
 
-<p>We are excited to release NLP Server v0.7.1! We are committed to continuously improve the experience for our users and make our product reliable and easy to use.</p>
+  <p>We are very glad to announce that Spark OCR 4.0.0 has been released!
+This release comes with new models, new functionality, bug fixes, and compatibility with 4.0.0 versions of Spark NLP and Spark NLP for Healthcare.</p>
 
-<p>This release focuses on solving a few bugs and improving the stability of the NLP Server.</p>
+  <h4 id="new-features">New Features</h4>
+  <ul>
+    <li>New DicomMetadataDeidentifier class to help deidentifying metadata of dicom files. Example Notebook.</li>
+    <li>New helper function display_dicom() to help displaying DICOM files in notebooks.</li>
+    <li>New DicomDrawRegions that can clean burned pixels for removing PHI.</li>
+    <li>Improved support for DICOM files containing 12bit images.</li>
+  </ul>
 
-<p><br /></p>
+  <h4 id="bug-fixes">Bug Fixes</h4>
+  <ul>
+    <li>Fixes on the Visual NER Finetuning process including VisualDocumentNERv2 and AlabReader.</li>
+    <li>Improved exception handling for VisualDocumentClassifier models.</li>
+  </ul>
 
-<h3 id="key-information">Key Information</h3>
+  <h4 id="new-models">New Models</h4>
+  <ul>
+    <li>New LayoutLMv3 based Visual Document NER: layoutlmv3_finetuned_funsd.</li>
+    <li>Improved handwritten detection ocr_base_handwritten_v2.</li>
+    <li>VisualDocumentClassifierV2: layoutlmv2_rvl_cdip_40k. This model adds more data compared to layoutlmv2_rvl_cdip_1500, and achieves an accuracy of 88%.</li>
+  </ul>
 
-<ol>
-  <li>For smooth and optimal performance, it is recommended to use an instance with 8 core CPU, and 32GB RAM specifications.</li>
-  <li>NLP Server is available on both <a href="https://aws.amazon.com/marketplace/pp/prodview-4ohxjejvg7vwm">AWS</a> and <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.nlp_server">Azure</a> marketplaces.</li>
-</ol>
+  <h4 id="compatibility-updates">Compatibility Updates</h4>
+  <ul>
+    <li>Deprecated Spark 2.3 and Spark 2.4 support.</li>
+    <li>Tested compatibility with Spark-NLP and Spark NLP for Healthcare 4.0.0.</li>
+  </ul>
 
-<p><br /></p>
-
-<h3 id="bug-fixes">Bug Fixes</h3>
-
-<ol>
-  <li>Issue when running NER ONTO spell.</li>
-  <li>Issue when running <code class="language-plaintext highlighter-rouge">dep</code> spell. Since the spell was broken it is temporarily blacklisted.</li>
-  <li>Document normalizer included the HTML, XML tags to the output even after normalization.</li>
-  <li>Issue when running language translation spells <code class="language-plaintext highlighter-rouge">&lt;from_lang&gt;.translate_to.&lt;to_lang&gt;</code>.</li>
-  <li>Upon cancelation of custom model uploading job exception was seen in the logs.</li>
-  <li>Some few UI related issues and abnormalities during operation.</li>
-</ol>
-
+</div>
 <div class="prev_ver h3-box">
 
   <h2 id="versions">Versions</h2>
 
 </div>
-
 <ul class="pagination">
-    <li>
-        <a href="release_notes_0_7_0">Version 0.7.0</a>
-    </li>
-    <li>
-        <strong>Version 0.7.1</strong>
-    </li>
+  <li>
+      <a href="release_notes_">Version <strong id="previosver"></strong></a>
+  </li>
+  <li>
+      <strong>Version <strong id="currversion"></strong></strong>
+  </li>
+  <li>
+      <a href="release_notes_">Version <strong id="nextver"></strong></a>
+  </li>
 </ul>
-
 <ul class="pagination owl-carousel pagination_big">
-  <li class="active"><a href="nlp_server_versions/release_notes_0_7_1">0.7.1</a></li>
-  <li><a href="nlp_server_versions/release_notes_0_7_0">0.7.0</a></li>
-  <li><a href="nlp_server_versions/release_notes_0_6_1">0.6.1</a></li>
-  <li><a href="nlp_server_versions/release_notes_0_6_0">0.6.0</a></li>
-  <li><a href="nlp_server_versions/release_notes_0_5_0">0.5.0</a></li>
-  <li><a href="nlp_server_versions/release_notes_0_4_0">0.4.0</a></li>
-</ul>
+    <li><a href="release_notes_4_2_0">4.2.0</a></li>
+    <li><a href="release_notes_4_1_0">4.1.0</a></li>
+    <li><a href="release_notes_4_0_2">4.0.2</a></li>
+    <li><a href="release_notes_4_0_0">4.0.0</a></li>
+    <li><a href="release_notes_3_14_0">3.14.0</a></li>
+    <li><a href="release_notes_3_13_0">3.13.0</a></li>
+    <li><a href="release_notes_3_12_0">3.12.0</a></li>
+    <li><a href="release_notes_3_11_0">3.11.0</a></li>
+    <li><a href="release_notes_3_10_0">3.10.0</a></li>
+    <li><a href="release_notes_3_9_1">3.9.1</a></li>
+    <li><a href="release_notes_3_9_0">3.9.0</a></li>
+    <li><a href="release_notes_3_8_0">3.8.0</a></li>
+    <li><a href="release_notes_3_7_0">3.7.0</a></li>
+    <li><a href="release_notes_3_6_0">3.6.0</a></li>
+    <li><a href="release_notes_3_5_0">3.5.0</a></li>
+    <li><a href="release_notes_3_4_0">3.4.0</a></li>
+    <li><a href="release_notes_3_3_0">3.3.0</a></li>
+    <li><a href="release_notes_3_2_0">3.2.0</a></li>
+    <li><a href="release_notes_3_1_0">3.1.0</a></li>
+    <li><a href="release_notes_3_0_0">3.0.0</a></li>
+    <li><a href="release_notes_1_11_0">1.11.0</a></li>
+    <li><a href="release_notes_1_10_0">1.10.0</a></li>
+    <li><a href="release_notes_1_9_0">1.9.0</a></li>
+    <li><a href="release_notes_1_8_0">1.8.0</a></li>
+    <li><a href="release_notes_1_7_0">1.7.0</a></li>
+    <li><a href="release_notes_1_6_0">1.6.0</a></li>
+    <li><a href="release_notes_1_5_0">1.5.0</a></li>
+    <li><a href="release_notes_1_4_0">1.4.0</a></li>
+    <li><a href="release_notes_1_3_0">1.3.0</a></li>
+    <li><a href="release_notes_1_2_0">1.2.0</a></li>
+    <li><a href="release_notes_1_1_2">1.1.2</a></li>
+    <li><a href="release_notes_1_1_1">1.1.1</a></li>
+    <li><a href="release_notes_1_1_0">1.1.0</a></li>
+    <li><a href="release_notes_1_0_0">1.0.0</a></li>
+  </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2022-06-17T00:00:00+00:00">Jun 17, 2022</time>
+      <time itemprop="dateModified" datetime="2022-02-09T00:00:00+00:00">Feb 09, 2022</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
@@ -954,7 +963,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/nlp_server/video_tutorials">Video Tutorials</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/release_notes">Release Notes</a></div></div></div>
 
 </div>
 </div>
@@ -1063,32 +1072,6 @@ jQuery(document).ready(function($) {
   });
 });
 
-/*TABS*/
-/* function openTabCall(cityName){
-  // Declare all variables
-  var i, tabcontent, tablinks;
-
-  // Get all elements with class="tabcontent" and hide them
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-
-  // Get all elements with class="tablinks" and remove the class "active"
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-
-  // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(cityName).style.display = "block";
-}
-
-function openTab(evt, cityName) {
-  openTabCall(cityName);
-  evt.currentTarget.className += " active";
-} */
-
 /*OPen by URL*/
 jQuery(document).ready(function () {  
   const tabName = (window.location.hash || '').replace('#', '');
@@ -1184,6 +1167,39 @@ anchors.forEach(function(item) {
         }, animationTime / framesCount);
   });
 }); 
+
+
+//Pagination active
+if(document.querySelector('.pagination_big')) {
+  let paginationItems = document.querySelectorAll('.pagination_big li'),
+      nextVersionContainer = document.querySelector('#nextver'),
+      previosVersionContainer = document.querySelector('#previosver'),
+      currentVersionContainer = document.querySelector('#currversion'),
+      currentPageTitle = document.querySelector('#section').innerText;
+
+  // Set active page and update version containers
+  for (let i = 0; i < paginationItems.length; i++) {
+    const item = paginationItems[i];
+    const itemTitle = item.firstElementChild.innerHTML;
+    if (itemTitle === currentPageTitle) {
+      item.classList.add('active');
+      currentVersionContainer.textContent = itemTitle;       
+      if(item.previousElementSibling) {
+        previosVersionContainer.textContent = item.previousElementSibling.innerText; 
+        previosVersionContainer.parentElement.href += item.previousElementSibling.innerText.replaceAll('.', '_');
+      } else {
+        previosVersionContainer.parentElement.parentElement.classList.add('hide');
+      }
+      if(item.nextElementSibling) {
+        nextVersionContainer.textContent = item.nextElementSibling.innerText;
+        nextVersionContainer.parentElement.href += item.nextElementSibling.innerText.replaceAll('.', '_');
+      } else {
+        nextVersionContainer.parentElement.parentElement.classList.add('hide');
+      }         
+      break;
+    }
+  }
+}
 
 </script></div></div>
     </div></div></div><script>(function() {
