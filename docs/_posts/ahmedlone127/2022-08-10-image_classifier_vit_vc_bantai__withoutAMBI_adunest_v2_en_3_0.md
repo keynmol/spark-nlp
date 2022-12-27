@@ -26,9 +26,6 @@ Pretrained VIT  model, adapted from Hugging Face and curated to provide scalabil
 `nonViolation`, `publicDrinking`, `publicSmoking`
 
 
-## Predicted Entities
-
-`Public Drinking`, `Public Smoking`, `non-violation`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -94,3 +91,4 @@ val pipelineDF = pipelineModel.transform(imageDF)
 |Output Labels:|[class]|
 |Language:|en|
 |Size:|321.9 MB|
+
