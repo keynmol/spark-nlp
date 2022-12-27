@@ -21,9 +21,6 @@ use_language_switcher: "Python-Scala-Java"
 Pretrained VIT  model, adapted from Hugging Face and curated to provide scalability and production-readiness using Spark NLP.`image_classifier_vit_orcs_and_friends` is a English model originally trained by andy-0v0.
 
 
-## Predicted Entities
-
-`ogre`, `goblin`, `orc`, `gremlin`, `troll`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>

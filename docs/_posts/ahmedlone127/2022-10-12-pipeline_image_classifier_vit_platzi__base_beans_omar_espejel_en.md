@@ -21,9 +21,6 @@ use_language_switcher: "Python-Scala-Java"
 Pretrained VIT  model, adapted from Hugging Face and curated to provide scalability and production-readiness using Spark NLP.`image_classifier_vit_platzi__base_beans_omar_espejel` is a English model originally trained by platzi.
 
 
-## Predicted Entities
-
-`angular_leaf_spot`, `bean_rust`, `healthy`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>

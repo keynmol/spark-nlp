@@ -21,9 +21,6 @@ use_language_switcher: "Python-Scala-Java"
 Pretrained VIT  model, adapted from Hugging Face and curated to provide scalability and production-readiness using Spark NLP.`image_classifier_vit_electric_2` is a English model originally trained by smc.
 
 
-## Predicted Entities
-
-`poles`, `transformers`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -67,3 +64,4 @@ Pretrained VIT  model, adapted from Hugging Face and curated to provide scalabil
 
 - ImageAssembler
 - ViTForImageClassification
+

@@ -25,6 +25,8 @@ Pretrained VIT  model, adapted from Hugging Face and curated to provide scalabil
 
 `banana`, `grape`, `apple`, `kiwi`, `lemon`
 
+
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -89,3 +91,4 @@ val pipelineDF = pipelineModel.transform(imageDF)
 |Output Labels:|[class]|
 |Language:|en|
 |Size:|321.9 MB|
+
