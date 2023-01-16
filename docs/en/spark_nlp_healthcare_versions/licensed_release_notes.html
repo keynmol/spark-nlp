@@ -533,99 +533,50 @@
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">4.2.4</h2>
+  <h2 id="section">4.2.7</h2>
 
   <h4 id="highlights">Highlights</h4>
 
   <ul>
-    <li>New chunk mapper model for matching drugs by categories as well as other brands and names</li>
-    <li>4 new NER and classification models for Social Determinant of Health</li>
-    <li>Allow fuzzy matching in the <code class="language-plaintext highlighter-rouge">ChunkMapper</code> annotator</li>
-    <li>New <code class="language-plaintext highlighter-rouge">NameChunkObfuscatorApproach</code> annotator to obfuscate doctor and patient names using a custom external list (consistent name obfuscation)</li>
-    <li>New <code class="language-plaintext highlighter-rouge">AssertionChunkConverter</code> annotator to prepare assertion model training dataset from chunk indices</li>
-    <li>New <code class="language-plaintext highlighter-rouge">training_log_parser</code> module to parse NER and Assertion Status Detection model training log files</li>
-    <li>Obfuscation of age entities by age groups in <code class="language-plaintext highlighter-rouge">Deidentification</code></li>
-    <li>Controlling the behaviour of unnormalized dates while shifting the days in <code class="language-plaintext highlighter-rouge">Deidentification</code> (<code class="language-plaintext highlighter-rouge">setUnnormalizedDateMode</code> parameter)</li>
-    <li>Setting default day, months or years for partial dates via <code class="language-plaintext highlighter-rouge">DateNormalizer</code></li>
-    <li>Setting label case sensitivity in <code class="language-plaintext highlighter-rouge">AssertionFilterer</code></li>
-    <li><code class="language-plaintext highlighter-rouge">getClasses</code> method for Zero Shot NER and Zero Shot Relation Extraction models</li>
-    <li>Setting max syntactic distance parameter in <code class="language-plaintext highlighter-rouge">RelationExtractionApproach</code></li>
-    <li>Generic Relation Extraction Model (<code class="language-plaintext highlighter-rouge">generic_re</code>) to extract relations between any named entities using syntactic distances</li>
-    <li>Core improvements and bug fixes</li>
-    <li>New and updated notebooks</li>
-    <li>New and updated demos
+    <li>3 new oncological NER models</li>
+    <li>5 new Social Determenant of Health text classification models</li>
+    <li>New <code class="language-plaintext highlighter-rouge">DocumentMLClassifierApproach</code> annotator for training text classification models using SVM and Logistic Regression using TfIdf</li>
+    <li>New <code class="language-plaintext highlighter-rouge">Resolution2Chunk</code> annotator to map entity resolver outputs (terminology codes) to other clinical terminologies</li>
+    <li>New <code class="language-plaintext highlighter-rouge">DocMapperModel</code> annotator allows to use any mapper model in <code class="language-plaintext highlighter-rouge">DOCUMENT</code> type</li>
+    <li>Option to return <code class="language-plaintext highlighter-rouge">Deidentification</code> output as a single document</li>
+    <li>Inter-Annotator Agreement (IAA) metrics module that works with NLP Lab seamlessly</li>
+    <li>Assertion dataset preparation module now supports chunk start and end indices, rather than token indices</li>
+    <li>Added <code class="language-plaintext highlighter-rouge">ner_source</code> in the <code class="language-plaintext highlighter-rouge">ChunkConverter</code> metadata</li>
+    <li>Core improvements and bug fixes
       <ul>
-        <li><a href="https://demo.johnsnowlabs.com/healthcare/MEDICAL_QUESTION_ANSWERING/">MEDICAL QUESTION ANSWERING</a></li>
-        <li><a href="https://demo.johnsnowlabs.com/healthcare/SMOKING_STATUS/">SMOKING STATUS</a></li>
-        <li><a href="https://demo.johnsnowlabs.com/healthcare/MENTAL_HEALTH_DEPRESSION/">MENTAL HEALTH DEPRESSION</a></li>
+        <li>Added chunk confidence score in the <code class="language-plaintext highlighter-rouge">RelationExtractionModel</code> metadata</li>
+        <li>Added confidence score in the <code class="language-plaintext highlighter-rouge">DocumentLogRegClassifierApproach</code> metadata</li>
+        <li>Fixed non-deterministic Relation Extraction DL Models (30+ models updated in the model hub)</li>
+        <li>Fixed incompatible PretrainedPipelines with PySpark v3.2.x and v3.3.x</li>
+        <li>Fixed validation parameter for internal annotators</li>
+        <li>Fixed <code class="language-plaintext highlighter-rouge">ZIP</code> label issue on <code class="language-plaintext highlighter-rouge">faker</code> mode with <code class="language-plaintext highlighter-rouge">setZipCodeTag</code> parameter in <code class="language-plaintext highlighter-rouge">Deidentification</code></li>
+        <li>Fixed obfuscated numbers have the same number of chars as the original ones</li>
+        <li>Fixed name obfuscation hashes in <code class="language-plaintext highlighter-rouge">Deidentification</code> for the Romanian language</li>
       </ul>
     </li>
-    <li>5 new clinical models and pipelines added &amp; updated in total</li>
+    <li>New and updated notebooks
+      <ul>
+        <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/30.Clinical_Text_Classification_with_Spark_NLP.ipynb">Clinical Text Classification with Spark_NLP Notebook</a></li>
+        <li>New <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/30.1.Text_Classification_with_DocumentMLClassifier.ipynb">Clinical Text Classification with DocumentMLClassifier Notebook</a></li>
+        <li>Updated <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Annotation_Lab/Complete_ALab_Module_SparkNLP_JSL.ipynb">ALAB Notebook</a></li>
+      </ul>
+    </li>
+    <li>New and updated demos
+      <ul>
+        <li><a href="https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT/">SOCIAL DETERMINANT</a> demo</li>
+      </ul>
+    </li>
+    <li>8 new clinical models and pipelines added &amp; updated in total</li>
   </ul>
 
-  <h4 id="new-chunk-mapper-model-for-matching-drugs-by-categories-as-well-as-other-brands-and-names">New Chunk Mapper Model For Matching Drugs by Categories As Well As Other Brands and Names</h4>
+  <h4 id="new-oncological-ner-models">3 New Oncological NER Models</h4>
 
-  <p>We have a new <code class="language-plaintext highlighter-rouge">drug_category_mapper</code> chunk mapper model that maps drugs to their categories, other brands and names. It has two categories called <strong>main category</strong> and <strong>subcategory</strong>.</p>
-
-  <p><em>Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">chunkerMapper</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"drug_category_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setRels</span><span class="p">([</span><span class="s">"main_category"</span><span class="p">,</span> <span class="s">"sub_category"</span><span class="p">,</span> <span class="s">"other_name"</span><span class="p">])</span>\
-
-
-<span class="n">sample_text</span><span class="o">=</span> <span class="s">"She is given OxyContin, folic acid, levothyroxine, Norvasc, aspirin, Neurontin."</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------+---------------------+-----------------------------------+-----------+
-|    ner_chunk|        main_category|                       sub_category|other_names|
-+-------------+---------------------+-----------------------------------+-----------+
-|    OxyContin|      Pain Management|                  Opioid Analgesics|     Oxaydo|
-|   folic acid|         Nutritionals|            Vitamins, Water-Soluble|    Folvite|
-|levothyroxine|Metabolic &amp; Endocrine|                   Thyroid Products|     Levo T|
-|      Norvasc|       Cardiovascular|                 Antianginal Agents|   Katerzia|
-|      aspirin|       Cardiovascular|Antiplatelet Agents, Cardiovascular|        ASA|
-|    Neurontin|          Neurologics|                       GABA Analogs|    Gralise|
-+-------------+---------------------+-----------------------------------+-----------+
-</code></pre></div>  </div>
-
-  <h4 id="new-ner-and-classification-models-for-social-determinant-of-health">4 New NER and Classification Models for Social Determinant of Health</h4>
-
-  <p>We are releasing 4 new NER and Classification models for Social Determinant of Health.</p>
-
-  <ul>
-    <li><code class="language-plaintext highlighter-rouge">ner_sdoh_mentions</code>: Detecting Social Determinants of Health mentions in clinical notes. Predicted entities: <code class="language-plaintext highlighter-rouge">sdoh_community</code>, <code class="language-plaintext highlighter-rouge">sdoh_economics</code>, <code class="language-plaintext highlighter-rouge">sdoh_education</code>, <code class="language-plaintext highlighter-rouge">sdoh_environment</code>, <code class="language-plaintext highlighter-rouge">behavior_tobacco</code>, <code class="language-plaintext highlighter-rouge">behavior_alcohol</code>, <code class="language-plaintext highlighter-rouge">behavior_drug</code>.</li>
-  </ul>
-
-  <p><em>Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ner_model</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_sdoh_mentions"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
-     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
-
-<span class="n">text</span> <span class="o">=</span> <span class="s">"""Mr. John Smith is a pleasant, cooperative gentleman with a long standing history (20 years) of diverticulitis. He is married and has 3 children. He works in a bank. He denies any alcohol or intravenous drug use. He has been smoking for many years."""</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------+----------------+
-|chunk           |ner_label       |
-+----------------+----------------+
-|married         |sdoh_community  |
-|children        |sdoh_community  |
-|works           |sdoh_economics  |
-|alcohol         |behavior_alcohol|
-|intravenous drug|behavior_drug   |
-|smoking         |behavior_tobacco|
-+----------------+----------------+
-</code></pre></div>  </div>
-
-  <ul>
-    <li><code class="language-plaintext highlighter-rouge">MedicalBertForSequenceClassification</code> models that can be used in Social Determinant of Health related classification tasks:</li>
-  </ul>
+  <p>We are releasing 3 new oncological NER models that were trained by using <code class="language-plaintext highlighter-rouge">embeddings_healthcare_100d</code> embeddings model.</p>
 
   <table>
     <thead>
@@ -637,560 +588,415 @@
     </thead>
     <tbody>
       <tr>
-        <td><a href="">bert_sequence_classifier_sdoh_community_absent_status</a></td>
-        <td>Classifies the clinical texts related to the loss of social support such as a family member or friend in the clinical documents. A discharge summary was classified True for Community-Absent if the discharge summary had passages related to the loss of social support and False if such passages were not found in the discharge summary.</td>
-        <td><code class="language-plaintext highlighter-rouge">True</code> <code class="language-plaintext highlighter-rouge">False</code></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/01/11/ner_oncology_anatomy_general_healthcare_en.html">ner_oncology_anatomy_general_healthcare</a></td>
+        <td>Extracts anatomical entities using an unspecific label</td>
+        <td><code class="language-plaintext highlighter-rouge">Anatomical_Site</code> <code class="language-plaintext highlighter-rouge">Direction</code></td>
       </tr>
       <tr>
-        <td><a href="">bert_sequence_classifier_sdoh_community_present_status</a></td>
-        <td>Classifies the clinical texts related to social support such as a family member or friend in the clinical documents. A discharge summary was classified True for Community-Present if the discharge summary had passages related to active social support and False if such passages were not found in the discharge summary.</td>
-        <td><code class="language-plaintext highlighter-rouge">True</code> <code class="language-plaintext highlighter-rouge">False</code></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/01/11/ner_oncology_biomarker_healthcare_en.html">ner_oncology_biomarker_healthcare</a></td>
+        <td>Extracts mentions of biomarkers and biomarker results in oncological texts.</td>
+        <td><code class="language-plaintext highlighter-rouge">Biomarker_Result</code> <code class="language-plaintext highlighter-rouge">Biomarker</code></td>
       </tr>
       <tr>
-        <td><a href="">bert_sequence_classifier_sdoh_environment_status</a></td>
-        <td>Classifies the clinical texts related to environment situation such as any indication of housing, homeless or no related passage. A discharge summary was classified as True for the SDOH Environment if there was any indication of housing, False if the patient was homeless and None if there was no related passage.</td>
-        <td><code class="language-plaintext highlighter-rouge">True</code> <code class="language-plaintext highlighter-rouge">False</code> <code class="language-plaintext highlighter-rouge">None</code></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/01/11/ner_oncology_unspecific_posology_healthcare_en.html">ner_oncology_unspecific_posology_healthcare</a></td>
+        <td>Extracts mentions of treatments and posology information using unspecific labels (low granularity).</td>
+        <td><code class="language-plaintext highlighter-rouge">Posology_Information</code> <code class="language-plaintext highlighter-rouge">Cancer_Therapy</code></td>
       </tr>
     </tbody>
   </table>
-
-  <p><em>Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sequenceClassifier</span> <span class="o">=</span> <span class="n">MedicalBertForSequenceClassification</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"bert_sequence_classifier_sdoh_community_present_status"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">,</span><span class="s">"token"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"class"</span><span class="p">)</span>
-
-<span class="n">sample_text</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Right inguinal hernia repair in childhood Cervical discectomy 3 years ago Umbilical hernia repair 2137. Retired schoolteacher, now substitutes. Lives with wife in location 1439. Has a 27 yo son and a 25 yo daughter. Name (NI) past or present smoking hx, no EtOH."</span><span class="p">,</span>
-<span class="s">"Atrial Septal Defect with Right Atrial Thrombus Pulmonary Hypertension Obesity, Obstructive Sleep Apnea. Denies tobacco and ETOH. Works as cafeteria worker."</span><span class="p">]</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------------------------------------------------+-------+
-|                                                                                                text| result|
-+----------------------------------------------------------------------------------------------------+-------+
-|Right inguinal hernia repair <span class="k">in </span>childhood Cervical discectomy 3 years ago Umbilical hernia repair...| <span class="o">[</span>True]|
-|Atrial Septal Defect with Right Atrial Thrombus Pulmonary Hypertension Obesity, Obstructive Sleep...|[False]|
-+----------------------------------------------------------------------------------------------------+-------+
-</code></pre></div>  </div>
-
-  <h4 id="allow-fuzzy-matching-in-the-chunkmapper-annotator">Allow Fuzzy Matching in the <code class="language-plaintext highlighter-rouge">ChunkMapper</code> Annotator</h4>
-
-  <p>There are multiple options to achieve fuzzy matching using the ChunkMapper annotation:</p>
-  <ul>
-    <li><strong>Partial Token NGram Fingerprinting</strong>: Useful to combine two frequent usecases; when there are noisy non informative tokens at the beginning / end of the chunk and the order of the chunk is not absolutely relevant. i.e. stomach acute pain –&gt; acute pain stomach ; metformin 100 mg –&gt; metformin.</li>
-    <li><strong>Char NGram Fingerprinting</strong>: Useful in usecases that involve typos or different spacing patterns for chunks. i.e. head ache / ache head –&gt; headache ; metformini / metformoni / metformni –&gt; metformin</li>
-    <li><strong>Fuzzy Distance (Slow)</strong>: Useful when the mapping can be defined in terms of edit distance thresholds using functions like char based like <em>Levenshtein</em>, <em>Hamming</em>, <em>LongestCommonSubsequence</em> or token based like <em>Cosine</em>, <em>Jaccard</em>.</li>
-  </ul>
-
-  <p>The mapping logic will be run in the previous order also ordering by longest key inside each option as an intuitive way to minimize false positives.</p>
-
-  <p><em>Basic Mapper Example</em>:</p>
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cm <span class="o">=</span> ChunkMapperApproach<span class="o">()</span> <span class="se">\</span>
-        .setInputCols<span class="o">([</span><span class="s2">"ner_chunk"</span><span class="o">])</span> <span class="se">\</span>
-        .setLowerCase<span class="o">(</span>True<span class="o">)</span> <span class="se">\</span>
-        .setRels<span class="o">([</span><span class="s2">"action"</span>, <span class="s2">"treatment"</span><span class="o">])</span> <span class="se">\</span>
-
-
-text <span class="o">=</span> <span class="s2">"""The patient was given Lusa Warfarina 5mg and amlodipine 10 MG. 
-The patient was given Aspaginaspa, coumadin 5 mg, coumadin, and he has metamorfin"""</span>
-
-
-<span class="c"># Since mappers only match one-to-one</span>
-
-| ner_chunk          | fixed_chunk | action                | treatment    |
-|:-------------------|:------------|:----------------------|:-------------|
-| Aspaginaspa        | nan         | nan                   | nan          |
-| Lusa Warfarina 5mg | nan         | nan                   | nan          |
-| amlodipine 10      | nan         | nan                   | nan          |
-| coumadin           | coumadin    | Coagulation Inhibitor | hypertension |
-| coumadin 5 mg      | nan         | nan                   | nan          |
-| metamorfin         | nan         | nan                   | nan          |
-</code></pre></div>  </div>
-  <p>Since mappers only match one-to-one, we see that only 1 chunk has action and teatment in the table above.</p>
-
-  <p><em>Token Fingerprinting Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cm</span> <span class="o">=</span> <span class="n">ChunkMapperApproach</span><span class="p">()</span> \
-        <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span> \
-        <span class="p">.</span><span class="n">setLowerCase</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setRels</span><span class="p">([</span><span class="s">"action"</span><span class="p">,</span> <span class="s">"treatment"</span><span class="p">])</span> \
-        <span class="p">.</span><span class="n">setAllowMultiTokenChunk</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setEnableTokenFingerprintMatching</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setMinTokenNgramFingerprint</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setMaxTokenNgramFingerprint</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setMaxTokenNgramDroppingCharsRatio</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| ner_chunk           | fixed_chunk     | action                 | treatment    |
-|:--------------------|:----------------|:-----------------------|:-------------|
-| Aspaginaspa         | nan             | nan                    | nan          |
-| Lusa Warfarina 5mg  | Warfarina lusa  | Analgesic              | diabetes     |
-| amlodipine 10       | amlodipine      | Calcium Ions Inhibitor | hypertension |
-| coumadin            | coumadin        | Coagulation Inhibitor  | hypertension |
-| coumadin 5 mg       | coumadin        | Coagulation Inhibitor  | hypertension |
-| metamorfin          | nan             | nan                    | nan          |
-</code></pre></div>  </div>
-
-  <p><em>Token and Char Fingerprinting Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cm</span> <span class="o">=</span> <span class="n">ChunkMapperApproach</span><span class="p">()</span> \
-        <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span> \
-        <span class="p">.</span><span class="n">setLowerCase</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setRels</span><span class="p">([</span><span class="s">"action"</span><span class="p">,</span> <span class="s">"treatment"</span><span class="p">])</span> \
-        <span class="p">.</span><span class="n">setAllowMultiTokenChunk</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setEnableTokenFingerprintMatching</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setMinTokenNgramFingerprint</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setMaxTokenNgramFingerprint</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setMaxTokenNgramDroppingCharsRatio</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setEnableCharFingerprintMatching</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setMinCharNgramFingerprint</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setMaxCharNgramFingerprint</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| ner_chunk           | fixed_chunk    | action                  | treatment    |
-|:--------------------|:---------------|:------------------------|:-------------|
-| Aspaginaspa         | aspagin        | Cycooxygenase Inhibitor | arthritis    |
-| Lusa Warfarina 5mg  | Warfarina lusa | Analgesic               | diabetes     |
-| amlodipine 10       | amlodipine     | Calcium Ions Inhibitor  | hypertension |
-| coumadin            | coumadin       | Coagulation Inhibitor   | hypertension |
-| coumadin 5 mg       | coumadin       | Coagulation Inhibitor   | hypertension |
-| metamorfin          | nan            | nan                     | nan          |
-</code></pre></div>  </div>
-
-  <p><em>Token and Char Fingerprinting With Fuzzy Distance Calculation Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cm</span> <span class="o">=</span> <span class="n">ChunkMapperApproach</span><span class="p">()</span> \
-        <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span> \
-        <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setDictionary</span><span class="p">(</span><span class="s">"mappings.json"</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setLowerCase</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setRels</span><span class="p">([</span><span class="s">"action"</span><span class="p">])</span> \
-        <span class="p">.</span><span class="n">setAllowMultiTokenChunk</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setEnableTokenFingerprintMatching</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setMinTokenNgramFingerprint</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setMaxTokenNgramFingerprint</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setMaxTokenNgramDroppingCharsRatio</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setEnableCharFingerprintMatching</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setMinCharNgramFingerprint</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setMaxCharNgramFingerprint</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setEnableFuzzyMatching</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-        <span class="p">.</span><span class="n">setFuzzyMatchingDistanceThresholds</span><span class="p">(</span><span class="mf">0.31</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| ner_chunk          | fixed_chunk    | action                  | treatment    |
-|:-------------------|:---------------|:------------------------|:-------------|
-| Aspaginaspa        | aspagin        | Cycooxygenase Inhibitor | arthritis    |
-| Lusa Warfarina 5mg | Warfarina lusa | Analgesic               | diabetes     |
-| amlodipine 10      | amlodipine     | Calcium Ions Inhibitor  | hypertension |
-| coumadin           | coumadin       | Coagulation Inhibitor   | hypertension |
-| coumadin 5 mg      | coumadin       | Coagulation Inhibitor   | hypertension |
-| metamorfin         | metformin      | hypoglycemic            | diabetes     |
-</code></pre></div>  </div>
-
-  <p>You can check <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb">Chunk_Mapping</a> notebook for more examples.</p>
-
-  <h4 id="new-namechunkobfuscatorapproach-annotator-to-obfuscate-doctor-and-patient-names-using-a-custom-external-list-consistent-name-obfuscation">New <code class="language-plaintext highlighter-rouge">NameChunkObfuscatorApproach</code> Annotator to Obfuscate Doctor and Patient Names Using a Custom External List (consistent name obfuscation)</h4>
-
-  <p>We have a new <code class="language-plaintext highlighter-rouge">NameChunkObfuscatorApproach</code> annotator that can be used in deidentification tasks for replacing <em>doctor</em> and <em>patient</em> names with <em>fake names</em> using a reference document.</p>
-
-  <p><em>Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">names</span> <span class="o">=</span> <span class="s">"""Mitchell#NAME
-Jackson#NAME
-Leonard#NAME
-Bowman#NAME
-Fitzpatrick#NAME
-Melody#NAME"""</span>
-
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'names_test.txt'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
-    <span class="nb">file</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
-
-<span class="n">nameChunkObfuscator</span> <span class="o">=</span> <span class="n">NameChunkObfuscatorApproach</span><span class="p">()</span>\
-  <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"replacement"</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setRefFileFormat</span><span class="p">(</span><span class="s">"csv"</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setObfuscateRefFile</span><span class="p">(</span><span class="s">"names_test.txt"</span><span class="p">)</span>\
-  <span class="p">.</span><span class="n">setRefSep</span><span class="p">(</span><span class="s">"#"</span><span class="p">)</span>\
-
-<span class="n">text</span> <span class="o">=</span> <span class="s">'''John Davies is a 62 y.o. patient admitted. Mr. Davies was seen by attending physician Dr. Lorand and was scheduled for emergency assessment. '''</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Original text   :  John Davies is a 62 y.o. patient admitted. Mr. Davies was seen by attending physician Dr. Lorand and was scheduled <span class="k">for </span>emergency assessment.
-
-Obfuscated text :  Fitzpatrick is a &lt;AGE&gt; y.o. patient admitted. Mr. Bowman was seen by attending physician Dr. Melody and was scheduled <span class="k">for </span>emergency assessment.
-</code></pre></div>  </div>
-
-  <p>You can check <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb">Clinical DeIdentification</a> notebook for more examples.</p>
-
-  <h4 id="new-assertionchunkconverter-annotator-to-prepare-assertion-model-training-dataset-from-chunk-indices">New <code class="language-plaintext highlighter-rouge">AssertionChunkConverter</code> Annotator to Prepare Assertion Model Training Dataset From Chunk Indices</h4>
-
-  <p>In some cases, there may be issues while creating the chunk column by using token indices and losing some data while training and testing the assertion status model if there are issues in these token indices. So we developed a new <code class="language-plaintext highlighter-rouge">AssertionChunkConverter</code> annotator that takes <strong>begin and end indices of the chunks</strong> as input and creates an extended chunk column with metadata that can be used for assertion status detection model training.</p>
 
   <p><em>Example</em>:</p>
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
-<span class="n">converter</span> <span class="o">=</span> <span class="n">AssertionChunkConverter</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"tokens"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setChunkTextCol</span><span class="p">(</span><span class="s">"target"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setChunkBeginCol</span><span class="p">(</span><span class="s">"char_begin"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setChunkEndCol</span><span class="p">(</span><span class="s">"char_end"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputTokenBeginCol</span><span class="p">(</span><span class="s">"token_begin"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputTokenEndCol</span><span class="p">(</span><span class="s">"token_end"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"chunk"</span><span class="p">)</span>
+<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_healthcare_100d"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>  
 
-<span class="n">sample_data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"An angiography showed bleeding in two vessels off of the Minnie supplying the sigmoid that were succesfully embolized."</span><span class="p">,</span> <span class="s">"Minnie"</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">63</span><span class="p">],</span>
-     <span class="p">[</span><span class="s">"After discussing this with his PCP, Leon was clear that the patient had had recurrent DVTs and ultimately a PE and his PCP felt strongly that he required long-term anticoagulation "</span><span class="p">,</span> <span class="s">"PCP"</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">34</span><span class="p">]])</span>\
-     <span class="p">.</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">,</span> <span class="s">"target"</span><span class="p">,</span> <span class="s">"char_begin"</span><span class="p">,</span> <span class="s">"char_end"</span><span class="p">)</span>
+<span class="n">ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_oncology_anatomy_general_healthcare"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver."</span>
 </code></pre></div>  </div>
 
   <p><em>Result</em>:</p>
 
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------+----------+--------+-----------+---------+--------------------------+------------------------+------+----------------------------------------------+
-|target|char_begin|char_end|token_begin|token_end|tokens[token_begin].result|tokens[token_end].result|target|chunk                                         |
-+------+----------+--------+-----------+---------+--------------------------+------------------------+------+----------------------------------------------+
-|Minnie|57        |62      |10         |10       |Minnie                    |Minnie                  |Minnie|[<span class="o">{</span>chunk, 57, 63, Minnie, <span class="o">{</span>sentence -&gt; 0<span class="o">}</span>, <span class="o">[]}]</span>|
-|PCP   |31        |34      |5          |5        |PCP                       |PCP                     |PCP   |[<span class="o">{</span>chunk, 31, 33, PCP, <span class="o">{</span>sentence -&gt; 0<span class="o">}</span>, <span class="o">[]}]</span>   |
-+------+----------+--------+-----------+---------+--------------------------+------------------------+------+----------------------------------------------+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------+----------------+
+|chunk             |ner_label       |
++------------------+----------------+
+|left              |Direction       |
+|breast            |Anatomical_Site |
+|lungs             |Anatomical_Site |
+|liver             |Anatomical_Site |
++------------------+----------------+
 </code></pre></div>  </div>
 
-  <h4 id="new-traininglogparser-module-to-parse-training-log-files-of-ner-and-assertion-status-detection-models">New <code class="language-plaintext highlighter-rouge">training_log_parser</code> Module to Parse Training Log Files of NER And Assertion Status Detection Models</h4>
+  <h4 id="new-social-determinant-of-health-text-classification--models">5 New Social Determinant of Health Text Classification  Models</h4>
 
-  <p>We are releasing a new <code class="language-plaintext highlighter-rouge">training_log_parser</code> module that helps to parse NER and Assertion Status Detection model training log files using a single module. Here are the methods and their descriptions:</p>
+  <p>We are releasing 5 new models that can be used in Social Determinant of Health related classification tasks.</p>
 
   <table>
     <thead>
       <tr>
-        <th> </th>
-        <th>Description</th>
-        <th>ner_log_parser</th>
-        <th>assertion_log_parser</th>
+        <th>model name</th>
+        <th>description</th>
+        <th>predicted entities</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>How to import</td>
-        <td>You can import this module for NER and Assertion as shown here</td>
-        <td><code class="language-plaintext highlighter-rouge">from sparknlp_jsl.utils.training_log_parser import ner_log_parser</code></td>
-        <td><code class="language-plaintext highlighter-rouge">from sparknlp_jsl.utils.training_log_parser import assertion_log_parser</code></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/01/14/genericclassifier_sdoh_alcohol_usage_sbiobert_cased_mli_en.html">genericclassifier_sdoh_alcohol_usage_sbiobert_cased_mli</a></td>
+        <td>This model is intended for detecting alcohol use in clinical notes and trained by using GenericClassifierApproach annotator.</td>
+        <td><code class="language-plaintext highlighter-rouge">Present</code> <code class="language-plaintext highlighter-rouge">Never</code> <code class="language-plaintext highlighter-rouge">None</code></td>
       </tr>
       <tr>
-        <td><code class="language-plaintext highlighter-rouge">get_charts</code></td>
-        <td>Plots the figures of metrics ( precision, recall, f1) vs epochs</td>
-        <td><code class="language-plaintext highlighter-rouge">ner_log_parser.get_charts(log_file, threshold)</code></td>
-        <td><code class="language-plaintext highlighter-rouge">assertion_log_parser.get_charts(log_file, labels, threshold)</code></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/01/14/genericclassifier_sdoh_alcohol_usage_binary_sbiobert_cased_mli_en.html">genericclassifier_sdoh_alcohol_usage_binary_sbiobert_cased_mli</a></td>
+        <td>This model is intended for detecting alcohol use in clinical notes and trained by using GenericClassifierApproach annotator.</td>
+        <td><code class="language-plaintext highlighter-rouge">Present</code> <code class="language-plaintext highlighter-rouge">Past</code> <code class="language-plaintext highlighter-rouge">Never</code> <code class="language-plaintext highlighter-rouge">None</code></td>
       </tr>
       <tr>
-        <td><code class="language-plaintext highlighter-rouge">loss_plot</code></td>
-        <td>Plots the figures of validation and test loss values vs epochs.</td>
-        <td><code class="language-plaintext highlighter-rouge">ner_log_parser.loss_plot(path)</code></td>
-        <td><code class="language-plaintext highlighter-rouge">assertion_log_parser.loss_plot(path)</code></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/01/14/genericclassifier_sdoh_tobacco_usage_sbiobert_cased_mli_en.html">genericclassifier_sdoh_tobacco_usage_sbiobert_cased_mli</a></td>
+        <td>This model is intended for detecting tobacco use in clinical notes and trained by using GenericClassifierApproach annotator</td>
+        <td><code class="language-plaintext highlighter-rouge">Present</code> <code class="language-plaintext highlighter-rouge">Past</code> <code class="language-plaintext highlighter-rouge">Never</code> <code class="language-plaintext highlighter-rouge">None</code></td>
       </tr>
       <tr>
-        <td><code class="language-plaintext highlighter-rouge">get_best_f1_scores</code></td>
-        <td>Returns the best Micro and Macro F1 Scores on test set</td>
-        <td><code class="language-plaintext highlighter-rouge">ner_log_parser.get_best_f1_scores(path)</code></td>
-        <td><code class="language-plaintext highlighter-rouge">assertion_log_parser.get_best_f1_scores(path)</code></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/01/14/genericclassifier_sdoh_economics_binary_sbiobert_cased_mli_en.html">genericclassifier_sdoh_economics_binary_sbiobert_cased_mli</a></td>
+        <td>This model classifies related to social economics status in the clinical documents and trained by using GenericClassifierApproach annotator.</td>
+        <td><code class="language-plaintext highlighter-rouge">True</code> <code class="language-plaintext highlighter-rouge">False</code></td>
       </tr>
       <tr>
-        <td><code class="language-plaintext highlighter-rouge">parse_logfile</code></td>
-        <td>Returns the parsed log file in pandas dataframe format with the order of <em>label-score dataframe, epoch-metrics dataframe and graph file used in tranining</em>.</td>
-        <td><code class="language-plaintext highlighter-rouge">ner_log_parser.parse_logfile(path)</code></td>
-        <td><code class="language-plaintext highlighter-rouge">assertion_log_parser.parse_logfile(path, labels)</code></td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">evaluate</code></td>
-        <td>if verbose, returns overall performance, as well as <strong>performance per chunk type</strong>; otherwise, simply returns overall precision, recall, f1 scores. Ground truth and predictions should be provided in pandas dataframe.</td>
-        <td><code class="language-plaintext highlighter-rouge">ner_log_parser.evaluate(preds_df['ground_truth'].values, preds_df['prediction'].values)</code></td>
-        <td>-</td>
+        <td><a href="https://nlp.johnsnowlabs.com/2023/01/14/genericclassifier_sdoh_substance_usage_binary_sbiobert_cased_mli_en.html">genericclassifier_sdoh_substance_usage_binary_sbiobert_cased_mli</a></td>
+        <td>This model is intended for detecting substance use in clinical notes and trained by using GenericClassifierApproach annotator.</td>
+        <td><code class="language-plaintext highlighter-rouge">Present</code> <code class="language-plaintext highlighter-rouge">None</code></td>
       </tr>
     </tbody>
   </table>
 
-  <p><em>Import</em></p>
+  <p><em>Example</em>:</p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp_jsl.utils.training_log_parser</span> <span class="kn">import</span> <span class="n">ner_log_parser</span><span class="p">,</span> <span class="n">assertion_log_parser</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+<span class="n">features_asm</span> <span class="o">=</span> <span class="n">FeaturesAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence_embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"features"</span><span class="p">)</span>
 
-<span class="n">ner_parser</span> <span class="o">=</span> <span class="n">ner_log_parser</span><span class="p">()</span>
-<span class="n">assertion_parser</span> <span class="o">=</span> <span class="n">assertion_log_parser</span><span class="p">()</span>
-</code></pre></div>  </div>
+<span class="n">generic_classifier_tobacco</span> <span class="o">=</span> <span class="n">GenericClassifierModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"genericclassifier_sdoh_tobacco_usage_sbiobert_cased_mli"</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'clinical/models'</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"features"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"class_tobacco"</span><span class="p">)</span>
+    
+<span class="n">generic_classifier_alcohol</span> <span class="o">=</span> <span class="n">GenericClassifierModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"genericclassifier_sdoh_alcohol_usage_sbiobert_cased_mli"</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'clinical/models'</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"features"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"class_alcohol"</span><span class="p">)</span>
 
-  <p><em>Example for NER loss_plot method</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ner_parser</span><span class="p">.</span><span class="n">loss_plot</span><span class="p">(</span><span class="s">'NER_training_log_file.log'</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <p><img src="https://user-images.githubusercontent.com/76607915/208672630-2c65f533-f3cf-432b-9290-8eeac4aaa083.png" alt="image" /></p>
-
-  <p><em>Example for NER evaluate method</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">metrics</span> <span class="o">=</span> <span class="n">ner_parser</span><span class="p">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">preds_df</span><span class="p">[</span><span class="s">'ground_truth'</span><span class="p">].</span><span class="n">values</span><span class="p">,</span> <span class="n">preds_df</span><span class="p">[</span><span class="s">'prediction'</span><span class="p">].</span><span class="n">values</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <p><img src="https://user-images.githubusercontent.com/76607915/208672122-41cbf3e0-2f38-47b9-9f65-47503de38302.png" alt="image" /></p>
-
-  <p><img src="https://user-images.githubusercontent.com/76607915/208672159-1ff7733c-6dba-45e6-a0de-ba801565a564.png" alt="image" /></p>
-
-  <p><em>Example for Assertion get_best_f1_scores method</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">assertion_parser</span><span class="p">.</span><span class="n">get_best_f1_scores</span><span class="p">(</span><span class="s">'Assertion_training_log_file.log'</span><span class="p">,</span> <span class="p">[</span><span class="s">'Absent'</span><span class="p">,</span> <span class="s">'Present'</span><span class="p">])</span>
+<span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Retired schoolteacher, now substitutes. Lives with wife in location 1439. Has a 27 yo son and a 25 yo daughter. He uses alcohol and cigarettes"</span><span class="p">,</span>
+        <span class="s">"The patient quit smoking approximately two years ago with an approximately a 40 pack year history, mostly cigar use."</span><span class="p">,</span>
+        <span class="s">"The patient denies any history of smoking or alcohol abuse. She lives with her one daughter."</span><span class="p">,</span>
+        <span class="s">"She was previously employed as a hairdresser, though says she hasnt worked in 4 years. Not reported by patient, but there is apparently a history of alochol abuse."</span>
+      <span class="p">]</span>
 </code></pre></div>  </div>
 
   <p><em>Result</em>:</p>
 
-  <p><img src="https://user-images.githubusercontent.com/76607915/208671659-eca0b063-234b-412f-bfac-d2da8625a39b.png" alt="image" /></p>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------------------------------------------------------------------------+---------+---------+
+|                                                                                                text|  tobacco|  alcohol|
++----------------------------------------------------------------------------------------------------+---------+---------+
+|Retired schoolteacher, now substitutes. Lives with wife <span class="k">in </span>location 1439. Has a 27 yo son and a 2...|[Present]|[Present]|
+|The patient quit smoking approximately two years ago with an approximately a 40 pack year history...|   <span class="o">[</span>Past]|   <span class="o">[</span>None]|
+|        The patient denies any <span class="nb">history </span>of smoking or alcohol abuse. She lives with her one daughter.|  <span class="o">[</span>Never]|  <span class="o">[</span>Never]|
+|She was previously employed as a hairdresser, though says she hasnt worked <span class="k">in </span>4 years. Not report...|   <span class="o">[</span>None]|   <span class="o">[</span>Past]|
++----------------------------------------------------------------------------------------------------+---------+---------+
+</code></pre></div>  </div>
 
-  <h4 id="obfuscation-of-age-entities-by-age-groups-in-deidentification">Obfuscation of Age Entities by Age Groups in <code class="language-plaintext highlighter-rouge">Deidentification</code></h4>
+  <h4 id="new-documentmlclassifierapproach-annotator-for-training-text-classification-models-using-svm-and-logistic-regression-using-tfidf">New <code class="language-plaintext highlighter-rouge">DocumentMLClassifierApproach</code> Annotator For Training Text Classification Models Using SVM And Logistic Regression Using TfIdf</h4>
 
-  <p>We have a new <code class="language-plaintext highlighter-rouge">setAgeRanges()</code> parameter in <code class="language-plaintext highlighter-rouge">Deidentification</code> annotator that provides the ability to set a custom range for obfuscation of <code class="language-plaintext highlighter-rouge">AGE</code> entities by another <code class="language-plaintext highlighter-rouge">age</code> within that age group (range). Default age groups list is <code class="language-plaintext highlighter-rouge">[1, 4, 12, 20, 40, 60]</code> and users can set any range.</p>
+  <p>We have a new <code class="language-plaintext highlighter-rouge">DocumentMLClassifierApproach</code> that can be used for training text classification models with <em>Logistic Regression</em> and <em>SVM</em> algorithms. Training data requires “text” and their “label” columns only and the trained model will be a <code class="language-plaintext highlighter-rouge">DocumentMLClassifierModel()</code>.</p>
 
-  <ul>
-    <li>Infant = 0-1 year.</li>
-    <li>Toddler = 2-4 yrs.</li>
-    <li>Child = 5-12 yrs.</li>
-    <li>Teen = 13-19 yrs.</li>
-    <li>Adult = 20-39 yrs.</li>
-    <li>Middle Age Adult = 40-59 yrs.</li>
-    <li>Senior Adult = 60+</li>
-  </ul>
+  <p>Input types: <code class="language-plaintext highlighter-rouge">TOKEN</code>                <br />
+Output type: <code class="language-plaintext highlighter-rouge">CATEGORY</code></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Parameters</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>labels</td>
+        <td>array to output the label in the original form.</td>
+      </tr>
+      <tr>
+        <td>labelCol</td>
+        <td>column with the value result we are trying to predict.</td>
+      </tr>
+      <tr>
+        <td>maxIter</td>
+        <td>maximum number of iterations.</td>
+      </tr>
+      <tr>
+        <td>tol</td>
+        <td>convergence tolerance after each iteration.</td>
+      </tr>
+      <tr>
+        <td>fitIntercept</td>
+        <td>whether to fit an intercept term, default is true.</td>
+      </tr>
+      <tr>
+        <td>maxTokenNgram</td>
+        <td>the max number of tokens for Ngrams</td>
+      </tr>
+      <tr>
+        <td>minTokenNgram</td>
+        <td>the min number of tokens for Ngrams</td>
+      </tr>
+      <tr>
+        <td>vectorizationModelPath</td>
+        <td>specify the vectorization model if it has been already trained.</td>
+      </tr>
+      <tr>
+        <td>classificationModelPath</td>
+        <td>specify the classification model if it has been already trained.</td>
+      </tr>
+      <tr>
+        <td>classificationModelClass</td>
+        <td>specify the SparkML classification class; possible values are <code class="language-plaintext highlighter-rouge">logreg</code>, <code class="language-plaintext highlighter-rouge">svm</code></td>
+      </tr>
+    </tbody>
+  </table>
 
   <p><em>Example</em>:</p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deidentification</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"age_chunk"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"obfuscation"</span><span class="p">)</span> \
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+<span class="n">classifier_svm</span><span class="o">=</span> <span class="n">DocumentMLClassifierApproach</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setLabelCol</span><span class="p">(</span><span class="s">"category"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"prediction"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setMaxTokenNgram</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setClassificationModelClass</span><span class="p">(</span><span class="s">"svm"</span><span class="p">)</span> <span class="c1">#or "logreg"
+</span>
+<span class="n">model_svm</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">document</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">classifier_svm</span><span class="p">]).</span><span class="n">fit</span><span class="p">(</span><span class="n">trainingData</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s">"This 1-year-old child had a gastrostomy placed due to feeding difficulties."</span><span class="p">],</span> 
+    <span class="p">[</span><span class="s">"He is a pleasant young man who has a diagnosis of bulbar cerebral palsy and hypotonia."</span><span class="p">],</span> 
+    <span class="p">[</span><span class="s">"The patient is a 45-year-old female whose symptoms are pain in the left shoulder and some neck pain."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"The patient is a 61-year-old female with history of recurrent uroseptic stones."</span><span class="p">]</span>
+<span class="p">]</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
++----------------------------------------------------------------------------------------------------+----------------+
+|text                                                                                                |prediction      |
++----------------------------------------------------------------------------------------------------+----------------+
+|He is a pleasant young man <span class="nb">who </span>has a diagnosis of bulbar cerebral palsy and hypotonia.              |Neurology       |
+|This 1-year-old child had a gastrostomy placed due to feeding difficulties.                         |Gastroenterology|
+|The patient is a 61-year-old female with <span class="nb">history </span>of recurrent uroseptic stones.                     |Urology         |
+|The patient is a 45-year-old female whose symptoms are pain <span class="k">in </span>the left shoulder and some neck pain.|Orthopedic      |
++----------------------------------------------------------------------------------------------------+----------------+
+
+</code></pre></div>  </div>
+
+  <h4 id="option-to-return-deidentification-output-as-a-single-document">Option To Return <code class="language-plaintext highlighter-rouge">Deidentification</code> Output As a Single Document</h4>
+
+  <p>We can return <code class="language-plaintext highlighter-rouge">Deidentification()</code> output as a single document by setting new <code class="language-plaintext highlighter-rouge">setOutputAsDocument</code> as <code class="language-plaintext highlighter-rouge">True</code>. If it is <code class="language-plaintext highlighter-rouge">False</code>, the outputs will be list of sentences as it is used to be.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">deid_obfuscated</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_chunk_subentity"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"obfuscated"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setObfuscateDate</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setObfuscateRefSource</span><span class="p">(</span><span class="s">"faker"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setAgeRanges</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">80</span><span class="p">])</span>
+    <span class="p">.</span><span class="n">setObfuscateRefFile</span><span class="p">(</span><span class="s">'obfuscate.txt'</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setObfuscateRefSource</span><span class="p">(</span><span class="s">"file"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setUnnormalizedDateMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputAsDocument</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> <span class="c1"># or False for sentence level result
+</span>
+<span class="n">text</span> <span class="o">=</span><span class="s">'''
+Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson , Ora MR # 7194334 Date : 01/13/93 . Patient : Oliveira, 25 years-old , Record date : 2079-11-09 . Cocke County Baptist Hospital . 0295 Keats Street
+'''</span>
+
 </code></pre></div>  </div>
 
-  <p><em>Result</em>:</p>
+  <p><em>Result of .setOutputAsDocument(True)</em>:</p>
 
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------------------+---------+--------------------------------+
-|text                            |age_chunk|obfuscation                     |
-+--------------------------------+---------+--------------------------------+
-|1 year old baby                 |1        |2 year old baby                 |
-|4 year old kids                 |4        |6 year old kids                 |
-|A 15 year old female with       |15       |A 12 year old female with       |
-|Record <span class="nb">date</span>: 2093-01-13, Age: 25|25       |Record <span class="nb">date</span>: 2093-03-01, Age: 30|
-|Patient is 45 years-old         |45       |Patient is 44 years-old         |
-|He is 65 years-old male         |65       |He is 75 years-old male         |
-+--------------------------------+---------+--------------------------------+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="s1">'obfuscated'</span>: <span class="o">[</span><span class="s1">'Record date : 2093-01-14 , Beer-Karge , M.D . , Name : Hasan Jacobi Jäckel MR # &lt;MEDICALRECORD&gt; Date : 01-31-1991 . Patient : Herr Anselm Trüb, 51 years-old , Record date : 2080-01-08 . Klinik St. Hedwig . &lt;MEDICALRECORD&gt; Keats Street'</span><span class="o">]</span>
+
 </code></pre></div>  </div>
 
-  <h4 id="controlling-the-behaviour-of-unnormalized-dates-while-shifting-the-days-in-deidentification-setunnormalizeddatemode-parameter">Controlling the behaviour of unnormalized dates while shifting the days in <code class="language-plaintext highlighter-rouge">Deidentification</code> (<code class="language-plaintext highlighter-rouge">setUnnormalizedDateMode</code> parameter)</h4>
+  <p><em>Result of .setOutputAsDocument(False)</em>:</p>
 
-  <p>Two alternatives can be used when deidentification in unnormalized date formats, these are mask and obfuscation.</p>
-  <ul>
-    <li><code class="language-plaintext highlighter-rouge">setUnnormalizedDateMode('mask')</code> parameter is used to <strong>mask</strong> the DATE entities that can not be normalized.</li>
-    <li><code class="language-plaintext highlighter-rouge">setUnnormalizedDateMode('obfuscate')</code> parameter is used to <strong>obfuscate</strong> the DATE entities that can not be normalized.</li>
-  </ul>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="s1">'obfuscated'</span>: <span class="o">[</span><span class="s1">'Record date : 2093-02-19 , Kaul , M.D . , Name : Frauke Oestrovsky MR # &lt;MEDICALRECORD&gt; Date : 05-08-1971 .'</span>,
+               <span class="s1">'Patient : Lars Bloch, 33 years-old , Record date : 2079-11-11 .'</span>,
+               <span class="s1">'University Hospital of Düsseldorf . &lt;MEDICALRECORD&gt; Keats Street'</span><span class="o">]</span>
+
+</code></pre></div>  </div>
+
+  <h4 id="new-resolution2chunk-annotator-to-map-entity-resolver-outputs-terminology-codes-to-other-clinical-terminologies">New <code class="language-plaintext highlighter-rouge">Resolution2Chunk</code> Annotator To Map Entity Resolver Outputs (terminology codes) To Other Clinical Terminologies</h4>
+
+  <p>We have a new <code class="language-plaintext highlighter-rouge">Resolution2Chunk</code> annotator that maps the entity resolver outputs to other clinical terminologies.</p>
 
   <p><em>Example</em>:</p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">de_identification</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"document2"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"deid_text"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span> \
-    <span class="p">...</span>
-    <span class="p">.</span><span class="n">setUnnormalizedDateMode</span><span class="p">(</span><span class="s">"mask"</span><span class="p">)</span> <span class="c1"># or obfuscation
-</span></code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-----------+---------+------------+------------+
-|text       |dateshift| mask       | obfuscation|
-+-----------+---------+------------+------------+
-|04/19/2018 |-5       | 04/14/2018 | 04/14/2018 |
-|04-19-2018 |-2       | 04-17-2018 | 04-17-2018 |
-|19 Apr 2018|10       | &lt;DATE&gt;     | 10-10-1975 |
-|04-19-18   |20       | &lt;DATE&gt;     | 03-23-2001 |
-+-----------+---------+------------+------------+
-</code></pre></div>  </div>
-
-  <h4 id="setting-default-day-months-or-years-for-partial-dates-via-datenormalizer">Setting Default Day, Months or Years for Partial Dates via <code class="language-plaintext highlighter-rouge">DateNormalizer</code></h4>
-
-  <p>We have 3 new parameters to make <code class="language-plaintext highlighter-rouge">DateNormalizer</code> more flexible with date replacing. If any of the day, month and year information is missing in the date format, the following default values will be added.</p>
-
-  <ul>
-    <li><code class="language-plaintext highlighter-rouge">setDefaultReplacementDay</code>: default value is 15</li>
-    <li><code class="language-plaintext highlighter-rouge">setDefaultReplacementMonth</code>: default value is July or 6</li>
-    <li><code class="language-plaintext highlighter-rouge">setDefaultReplacementYear</code>:  default value is 2020</li>
-  </ul>
-
-  <p><em>Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date_normalizer_us</span> <span class="o">=</span> <span class="n">DateNormalizer</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">'date_chunk'</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'normalized_date_us'</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputDateformat</span><span class="p">(</span><span class="s">'us'</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setDefaultReplacementDay</span><span class="p">(</span><span class="s">"15"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setDefaultReplacementMonth</span><span class="p">(</span><span class="s">"6"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setDefaultReplacementYear</span><span class="p">(</span><span class="s">"2020"</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------+------------+------------------+
-|text        |date_chunk  |normalized_date_us|
-+------------+------------+------------------+
-|08/02/2018  |08/02/2018  |08/02/2018        |
-|3 April 2020|3 April 2020|04/03/2020        |
-|03/2021     |03/2021     |03/15/2021        |
-|05 Jan      |05 Jan      |01/05/2020        |
-|01/05       |01/05       |01/05/2020        |
-|2022        |2022        |06/15/2022        |
-+------------+------------+------------------+
-</code></pre></div>  </div>
-
-  <p>You can check <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/25.Date_Normalizer.ipynb">Date Normalizer</a> notebook for more examples</p>
-
-  <h4 id="setting-label-case-sensitivity-in-assertionfilterer">Setting Label Case Sensitivity in <code class="language-plaintext highlighter-rouge">AssertionFilterer</code></h4>
-
-  <p>We have case sensitive filtering flexibility for labels by setting new <code class="language-plaintext highlighter-rouge">setCaseSensitive(True)</code> in <code class="language-plaintext highlighter-rouge">AssertionFilterer</code> annotator.</p>
-
-  <p><em>Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">assertion_filterer</span> <span class="o">=</span> <span class="n">AssertionFilterer</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span><span class="s">"ner_chunk"</span><span class="p">,</span><span class="s">"assertion"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion_filtered"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">"ABsent"</span><span class="p">])</span>
-
-<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"The patient was admitted 2 weeks ago with a headache. No alopecia was noted."</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| chunks   | entities                  | assertion | confidence |
-| <span class="nt">--------</span> | <span class="nt">-------------------------</span> | <span class="nt">---------</span> | <span class="nt">----------</span> |
-| Alopecia | Disease_Syndrome_Disorder | Absent    |          1 |
-</code></pre></div>  </div>
-
-  <h4 id="getclasses-method-to-zero-shot-ner-and-zero-shot-relation-extraction-models"><code class="language-plaintext highlighter-rouge">getClasses</code> Method to Zero Shot NER and Zero Shot Relation Extraction Models</h4>
-
-  <p>The predicted entities of <code class="language-plaintext highlighter-rouge">ZeroShotNerModel</code> and <code class="language-plaintext highlighter-rouge">ZeroShotRelationExtractionModels</code> can be extracted with <code class="language-plaintext highlighter-rouge">getClasses</code> methods just like NER annotators.</p>
-
-  <p><em>Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">zero_shot_ner</span> <span class="o">=</span> <span class="n">ZeroShotNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"zero_shot_ner_roberta"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setEntityDefinitions</span><span class="p">({</span>
-            <span class="s">"PROBLEM"</span><span class="p">:</span> <span class="p">[</span><span class="s">"What is the disease?"</span><span class="p">,</span> <span class="s">"What is the problem?"</span> <span class="p">,</span><span class="s">"What does a patient suffer"</span><span class="p">],</span>
-            <span class="s">"DRUG"</span><span class="p">:</span> <span class="p">[</span><span class="s">"Which drug?"</span><span class="p">,</span> <span class="s">"Which is the drug?"</span><span class="p">,</span> <span class="s">"What is the drug?"</span><span class="p">],</span>
-            <span class="s">"ADMISSION_DATE"</span><span class="p">:</span> <span class="p">[</span><span class="s">"When did patient admitted to a clinic?"</span><span class="p">],</span>
-            <span class="s">"PATIENT_AGE"</span><span class="p">:</span> <span class="p">[</span><span class="s">"How old is the patient?"</span><span class="p">,</span><span class="s">'What is the gae of the patient?'</span><span class="p">]</span>  <span class="p">})</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"zero_shot_ner"</span><span class="p">)</span>
-
-<span class="n">zero_shot_ner</span><span class="p">.</span><span class="n">getClasses</span><span class="p">()</span>
-</code></pre></div>  </div>
-
-  <p><em>Result</em>:</p>
-
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span><span class="s1">'DRUG'</span>, <span class="s1">'PATIENT_AGE'</span>, <span class="s1">'ADMISSION_DATE'</span>, <span class="s1">'PROBLEM'</span><span class="o">]</span>
-</code></pre></div>  </div>
-
-  <h4 id="setting-max-syntactic-distance-flexibility-in-relationextractionapproach">Setting Max Syntactic Distance Flexibility In <code class="language-plaintext highlighter-rouge">RelationExtractionApproach</code></h4>
-
-  <p>Now we are able to set maximal syntactic distance as threshold in <code class="language-plaintext highlighter-rouge">RelationExtractionApproach</code> while training relation extraction models.</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">reApproach</span> <span class="o">=</span> <span class="n">RelationExtractionApproach</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"embeddings"</span><span class="p">,</span> <span class="s">"pos_tags"</span><span class="p">,</span> <span class="s">"train_ner_chunks"</span><span class="p">,</span> <span class="s">"dependencies"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"relations"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setLabelColumn</span><span class="p">(</span><span class="s">"rel"</span><span class="p">)</span>\
-    <span class="p">...</span>
-    <span class="p">.</span><span class="n">setMaxSyntacticDistance</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-  <h4 id="generic-relation-extraction-model-genericre-to-extract-relations-between-any-named-entities-using-syntactic-distances">Generic Relation Extraction Model (<code class="language-plaintext highlighter-rouge">generic_re</code>) to extract relations between any named entities using syntactic distances</h4>
-
-  <p>We already have more than 80 relation extraction (RE) models that can extract relations between certain named entities. Nevertheless, there are some rare entities or cases that you may not find the right RE or the one you find may not work as expected due to nature of your dataset. In order to ease this burden, we are releasing a generic RE model (<code class="language-plaintext highlighter-rouge">generic_re</code>) that can be used between any named entities using the syntactic distances, POS tags and dependency tree between the entities. You can tune this model by using the <code class="language-plaintext highlighter-rouge">setMaxSyntacticDistance</code> param.</p>
-
-  <p><em>Example</em>:</p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">reModel</span> <span class="o">=</span> <span class="n">RelationExtractionModel</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"generic_re"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"embeddings"</span><span class="p">,</span> <span class="s">"pos_tags"</span><span class="p">,</span> <span class="s">"ner_chunks"</span><span class="p">,</span> <span class="s">"dependencies"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"relations"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setRelationPairs</span><span class="p">([</span><span class="s">"Biomarker-Biomarker_Result"</span><span class="p">,</span> <span class="s">"Biomarker_Result-Biomarker"</span><span class="p">,</span> <span class="s">"Oncogene-Biomarker_Result"</span><span class="p">,</span> <span class="s">"Biomarker_Result-Oncogene"</span><span class="p">,</span> <span class="s">"Pathology_Test-Pathology_Result"</span><span class="p">,</span> <span class="s">"Pathology_Result-Pathology_Test"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setMaxSyntacticDistance</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">icd_resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobertresolve_icd10cm_augmented_billable_hcc"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence_embeddings"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"icd10cm_code"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
     
-<span class="n">text</span> <span class="o">=</span> <span class="s">"""Pathology showed tumor cells, which were positive for estrogen and progesterone receptors."""</span>    
+<span class="n">resolver2chunk</span> <span class="o">=</span> <span class="n">Resolution2Chunk</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"icd10cm_code"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"resolver2chunk"</span><span class="p">)</span>\
+
+<span class="n">chunkerMapper</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"icd10cm_snomed_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"resolver2chunk"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRels</span><span class="p">([</span><span class="s">"snomed_code"</span><span class="p">])</span>
+
+<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"""Diabetes Mellitus"""</span>
 </code></pre></div>  </div>
+
   <p><em>Result</em>:</p>
 
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|sentence |entity1_begin |entity1_end | chunk1    | entity1          |entity2_begin |entity2_end | chunk2                 | entity2          | relation                        |confidence|
-|--------:|-------------:|-----------:|:----------|:-----------------|-------------:|-----------:|:-----------------------|:-----------------|:--------------------------------|----------|
-|       0 |            1 |          9 | Pathology | Pathology_Test   |           18 |         28 | tumor cells            | Pathology_Result | Pathology_Test-Pathology_Result |         1|
-|       0 |           42 |         49 | positive  | Biomarker_Result |           55 |         62 | estrogen               | Biomarker        | Biomarker_Result-Biomarker      |         1|
-|       0 |           42 |         49 | positive  | Biomarker_Result |           68 |         89 | progesterone receptors | Biomarker        | Biomarker_Result-Biomarker      |         1|
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-----------------+-----------------+------------+-----------+
+|text             |ner_chunk        |icd10cm_code|snomed_code|
++-----------------+-----------------+------------+-----------+
+|Diabetes Mellitus|Diabetes Mellitus|E109        |170756003  |
++-----------------+-----------------+------------+-----------+
 </code></pre></div>  </div>
 
-  <h4 id="core-improvements-and-bug-fixes">Core improvements and bug fixes</h4>
+  <h4 id="new-docmappermodel-annotator-allows-to-use-with-any-mapper-model-in-document-type">New <code class="language-plaintext highlighter-rouge">DocMapperModel</code> Annotator Allows To Use With Any Mapper Model In <code class="language-plaintext highlighter-rouge">DOCUMENT</code> Type</h4>
+
+  <p>Any <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code> can be used with this new annotator called <code class="language-plaintext highlighter-rouge">DocMapperModel</code> and as its name suggests, it is used to map short strings via <code class="language-plaintext highlighter-rouge">DocumentAssembler</code> without using any other annotator between to convert strings to <code class="language-plaintext highlighter-rouge">Chunk</code> type that <code class="language-plaintext highlighter-rouge">ChunkMapperModel</code> expects.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">DocMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"drug_brandname_ndc_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>
+
+<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"ZYVOX"</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Brand_Name   | Strenth_NDC              |
+|:-------------|:-------------------------|
+| ZYVOX        | 600 mg/300mL | 0009-4992 |
+</code></pre></div>  </div>
+
+  <h4 id="inter-annotator-agreement-iaa-metrics-module-that-works-with-nlp-lab-seamlessly">Inter-Annotator Agreement (IAA) metrics module that works with NLP Lab seamlessly</h4>
+
+  <p>We added a new <code class="language-plaintext highlighter-rouge">get_IAA_metrics()</code> method to ALAB module. This method allows you to compare and evaluate the annotations in the seed corpus that all annotators annotated the same documents at the begining of an annotation project. It returns all the results in CSV files. Here are the parameters;</p>
 
   <ul>
-    <li>Fixed obfuscated addresses capitalized word style</li>
-    <li>Added more patterns for Date Obfuscation</li>
-    <li>Improve speed of <code class="language-plaintext highlighter-rouge">get_conll_data()</code> method in alab module</li>
-    <li>Fixed serialization Issue with MLFlow ContextualParser</li>
-    <li>Renamed <code class="language-plaintext highlighter-rouge">TFGraphBuilder.setIsMedical</code> to <code class="language-plaintext highlighter-rouge">TFGraphBuilder.setIsLicensed</code></li>
+    <li><code class="language-plaintext highlighter-rouge">spark</code> : SparkSession.</li>
+    <li><code class="language-plaintext highlighter-rouge">conll_dir</code> (str): path to the folder that conll files in.</li>
+    <li><code class="language-plaintext highlighter-rouge">annotator_names</code> (list): list of annotator names.</li>
+    <li><code class="language-plaintext highlighter-rouge">set_ref_annotator</code> (str): reference annotator name. If present, all comparisons made with respect to it, if it is <code class="language-plaintext highlighter-rouge">None</code> all annotators will be compared by each other. Default is <code class="language-plaintext highlighter-rouge">None</code>.</li>
+    <li><code class="language-plaintext highlighter-rouge">return_NerDLMetrics</code> (boolean): If <code class="language-plaintext highlighter-rouge">True</code>, we get the <code class="language-plaintext highlighter-rouge">full_chunk</code> and - <code class="language-plaintext highlighter-rouge">partial_chunk_per_token</code> IAA metrics by using NerDLMetrics. If <code class="language-plaintext highlighter-rouge">False</code>, we get the chunk based metrics using <code class="language-plaintext highlighter-rouge">evaluate</code> method of <code class="language-plaintext highlighter-rouge">training_log_parser</code> module and the token based metrics using classification reports, then write the results in “eval_metric_files” folder. Default is <code class="language-plaintext highlighter-rouge">False</code>.</li>
+    <li><code class="language-plaintext highlighter-rouge">save_dir</code> (str): path to save the token based results dataframes, default is “results_token_based”.</li>
+  </ul>
+
+  <p>For more details and examples, please check <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Annotation_Lab/Complete_ALab_Module_SparkNLP_JSL.ipynb">ALAB Notebook</a>.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">alab</span><span class="p">.</span><span class="n">get_IAA_metrics</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">conll_dir</span> <span class="o">=</span> <span class="n">path_to_conll_folder</span><span class="p">,</span> <span class="n">annotator_names</span> <span class="o">=</span> <span class="p">[</span><span class="s">"annotator_1"</span><span class="p">,</span><span class="s">"annotator_2"</span><span class="p">,</span><span class="s">"annotator_3"</span><span class="p">,</span><span class="s">"annotator_4"</span><span class="p">],</span> <span class="n">set_ref_annotator</span> <span class="o">=</span> <span class="s">"annotator_1"</span><span class="p">,</span> <span class="n">return_NerDLMetrics</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">save_dir</span> <span class="o">=</span> <span class="s">"./token_based_results"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+  <h4 id="assertion-dataset-preparation-module-now-supports-chunk-start-and-end-indices-rather-than-token-indices">Assertion dataset preparation module now supports chunk start and end indices, rather than token indices.</h4>
+
+  <p>Here are the new features in <code class="language-plaintext highlighter-rouge">get_assertion_data()</code>;</p>
+
+  <ul>
+    <li>Now it returns the <code class="language-plaintext highlighter-rouge">char_begin</code> and <code class="language-plaintext highlighter-rouge">char_end</code> indices of the chunks. These columns can be used in <code class="language-plaintext highlighter-rouge">AssertionDLApproach()</code> annotator instead of <code class="language-plaintext highlighter-rouge">token_begin</code> and <code class="language-plaintext highlighter-rouge">token_end</code> columns for training an Assertion Status Detection model.</li>
+    <li>Added <code class="language-plaintext highlighter-rouge">included_task_ids</code> parameter that allows you to prepare the assertion model training dataframe  with only the included tasks. Default is <code class="language-plaintext highlighter-rouge">None</code>.</li>
+    <li>Added <code class="language-plaintext highlighter-rouge">seed</code> parameter that allows you to get the same training dataframe at each time when you set <code class="language-plaintext highlighter-rouge">unannotated_label_strategy</code>. Default is <code class="language-plaintext highlighter-rouge">None</code>.</li>
+  </ul>
+
+  <p>For more details and examples, please check <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Annotation_Lab/Complete_ALab_Module_SparkNLP_JSL.ipynb">ALAB Notebook</a>.</p>
+
+  <h4 id="added-nersource-in-the-chunkconverter-metadata">Added <code class="language-plaintext highlighter-rouge">ner_source</code> in the <code class="language-plaintext highlighter-rouge">ChunkConverter</code> Metadata</h4>
+
+  <p>We added <code class="language-plaintext highlighter-rouge">ner_source</code> in the metadata of <code class="language-plaintext highlighter-rouge">ChunkConverter</code> output. In this way, the sources of the chunks can be seen if there are multiple components that have the same NER label in the same pipeline.</p>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+<span class="n">age_contextual_parser</span> <span class="o">=</span> <span class="n">ContextualParserApproach</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"age_cp"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setJsonPath</span><span class="p">(</span><span class="s">"age.json"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setPrefixAndSuffixMatch</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>    
+
+<span class="n">chunks_age</span> <span class="o">=</span> <span class="n">ChunkConverter</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"age_cp"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"age_chunk"</span><span class="p">)</span>
+<span class="p">...</span>
+
+<span class="n">sample_text</span> <span class="o">=</span> <span class="s">"""The patient is a 28 years old female with a history of gestational diabetes mellitus was diagnosed in April 2002 in County Baptist Hospital ."""</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">Annotation</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="p">{</span><span class="s">'tokenIndex'</span><span class="p">:</span> <span class="s">'4'</span><span class="p">,</span> <span class="s">'entity'</span><span class="p">:</span> <span class="s">'Age'</span><span class="p">,</span> <span class="s">'field'</span><span class="p">:</span> <span class="s">'Age'</span><span class="p">,</span> <span class="s">'ner_source'</span><span class="p">:</span> <span class="s">'age_chunk'</span><span class="p">,</span> <span class="s">'chunk'</span><span class="p">:</span> <span class="s">'0'</span><span class="p">,</span> <span class="s">'normalized'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span> <span class="s">'sentence'</span><span class="p">:</span> <span class="s">'0'</span><span class="p">,</span> <span class="s">'confidenceValue'</span><span class="p">:</span> <span class="s">'0.74'</span><span class="p">})]</span>
+
+</code></pre></div>  </div>
+
+  <h4 id="important-announcement">Important Announcement:</h4>
+
+  <p><code class="language-plaintext highlighter-rouge">Router</code> and <code class="language-plaintext highlighter-rouge">AnnotationMerger</code> are not compatible with LightPipeline anymore due to the latest type validation checks introduced in open source Spark NLP. This issue will be resolved in the upcoming releases.</p>
+
+  <h4 id="core-improvements-and-bug-fixes">Core Improvements and Bug Fixes</h4>
+
+  <ul>
+    <li>Added chunk confidence score in the <code class="language-plaintext highlighter-rouge">RelationExtractionModel</code> metadata</li>
+    <li>Added confidence score in the <code class="language-plaintext highlighter-rouge">DocumentLogRegClassifierApproach</code> metadata</li>
+    <li>Fixed non-deterministic Relation Extraction DL Models (30+ models updated in the model hub)</li>
+    <li>Fixed incompatible PretrainedPipelines with PySpark v3.2.x and v3.3.x</li>
+    <li>Fixed validation parameter for internal annotators</li>
+    <li>Fixed <code class="language-plaintext highlighter-rouge">ZIP</code> label issue on <code class="language-plaintext highlighter-rouge">faker</code> mode with <code class="language-plaintext highlighter-rouge">setZipCodeTag</code> parameter in <code class="language-plaintext highlighter-rouge">Deidentification</code></li>
+    <li>Fixed obfuscated numbers have the same number of chars as the original ones</li>
+    <li>Fixed name obfuscation hashes in <code class="language-plaintext highlighter-rouge">Deidentification</code> for romanian language</li>
   </ul>
 
   <h4 id="new-and-updated-notebooks">New and Updated Notebooks</h4>
 
   <ul>
-    <li>
-      <p>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.6.ZeroShot_Clinical_NER.ipynb">ZeroShot Clinical NER Notebook</a> with <code class="language-plaintext highlighter-rouge">getClasses</code> method for zero shot NER models.</p>
-    </li>
-    <li>
-      <p>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.Clinical_Assertion_Model.ipynb">Clinical Assertion Notebook</a> with <code class="language-plaintext highlighter-rouge">AssertionChunkConverter</code>, <code class="language-plaintext highlighter-rouge">AssertionFilterer</code> and  <code class="language-plaintext highlighter-rouge">TFGraphBuilder.setIsLicensed</code> examples.</p>
-    </li>
-    <li>
-      <p>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.Clinical_Entity_Resolvers.ipynb">Clinical Entity Resolvers Notebook</a> with <code class="language-plaintext highlighter-rouge">AssertionFilterer</code> example.</p>
-    </li>
-    <li>
-      <p>Updated <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb">Clinical DeIdentification Notebook</a> with <code class="language-plaintext highlighter-rouge">setUnnormalizedDateMode</code> and  <code class="language-plaintext highlighter-rouge">NameChunkObfuscatorApproach</code> example.</p>
-    </li>
-    <li>
-      <p>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/10.3.ZeroShot_Clinical_Relation_Extraction.ipynb">ZeroShot Clinical Relation Extraction Notebook</a> with <code class="language-plaintext highlighter-rouge">getClasses</code> and <code class="language-plaintext highlighter-rouge">setMaxSyntacticDistance</code> method for Relation Extraction models.</p>
-    </li>
-    <li>
-      <p>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/25.Date_Normalizer.ipynb">Date Normalizer</a> notebook with <code class="language-plaintext highlighter-rouge">DateNormalizer</code> for dynamic date replace values.</p>
-    </li>
-    <li>
-      <p>Updated <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb">Chunk Mapping</a> notebook with fuzzy matching flexibility examples.</p>
-    </li>
+    <li>New <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/30.Clinical_Text_Classification_with_Spark_NLP.ipynb">Clinical Text Classification with Spark_NLP Notebook</a> show how can use medical text with ClassifierDL, MultiClassifierDL, GenericClassifier, and DocumentLogRegClassifier</li>
+    <li>New <a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/30.1.Text_Classification_with_DocumentMLClassifier.ipynb">Clinical Text Classification with DocumentMLClassifier Notebook</a> show how can use medical text with DocumentMLClassifier</li>
+    <li>Updated <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Annotation_Lab/Complete_ALab_Module_SparkNLP_JSL.ipynb">ALAB Notebook</a> with the changes in <code class="language-plaintext highlighter-rouge">get_assertion_data()</code> and the new <code class="language-plaintext highlighter-rouge">get_IAA_metrics()</code> method.</li>
   </ul>
 
   <h4 id="new-and-updated-demos">New and Updated Demos</h4>
 
   <ul>
-    <li><a href="https://demo.johnsnowlabs.com/healthcare/MEDICAL_QUESTION_ANSWERING/">MEDICAL QUESTION ANSWERING</a></li>
-    <li><a href="https://demo.johnsnowlabs.com/healthcare/SMOKING_STATUS/">SMOKING STATUS</a></li>
-    <li><a href="https://demo.johnsnowlabs.com/healthcare/MENTAL_HEALTH_DEPRESSION/">MENTAL HEALTH DEPRESSION</a></li>
+    <li><a href="https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT/">SOCIAL DETERMINANT</a> demo</li>
   </ul>
 
-  <h4 id="new-clinical-models-and-pipelines-added--updated-in-total">5 New Clinical Models and Pipelines Added &amp; Updated in Total</h4>
+  <h4 id="new-clinical-models-and-pipelines-added--updated-in-total">8 New Clinical Models and Pipelines Added &amp; Updated in Total</h4>
 
   <ul>
-    <li><code class="language-plaintext highlighter-rouge">drug_category_mapper</code></li>
-    <li><code class="language-plaintext highlighter-rouge">ner_sdoh_mentions</code></li>
-    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_sdoh_community_absent_status</code></li>
-    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_sdoh_community_present_status</code></li>
-    <li><code class="language-plaintext highlighter-rouge">bert_sequence_classifier_sdoh_environment_status</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_oncology_anatomy_general_healthcare</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_oncology_biomarker_healthcare</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_oncology_unspecific_posology_healthcare</code></li>
+    <li><code class="language-plaintext highlighter-rouge">genericclassifier_sdoh_economics_binary_sbiobert_cased_mli</code></li>
+    <li><code class="language-plaintext highlighter-rouge">genericclassifier_sdoh_substance_usage_binary_sbiobert_cased_mli</code></li>
+    <li><code class="language-plaintext highlighter-rouge">genericclassifier_sdoh_tobacco_usage_sbiobert_cased_mli</code></li>
+    <li><code class="language-plaintext highlighter-rouge">genericclassifier_sdoh_alcohol_usage_sbiobert_cased_mli</code></li>
+    <li><code class="language-plaintext highlighter-rouge">genericclassifier_sdoh_alcohol_usage_binary_sbiobert_cased_mli</code></li>
   </ul>
 
   <p>For all Spark NLP for Healthcare models, please check: <a href="https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP">Models Hub Page</a></p>
@@ -1264,7 +1070,7 @@ Obfuscated text :  Fitzpatrick is a &lt;AGE&gt; y.o. patient admitted. Mr. Bowma
     <li><a href="release_notes_2_4_0">2.4.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2022-12-20T00:00:00+00:00">Dec 20, 2022</time>
+      <time itemprop="dateModified" datetime="2023-01-16T00:00:00+00:00">Jan 16, 2023</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
