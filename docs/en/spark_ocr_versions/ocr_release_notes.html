@@ -544,76 +544,69 @@
           <h1>Spark OCR release notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/spark-nlp/tree/master/docs/en/spark_ocr_versions/ocr_release_notes.md">
+            href="https://github.com/johnsnowlabs/spark-nlp/tree/master/docs/en/spark_ocr_versions/release_notes_4_3_0.md">
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Spark OCR release notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">4.2.1</h2>
+  <h2 id="section">4.3.0</h2>
 
-  <p>Release date: 28-11-2022</p>
+  <p>Release date: 2023-01-13</p>
 
-  <p>We’re glad to announce that Spark-OCR 4.2.1 has been released! This release is almost completely about LightPipelines.</p>
+  <p>We are glad to announce that Spark OCR 4.3.0 has been released!! This big release comes with improvements in Dicom Processing, Visual Question Answering, new Table Extraction annotators, and much more!.</p>
 
-  <h4 id="lightpipeline-added-to-spark-ocr">LightPipeline added to Spark-OCR</h4>
-  <p>Originally introduced by Spark-NLP, this has been one of the most celebrated features by our users. In a nutshell, LightPipelines allow you switching your pipeline from distributed processing to local mode, in a single line of code. Also, results are much easier to post-process as they come in plain Python data structures.</p>
-
-  <p>Now, LightPipelines are available in Spark-OCR as well! This is an initial implementation only covering three of our most popular annotators: ImageToText, PdfToImage, and BinaryToImage. Although not all the annotators from Spark-OCR are included in this initial release, a number of interesting features are being delivered:</p>
-
+  <h3 id="new-features">New Features</h3>
   <ul>
-    <li>Latency has been dramatically reduced for small input dataset sizes.</li>
-    <li>Interoperability with Spark-NLP and Spark-NLP healthcare: you can mix any NLP annotator with supported OCR annotators on the same LightPipeline.</li>
+    <li>PositionFinder now works in LightPipelines.</li>
+    <li>
+      <p>New annotator HocrToTextTable to work together with PdfToHocr that allows table extraction from digital PDFs. This allows to extract tables using a mixed pipeline in which tables are detected using visual features, but the text is pulled directly from the digital layer of the PDF yielding near to perfect results, and removing OCR overhead.</p>
+    </li>
+    <li>
+      <p>New Dicom Processing improvements,</p>
+
+      <ul>
+        <li>Added support of Dicom documents to BinaryFile Datasource: this allows to write Dicom documents from Spark Dataframes to all data storages supported by Spark, in batch and streaming mode.</li>
+        <li>Added possibility to specify name of the files in BinaryFile Datasource: now we can store images, PDFs, Dicom files directly using Spark capabilities with names of our choice, overcoming the limitation imposed by Spark of naming files according to partitions.</li>
+        <li>Added DicomToMetadata Transformer: it allows to extract metadata from the Dicom documents. This allows to analyze Dicom metadata using Spark capabilities. For example, collect statistic about color schema, number of frames, compression of the images. This is useful for estimating needed resources and time before starting to process a big dataset.</li>
+        <li>Added DicomToImageV3 based on Pydicom with better support of different color schemas. Added support YBR_FULL_422, YBR_FULL images. Also fixed handling pixel data with different pixel size for RGB and Monochrome images.</li>
+        <li>Added support for compression after update pixel data in DicomDrawRegions. This reduces size of output Dicom files by applying JPEGBaseline8Bit compression to the pixel data.</li>
+        <li>Added support for different color schemas in DicomDrawRegions. Added support YBR_FULL_422, YBR_FULL images.</li>
+        <li>Added support for coordinates with rotated bounding box in DicomDrawRegions for compatibility with ImageTextDetectorV2.</li>
+      </ul>
+    </li>
+    <li>Fixed ImageTextDetectorV2 for images without text.</li>
+    <li>New Donut based VisualQuestionAnswering annotator.</li>
   </ul>
 
-  <p>Following is a chart comparing performance of different techniques on batches of different page counts: 8, 16, 24, 32, 40, 48, and 80 pages.</p>
-
-  <p><img src="/assets/images/ocr/light_pipelines.png" alt="image" /></p>
-
-  <p>For the 8 pages case, on the left side of the chart, LightPipelines average 1.25s per page vs. 4s per page that were scored by a similar Pytesseract implementation. That makes LightPipelines a great candidate to achieve low latency on small sized batches, while still leveraging parallelism.</p>
-
-  <h4 id="korean-support">Korean Support</h4>
-  <p>You can start using Korean language by just passing the ‘KOR’ option to ImageToText,</p>
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
-    <span class="c1"># Run OCR
-</span>    <span class="n">ocr</span> <span class="o">=</span> <span class="n">ImageToText</span><span class="p">()</span>
-    <span class="c1"># Set Korean language
-</span>    <span class="n">ocr</span><span class="p">.</span><span class="n">setLanguage</span><span class="p">(</span><span class="n">Language</span><span class="p">.</span><span class="n">KOR</span><span class="p">)</span>
-    <span class="c1"># Download model from JSL S3
-</span>    <span class="n">ocr</span><span class="p">.</span><span class="n">setDownloadModelData</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-</code></pre></div>  </div>
+  <p>Supports two modes of operation: it can receive an array of questions in the same row as the input image; in this way, each input image can be queried by an arbitrary set of user-defined questions, and also questions can be defined globally outside the Dataframe. This will cause that all images will be queried by the same set of questions.
+Running time is about a half the time per question when compared to the open-source version.
+Optimized model is smaller(about a half) of the original open-source version, making it easier to download and distribute in a cluster.
+Two models available: <code class="language-plaintext highlighter-rouge">docvqa_donut_base</code> and <code class="language-plaintext highlighter-rouge">docvqa_donut_base_opt</code>(quantized).
+LightPipelines support.</p>
 
   <h4 id="bug-fixes">Bug Fixes</h4>
+
   <ul>
-    <li>AlabReader has been updated to handle the new structure present in Annotation Lab’s exported annotations.</li>
+    <li>Empty tables now handled properly in ImageCellsToTextTable.</li>
+    <li>Pretrained models for VisualDocumentNerV21 are now accessible.</li>
   </ul>
 
-  <h4 id="new-notebooks">New Notebooks</h4>
+  <h4 id="newupdated-notebooks">New/updated Notebooks</h4>
+
   <ul>
-    <li>Check how to use LightPipelines in this notebook: <a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/4.2.1-release-candidate/jupyter/SparkOcrLightPipelines.ipynb">SparkOcrLightPipelines.ipynb</a></li>
+    <li>
+      <p><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrVisualQuestionAnswering.ipynb">SparkOcrVisualQuestionAnswering.ipynb</a>, this notebook shows examples on how to use Donut based visual question answering in Spark-OCR.</p>
+    </li>
+    <li>
+      <p><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRPdfToTable.ipynb">SparkOCRPdfToTable.ipynb</a>, this notebook shows how PdfToHocr and HocrToTextTable can be put together to do table extraction without OCR, by just relying on the digital layer of text in the PDF. Still, existent well tested table detection models, continue to be used for finding the tables.</p>
+    </li>
+    <li>
+      <p><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableRecognitionWHOCR.ipynb">SparkOcrImageTableRecognitionWHOCR.ipynb</a>, this notebook shows table detection, and the HocrToTextTable in action. Compared to previous implementations, now the OCR method is external, and it can be replaced by different implementations(even handwritten!).</p>
+    </li>
   </ul>
 
-  <h2 id="section-1">4.2.0</h2>
-
-  <p>Release date: 31-10-2022</p>
-
-  <p>We are glad to announce that Spark OCR 4.2.0 has been released. This is mostly a compatibility release to ensure compatibility of Spark OCR against Spark NLP 4.2.1, and Spark NLP Healthcare 4.2.1.</p>
-
-  <h4 id="improvements">Improvements</h4>
-  <ul>
-    <li>Improved memory consumption and performance in the training of Visual NER models.</li>
-  </ul>
-
-  <h4 id="new-features">New Features</h4>
-  <ul>
-    <li>PdfToForm new param: useFullyQualifiedName, added capability to return fully qualified key names.</li>
-  </ul>
-
-  <h4 id="new-or-updated-notebooks">New or Updated Notebooks</h4>
-  <ul>
-    <li><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrProcessMultiplepageScannedPDF.ipynb">SparkOcrProcessMultiplepageScannedPDF.ipynb</a> has been added to show how to serve a multi-page document processing pipeline.</li>
-    <li><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/4.2.0-release-candidate/jupyter/FormRecognition/SparkOcrDigitalFormRecognition.ipynb">SparkOcrDigitalFormRecognition.ipynb</a> has been updated to show utilization of useFullyQualifiedName parameter.</li>
-  </ul>
+  <p>This release is compatible with Spark NLP for Healthcare 4.2.4, and Spark NLP 4.2.4.</p>
 
 </div>
 <div class="prev_ver h3-box">
@@ -669,7 +662,7 @@
     <li><a href="release_notes_1_0_0">1.0.0</a></li>
   </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2020-04-08T00:00:00+00:00">Apr 08, 2020</time>
+      <time itemprop="dateModified" datetime="2023-01-13T00:00:00+00:00">Jan 13, 2023</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
