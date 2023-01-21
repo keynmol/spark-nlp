@@ -26,11 +26,11 @@
 
   gtag('config', 'UA-70312582-1');
 
-</script><title>Annotation Lab Release Notes 2.0.1</title><meta property="og:title" content="Annotation Lab | John Snow Labs"/>
+</script><title>Annotation Lab Release Notes 4.6.2</title><meta property="og:title" content="Annotation Lab | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_2_0_1"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_4_6_2"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -538,45 +538,112 @@
 <!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Annotation Lab Release Notes 2.0.1</li>
+    <li>Annotation Lab Release Notes 4.6.2</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Annotation Lab Release Notes 2.0.1</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Annotation Lab Release Notes 4.6.2</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/spark-nlp/tree/master/docs/en/alab/annotation_labs_releases/release_notes_2_0_1.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Annotation Lab Release Notes 2.0.1"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/spark-nlp/tree/master/docs/en/alab/annotation_labs_releases/release_notes_4_6_2.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Annotation Lab Release Notes 4.6.2"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">2.0.1</h2>
-  <h3 id="highlights">Highlights</h3>
-  <ul>
-    <li>Inter-Annotation Agreement Charts. To get a measure of how well multiple annotators can make the same annotation decision for a certain category, we are shipping seven different charts. To see these charts users can click on the third tab “Inter-Annotator Agreement” of the Analytics Dashboard of NER projects. There are dropdown boxes to change annotators for comparison purposes. It is also possible to download the data of some charts in CSV format by clicking the download button present at the bottom right corner of each of them.</li>
-    <li>Updated CONLL Export. In previous versions, numerous files were created based on Tasks and Completions. There were issues in the Header and no sentences were detected. Also, some punctuations were not correctly exported or were missing. The new CONLL export implementation results in a single file and fixes all the above issues. As in previous versions, if only Starred completions are needed in the exported file, users can select the “Only ground truth” checkbox.</li>
-    <li>Search tasks by label. Now, it is possible to list the tasks based on some annotation criteria. Examples of supported queries: “label: ABC”, “label: ABC=DEF”, “choice: Mychoice”, “label: ABC=DEF”.</li>
-    <li>Validation of labels and models is done beforehand. An error message is shown if the label is incompatible with models.</li>
-    <li>Transfer Learning support for Training Models. Now its is possible to continue model training from an already available model. If a Medical NER model is present in the system, the project owner or manager can go to Advanced Options settings of the Training section in the Setup Page and choose it to Fine Tune the model. When Fine Tuning is enabled, the embeddings that were used to train the model need to be present in the system. If present, it will be automatically selected, otherwise users need to go to the Models Hub page and download or upload it.</li>
-    <li>Training Community Models without the need of License. In previous versions, Annotation Lab didn’t allow training without the presence of Spark NLP for Healthcare license. But now the training with community embeddings is allowed even without the presence of Valid license.</li>
-    <li>Support for custom training scripts. If users want to change the default Training script present within the Annotation Lab, they can upload their own training pipeline. In the Training section of the Project Setup Page, only admin users can upload the training scripts. At the moment we are supporting the NER custom training script only.</li>
-    <li>Users can now see a proper message on the Modelshub page when annotationlab is not connected to the internet (AWS S3 to be more precise). This happens in air-gapped environments or some issues in the enterprise network.</li>
-    <li>Users now have the option to download the trained models from the Models Hub page. The download option is available under the overflow menu of each Model on the “Available Models” tab.</li>
-    <li>Training Live Logs are improved in terms of content and readability.</li>
-    <li>Not all Embeddings present in the Models Hub are supported by NER and Assertion Status Training. These are now properly validated from the UI.</li>
-    <li>Conflict when trying to use deleted embeddings. The existence of the embeddings in training as well as in deployment is ensured and a readable message is shown to users.</li>
-    <li>Support for adding custom CA certificate chain. Follow the instructions described in instruction.md file present in the installation artifact.</li>
-  </ul>
+  <h2 id="section">4.6.2</h2>
 
-  <h3 id="bug-fixes">Bug fixes</h3>
+  <p>Release date: <strong>21-01-2023</strong></p>
+
+  <p>NLP Lab 4.6.2 comes with support for zero-shot learning via prompts. Prompt engineering is a very recent but rapidly growing discipline that aims to guide language models such as GPT-3 to generate specific and desired outputs, such as answering a question or writing a coherent story. This version of the NLP Lab, adds support for the creation and use of prompts for entities and relations identification within text documents. 
+The goal of prompt engineering in this context is designing and crafting some questions, which are fed into a question-answering model together with some input text. The purpose is to guide the language model to generate specific and desired outputs, such as identifying entities or relations within the input text. 
+This release offers features such as creation and editing of prompts, a dedicated section for prompts management and sharing inside the resources Hub, an optimized configuration page allowing mixing models, prompts, and rules into the same project, and support for quick prompts deployments and testing to the Playground.</p>
+
+  <h2 id="prompts-on-the-hub">Prompts on the Hub</h2>
+  <p>The resources Hub has a new page dedicated to prompts. It allows users to easily discover and explore the existing prompts or create new prompts for identifying entities or relations. Currently, NLP Lab supports prompts for Healthcare, Finance, and Legal domains applied using pre-trained question-answering language models published on the NLP Models Hub and available to download in one click. The main advantage behind the use of prompts in entity or relation recognition is the ease of definition. Non-technical domain experts can easily create prompts, test and edit them on the playground on custom text snippets and, when ready, deploy them for pre-annotation as part of larger NLP projects. 
+Together with rules, prompts are very handy in situations where no pre-trained models exist, for the target entities and domains. With rules and prompts the annotators never start their projects from scratch but can capitalize on the power of zero-shot models and rules to help them pre-annotate the simple entities and relations and speed up the annotation process. As such the NLP Lab ensures fewer manual annotations are required from any given task.</p>
 
   <ul>
-    <li>When multiple paged OCR file was imported using Spark OCR, the task created did not have pagination.</li>
-    <li>Due to a bug in the Assertion Status script, the training was not working at all.</li>
-    <li>Any AdminUser could delete the main “admin” user as well as itself. We have added proper validation to avoid such situations.</li>
+    <li><strong>Creating NER Prompts</strong></li>
   </ul>
 
-  <p class="btn-block"><a href="https://www.johnsnowlabs.com/inter-annotator-agreement-charts-transfer-learning-training-without-license-custom-training-script-with-annotation-lab/" class="button button--primary button--rounded button--lg">Read more</a></p>
+  <p>NER prompts, can be used to identify entities in natural language text documents. Those can be created based on healthcare, finance, and legal zero-shot models selectable from the “Domain” dropdown. For one prompt, the user adds one or more questions for which the answer represents the target entity to annotate.</p>
+
+  <p><img src="https://user-images.githubusercontent.com/26042994/211890279-2ea02cd5-36fa-4b56-86fd-38b0c20ba880.gif" alt="entity_prompt" /></p>
+
+  <ul>
+    <li><strong>Creating Relation Prompts</strong></li>
+  </ul>
+
+  <p>Prompts can also be used to identify relations between entities for healthcare, finance, and legal domains. The domain-specific zero-shot model to use for detecting relation can be selected from the “Domain” dropdown. The relation prompts are defined by a pair of entities related by a predicate. The entities can be selected from the available dropdowns listing all entities available in the current NLP Lab (included in available NER models or rules) for the specified domain.</p>
+
+  <p><img src="https://user-images.githubusercontent.com/26042994/211890317-362f193c-b80b-4caa-b242-69df6fa8a257.gif" alt="relation_prompt" /></p>
+
+  <h2 id="a-simplified-configuration-wizard-allows-the-reuse-of-models-rules-and-prompts">A simplified configuration wizard allows the reuse of models, rules, and prompts</h2>
+  <p>The project configuration page was simplified by grouping into one page all available resources that can be reused for pre-annotation: models, rules, and prompts. Users can easily mix and match the relevant resources and add them to their configuration.</p>
+
+  <p><img src="https://user-images.githubusercontent.com/26042994/211890361-14c5b17c-762d-4d0a-a6a6-0ac235565aa0.gif" alt="updated_configuration_page" /></p>
+
+  <p><strong>Note:</strong> One project configuration can only reuse the prompts defined by one single zero-shot model. Prompts created based on multiple zero-shot models (e.g. finance or legal or healthcare) cannot be mixed into the same project because of high resource consumption. Furthermore, all prompts require a license with a scope that matches the domain of the prompt.</p>
+
+  <h2 id="experiment-with-prompts-in-playground">Experiment with prompts in Playground</h2>
+  <p>NLP Lab’s Playground supports the deployment and testing of prompts. Users can quickly test the results of applying a prompt on custom text, can easily edit the prompt, save it, and deploy it right away to see the change in the pre-annotation results.</p>
+
+  <p><img src="https://user-images.githubusercontent.com/33893292/213699722-543d13f6-c410-4398-83a1-26a832a032ca.gif" alt="demo3" /></p>
+
+  <h2 id="zero-shot-models-available-in-the-nlp-models-hub">Zero-Shot Models available in the NLP Models Hub</h2>
+  <p>NLP Models Hub now lists the newly released zero-shot models that are used to define prompts. These models need to be downloaded to NLP Lab instance before prompts can be created. A valid license must be available for the models to be downloaded to NLP Lab.</p>
+
+  <p><img src="https://user-images.githubusercontent.com/26042994/211890478-3aa90dfc-f474-42c8-a73f-ce6c3efecbbe.png" alt="Zero-shot-models" /></p>
+
+  <h2 id="bug-fixes">Bug Fixes</h2>
+
+  <ul>
+    <li>
+      <p><strong>Error while deploying classification model to the playground</strong></p>
+
+      <p>Previously, deploying the classification model to the playground had some issues which have been fixed in this version.</p>
+    </li>
+    <li>
+      <p>**Information on the model’s details not visible completely on the playground **</p>
+
+      <p>In this version, we have fixed an issue related to the visibility of the information for Edition, Uploaded by, and Source inside the Models Detail accordion. Now, the UI can handle long model names on the playground page.</p>
+    </li>
+    <li>
+      <p><strong>Undo and Reset buttons are not working</strong></p>
+
+      <p>With release 4.6.2, issues regarding undo/redo buttons in the labeling page for annotated tokens have been fixed. Now, the Undo and Redo button works as expected.</p>
+    </li>
+    <li>
+      <p><strong>Finance and Legal models cannot be downloaded to NLP Lab with a floating license from Models Hub</strong></p>
+
+      <p>Earlier, users were not able to download the Finance and Legal model from the NLP Models HUB page using floating licenses. This issue has been fixed. Now, legal and finance models are downloadable in the NLP lab using a floating license.</p>
+    </li>
+    <li>
+      <p><strong>Pre-annotation server cannot be deployed for Visual NER</strong></p>
+
+      <p>This version also fixes the issue of failing to deploy the pre-annotation server for Visual NER models.</p>
+    </li>
+    <li>
+      <p><strong>Draft saved is seen for submitted completion</strong></p>
+
+      <p>Previously, in the NER task when the user clicked on regions of a previously submitted completion and viewed the versions submitted by the users, a draft was saved. A draft should not be created and saved for submitted completions. This issue was fixed in 4.6.2.</p>
+    </li>
+    <li>
+      <p><strong>Training fails for NER when embedding_clinical is used and the license type is open-source</strong></p>
+
+      <p>Earlier it was not possible to train a NER model with the open-source library using embeddings_clinical. This issue has been fixed. Hence users can now train open-sourced models with embeddings_clinical.</p>
+    </li>
+    <li>
+      <p><strong>UI goes blank for the Visual NER project when an annotation is saved and the next button is clicked</strong></p>
+
+      <p>In the previous version, annotators were not served the next task after clicking the Next button. A blank page with a console error was seen. Now the next task is served in the Visual NER project without any error.</p>
+    </li>
+    <li>
+      <p><strong>Pre-annotation server cannot be deployed for RE model</strong></p>
+
+      <p>There was an issue with the deployment of trained NER models with a relation extraction model. This issue has been fixed in this version.</p>
+    </li>
+  </ul>
 
 </div>
 <div class="prev_ver h3-box">
@@ -627,7 +694,7 @@
   <li><a href="release_notes_2_0_1">2.0.1</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2021-07-14T00:00:00+00:00">Jul 14, 2021</time>
+      <time itemprop="dateModified" datetime="2023-01-21T00:00:00+00:00">Jan 21, 2023</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
