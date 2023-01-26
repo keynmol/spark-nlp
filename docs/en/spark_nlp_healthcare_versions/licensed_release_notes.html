@@ -550,12 +550,12 @@
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">4.2.7</h2>
+  <h2 id="section">4.2.8</h2>
 
   <h4 id="highlights">Highlights</h4>
 
   <ul>
-    <li>3 new oncological NER models</li>
+    <li>4 new clinical named entity recognition models (3 oncology, 1 others)</li>
     <li>5 new Social Determenant of Health text classification models</li>
     <li>New <code class="language-plaintext highlighter-rouge">DocumentMLClassifierApproach</code> annotator for training text classification models using SVM and Logistic Regression using TfIdf</li>
     <li>New <code class="language-plaintext highlighter-rouge">Resolution2Chunk</code> annotator to map entity resolver outputs (terminology codes) to other clinical terminologies</li>
@@ -570,10 +570,11 @@
         <li>Added confidence score in the <code class="language-plaintext highlighter-rouge">DocumentLogRegClassifierApproach</code> metadata</li>
         <li>Fixed non-deterministic Relation Extraction DL Models (30+ models updated in the model hub)</li>
         <li>Fixed incompatible PretrainedPipelines with PySpark v3.2.x and v3.3.x</li>
-        <li>Fixed validation parameter for internal annotators</li>
         <li>Fixed <code class="language-plaintext highlighter-rouge">ZIP</code> label issue on <code class="language-plaintext highlighter-rouge">faker</code> mode with <code class="language-plaintext highlighter-rouge">setZipCodeTag</code> parameter in <code class="language-plaintext highlighter-rouge">Deidentification</code></li>
         <li>Fixed obfuscated numbers have the same number of chars as the original ones</li>
-        <li>Fixed name obfuscation hashes in <code class="language-plaintext highlighter-rouge">Deidentification</code> for the Romanian language</li>
+        <li>Fixed name obfuscation hashes in <code class="language-plaintext highlighter-rouge">Deidentification</code> for romanian language</li>
+        <li>Fixed LightPipeline validation parameter for internal annotators</li>
+        <li>LightPipeline support for <code class="language-plaintext highlighter-rouge">GenericClassifier</code> (<code class="language-plaintext highlighter-rouge">FeatureAssembler</code>)</li>
       </ul>
     </li>
     <li>New and updated notebooks
@@ -588,12 +589,14 @@
         <li><a href="https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT/">SOCIAL DETERMINANT</a> demo</li>
       </ul>
     </li>
-    <li>8 new clinical models and pipelines added &amp; updated in total</li>
+    <li>9 new clinical models and pipelines added &amp; updated in total</li>
   </ul>
 
-  <h4 id="new-oncological-ner-models">3 New Oncological NER Models</h4>
+  <h4 id="new-clinical-named-entity-recognition-models-3-oncology-1-others">4 New Clinical Named Entity Recognition Models (3 Oncology, 1 Others)</h4>
 
-  <p>We are releasing 3 new oncological NER models that were trained by using <code class="language-plaintext highlighter-rouge">embeddings_healthcare_100d</code> embeddings model.</p>
+  <ul>
+    <li>We are releasing 3 new oncological NER models that were trained by using <code class="language-plaintext highlighter-rouge">embeddings_healthcare_100d</code> embeddings model.</li>
+  </ul>
 
   <table>
     <thead>
@@ -648,6 +651,33 @@
 |lungs             |Anatomical_Site |
 |liver             |Anatomical_Site |
 +------------------+----------------+
+</code></pre></div>  </div>
+
+  <ul>
+    <li>We are releasing new oncological NER models that used for model training is provided by European Clinical Case Corpus (E3C), a project aimed at offering a freely available multilingual corpus of semantically annotated clinical narratives.</li>
+  </ul>
+
+  <p><em>Example</em>:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+<span class="n">ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'ner_eu_clinical_case'</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+	<span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
+	<span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""A 3-year-old boy with autistic disorder on hospital of pediatric ward A at university hospital. He has no family history of illness or autistic spectrum disorder."""</span>
+</code></pre></div>  </div>
+
+  <p><em>Result</em>:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------------------+------------------+
+|chunk                         |ner_label         |
++------------------------------+------------------+
+|A 3-year-old boy              |patient           |
+|autistic disorder             |clinical_condition|
+|He                            |patient           |
+|illness                       |clinical_event    |
+|autistic spectrum disorder    |clinical_condition|
++------------------------------+------------------+
 </code></pre></div>  </div>
 
   <h4 id="new-social-determinant-of-health-text-classification--models">5 New Social Determinant of Health Text Classification  Models</h4>
@@ -972,10 +1002,6 @@ Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson , Ora MR # 71
 
 </code></pre></div>  </div>
 
-  <h4 id="important-announcement">Important Announcement:</h4>
-
-  <p><code class="language-plaintext highlighter-rouge">Router</code> and <code class="language-plaintext highlighter-rouge">AnnotationMerger</code> are not compatible with LightPipeline anymore due to the latest type validation checks introduced in open source Spark NLP. This issue will be resolved in the upcoming releases.</p>
-
   <h4 id="core-improvements-and-bug-fixes">Core Improvements and Bug Fixes</h4>
 
   <ul>
@@ -983,10 +1009,11 @@ Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson , Ora MR # 71
     <li>Added confidence score in the <code class="language-plaintext highlighter-rouge">DocumentLogRegClassifierApproach</code> metadata</li>
     <li>Fixed non-deterministic Relation Extraction DL Models (30+ models updated in the model hub)</li>
     <li>Fixed incompatible PretrainedPipelines with PySpark v3.2.x and v3.3.x</li>
-    <li>Fixed validation parameter for internal annotators</li>
     <li>Fixed <code class="language-plaintext highlighter-rouge">ZIP</code> label issue on <code class="language-plaintext highlighter-rouge">faker</code> mode with <code class="language-plaintext highlighter-rouge">setZipCodeTag</code> parameter in <code class="language-plaintext highlighter-rouge">Deidentification</code></li>
     <li>Fixed obfuscated numbers have the same number of chars as the original ones</li>
     <li>Fixed name obfuscation hashes in <code class="language-plaintext highlighter-rouge">Deidentification</code> for romanian language</li>
+    <li>Fixed LightPipeline validation parameter for internal annotators</li>
+    <li>LightPipeline support for <code class="language-plaintext highlighter-rouge">GenericClassifier</code> (<code class="language-plaintext highlighter-rouge">FeatureAssembler</code>)</li>
   </ul>
 
   <h4 id="new-and-updated-notebooks">New and Updated Notebooks</h4>
@@ -1003,12 +1030,13 @@ Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson , Ora MR # 71
     <li><a href="https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT/">SOCIAL DETERMINANT</a> demo</li>
   </ul>
 
-  <h4 id="new-clinical-models-and-pipelines-added--updated-in-total">8 New Clinical Models and Pipelines Added &amp; Updated in Total</h4>
+  <h4 id="new-clinical-models-and-pipelines-added--updated-in-total">9 New Clinical Models and Pipelines Added &amp; Updated in Total</h4>
 
   <ul>
     <li><code class="language-plaintext highlighter-rouge">ner_oncology_anatomy_general_healthcare</code></li>
     <li><code class="language-plaintext highlighter-rouge">ner_oncology_biomarker_healthcare</code></li>
     <li><code class="language-plaintext highlighter-rouge">ner_oncology_unspecific_posology_healthcare</code></li>
+    <li><code class="language-plaintext highlighter-rouge">ner_eu_clinical_case</code></li>
     <li><code class="language-plaintext highlighter-rouge">genericclassifier_sdoh_economics_binary_sbiobert_cased_mli</code></li>
     <li><code class="language-plaintext highlighter-rouge">genericclassifier_sdoh_substance_usage_binary_sbiobert_cased_mli</code></li>
     <li><code class="language-plaintext highlighter-rouge">genericclassifier_sdoh_tobacco_usage_sbiobert_cased_mli</code></li>
@@ -1036,7 +1064,7 @@ Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson , Ora MR # 71
     </li>
 </ul>
 <ul class="pagination owl-carousel pagination_big">
-    <li><a href="release_notes_4_2_7">4.2.7</a></li>
+    <li><a href="release_notes_4_2_8">4.2.8</a></li>
     <li><a href="release_notes_4_2_4">4.2.4</a></li>
     <li><a href="release_notes_4_2_3">4.2.3</a></li>
     <li><a href="release_notes_4_2_2">4.2.2</a></li>
@@ -1088,7 +1116,7 @@ Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson , Ora MR # 71
     <li><a href="release_notes_2_4_0">2.4.0</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-01-16T00:00:00+00:00">Jan 16, 2023</time>
+      <time itemprop="dateModified" datetime="2023-01-26T00:00:00+00:00">Jan 26, 2023</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
