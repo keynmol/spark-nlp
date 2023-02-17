@@ -585,64 +585,6 @@
 
   <p>This release is compatible with Spark NLP for Healthcare 4.3.0, and Spark NLP 4.3.0.</p>
 
-  <h2 id="section-1">4.3.0</h2>
-
-  <p>Release date: 13-01-2023</p>
-
-  <p>We are glad to announce that Spark OCR 4.3.0 has been released!! This big release comes with improvements in Dicom Processing, Visual Question Answering, new Table Extraction annotators, and much more!.</p>
-
-  <h3 id="new-features">New Features</h3>
-  <ul>
-    <li>PositionFinder now works in LightPipelines.</li>
-    <li>
-      <p>New annotator HocrToTextTable to work together with PdfToHocr that allows table extraction from digital PDFs. This allows to extract tables using a mixed pipeline in which tables are detected using visual features, but the text is pulled directly from the digital layer of the PDF yielding near to perfect results, and removing OCR overhead.</p>
-    </li>
-    <li>
-      <p>New Dicom Processing improvements,</p>
-
-      <ul>
-        <li>Added support of Dicom documents to BinaryFile Datasource: this allows to write Dicom documents from Spark Dataframes to all data storages supported by Spark, in batch and streaming mode.</li>
-        <li>Added possibility to specify name of the files in BinaryFile Datasource: now we can store images, PDFs, Dicom files directly using Spark capabilities with names of our choice, overcoming the limitation imposed by Spark of naming files according to partitions.</li>
-        <li>Added DicomToMetadata Transformer: it allows to extract metadata from the Dicom documents. This allows to analyze Dicom metadata using Spark capabilities. For example, collect statistic about color schema, number of frames, compression of the images. This is useful for estimating needed resources and time before starting to process a big dataset.</li>
-        <li>Added DicomToImageV3 based on Pydicom with better support of different color schemas. Added support YBR_FULL_422, YBR_FULL images. Also fixed handling pixel data with different pixel size for RGB and Monochrome images.</li>
-        <li>Added support for compression after update pixel data in DicomDrawRegions. This reduces size of output Dicom files by applying JPEGBaseline8Bit compression to the pixel data.</li>
-        <li>Added support for different color schemas in DicomDrawRegions. Added support YBR_FULL_422, YBR_FULL images.</li>
-        <li>Added support for coordinates with rotated bounding box in DicomDrawRegions for compatibility with ImageTextDetectorV2.</li>
-      </ul>
-    </li>
-    <li>Fixed ImageTextDetectorV2 for images without text.</li>
-    <li>New Donut based VisualQuestionAnswering annotator.</li>
-  </ul>
-
-  <p>Supports two modes of operation: it can receive an array of questions in the same row as the input image; in this way, each input image can be queried by an arbitrary set of user-defined questions, and also questions can be defined globally outside the Dataframe. This will cause that all images will be queried by the same set of questions.
-Running time is about a half the time per question when compared to the open-source version.
-Optimized model is smaller(about a half) of the original open-source version, making it easier to download and distribute in a cluster.
-Two models available: <code class="language-plaintext highlighter-rouge">docvqa_donut_base</code> and <code class="language-plaintext highlighter-rouge">docvqa_donut_base_opt</code>(quantized).
-LightPipelines support.</p>
-
-  <h4 id="bug-fixes">Bug Fixes</h4>
-
-  <ul>
-    <li>Empty tables now handled properly in ImageCellsToTextTable.</li>
-    <li>Pretrained models for VisualDocumentNerV21 are now accessible.</li>
-  </ul>
-
-  <h4 id="newupdated-notebooks">New/updated Notebooks</h4>
-
-  <ul>
-    <li>
-      <p><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrVisualQuestionAnswering.ipynb">SparkOcrVisualQuestionAnswering.ipynb</a>, this notebook shows examples on how to use Donut based visual question answering in Spark-OCR.</p>
-    </li>
-    <li>
-      <p><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRPdfToTable.ipynb">SparkOCRPdfToTable.ipynb</a>, this notebook shows how PdfToHocr and HocrToTextTable can be put together to do table extraction without OCR, by just relying on the digital layer of text in the PDF. Still, existent well tested table detection models, continue to be used for finding the tables.</p>
-    </li>
-    <li>
-      <p><a href="https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableRecognitionWHOCR.ipynb">SparkOcrImageTableRecognitionWHOCR.ipynb</a>, this notebook shows table detection, and the HocrToTextTable in action. Compared to previous implementations, now the OCR method is external, and it can be replaced by different implementations(even handwritten!).</p>
-    </li>
-  </ul>
-
-  <p>This release is compatible with Spark NLP for Healthcare 4.2.4, and Spark NLP 4.2.4.</p>
-
 </div>
 <div class="prev_ver h3-box">
 
@@ -688,7 +630,7 @@ LightPipelines support.</p>
     <li><a href="release_notes_1_0_0">1.0.0</a></li>
   </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-01-13T00:00:00+00:00">Jan 13, 2023</time>
+      <time itemprop="dateModified" datetime="2023-02-17T00:00:00+00:00">Feb 17, 2023</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
