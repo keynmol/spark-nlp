@@ -766,7 +766,7 @@ result <span class="o">=</span> re_model.transform<span class="o">(</span>spark.
 
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
 mesh_resolver <span class="o">=</span> SentenceEntityResolverModel.pretrained<span class="o">(</span><span class="s2">"sbiobertresolve_mesh"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span> <span class="se">\</span>
-      .setInputCols<span class="o">([</span><span class="s2">"ner_chunk"</span>, <span class="s2">"sentence_embeddings"</span><span class="o">])</span> <span class="se">\</span>
+      .setInputCols<span class="o">([</span><span class="s2">"sentence_embeddings"</span><span class="o">])</span> <span class="se">\</span>
       .setOutputCol<span class="o">(</span><span class="s2">"mesh_code"</span><span class="o">)</span><span class="se">\</span>
       .setDistanceFunction<span class="o">(</span><span class="s2">"EUCLIDEAN"</span><span class="o">)</span><span class="se">\</span>
       .setCaseSensitive<span class="o">(</span>False<span class="o">)</span>
@@ -803,7 +803,7 @@ result <span class="o">=</span> resolver_model.transform<span class="o">(</span>
 
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
 ndc_resolver <span class="o">=</span> SentenceEntityResolverModel.pretrained<span class="o">(</span><span class="s2">"sbiobertresolve_ndc"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span> <span class="se">\</span>
-      .setInputCols<span class="o">([</span><span class="s2">"ner_chunk"</span>, <span class="s2">"sentence_embeddings"</span><span class="o">])</span> <span class="se">\</span>
+      .setInputCols<span class="o">([</span><span class="s2">"sentence_embeddings"</span><span class="o">])</span> <span class="se">\</span>
       .setOutputCol<span class="o">(</span><span class="s2">"ndc_code"</span><span class="o">)</span><span class="se">\</span>
       .setDistanceFunction<span class="o">(</span><span class="s2">"EUCLIDEAN"</span><span class="o">)</span><span class="se">\</span>
       .setCaseSensitive<span class="o">(</span>False<span class="o">)</span>
@@ -834,7 +834,7 @@ result <span class="o">=</span> resolver_model.transform<span class="o">(</span>
 
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
 loinc_resolver <span class="o">=</span> SentenceEntityResolverModel.pretrained<span class="o">(</span><span class="s2">"sbiobertresolve_loinc_augmented"</span>,<span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span> <span class="se">\</span>
-     .setInputCols<span class="o">([</span><span class="s2">"ner_chunk"</span>, <span class="s2">"sentence_embeddings"</span><span class="o">])</span> <span class="se">\</span>
+     .setInputCols<span class="o">([</span><span class="s2">"sentence_embeddings"</span><span class="o">])</span> <span class="se">\</span>
      .setOutputCol<span class="o">(</span><span class="s2">"loinc_code"</span><span class="o">)</span><span class="se">\</span>
      .setDistanceFunction<span class="o">(</span><span class="s2">"EUCLIDEAN"</span><span class="o">)</span><span class="se">\</span>
      .setCaseSensitive<span class="o">(</span>False<span class="o">)</span>
@@ -864,7 +864,7 @@ result <span class="o">=</span> resolver_model.transform<span class="o">(</span>
 
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
 snomed_resolver <span class="o">=</span> SentenceEntityResolverModel.pretrained<span class="o">(</span><span class="s2">"sbiobertresolve_clinical_snomed_procedures_measurements"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span> <span class="se">\</span>
-      .setInputCols<span class="o">([</span><span class="s2">"ner_chunk"</span>, <span class="s2">"sbert_embeddings"</span><span class="o">])</span> <span class="se">\</span>
+      .setInputCols<span class="o">([</span><span class="s2">"sbert_embeddings"</span><span class="o">])</span> <span class="se">\</span>
       .setOutputCol<span class="o">(</span><span class="s2">"snomed_code"</span><span class="o">)</span>
 ...
 

@@ -860,7 +860,7 @@ sbert_embedder <span class="o">=</span> BertSentenceEmbeddings.pretrained<span c
       .setOutputCol<span class="o">(</span><span class="s2">"sentence_embeddings"</span><span class="o">)</span>
 
 hcpcs_resolver <span class="o">=</span> SentenceEntityResolverModel.pretrained<span class="o">(</span><span class="s2">"sbiobertresolve_hcpcs"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span> <span class="se">\</span>
-      .setInputCols<span class="o">([</span><span class="s2">"ner_chunk"</span>, <span class="s2">"sentence_embeddings"</span><span class="o">])</span> <span class="se">\</span>
+      .setInputCols<span class="o">([</span><span class="s2">"sentence_embeddings"</span><span class="o">])</span> <span class="se">\</span>
       .setOutputCol<span class="o">(</span><span class="s2">"hcpcs_code"</span><span class="o">)</span><span class="se">\</span>
       .setDistanceFunction<span class="o">(</span><span class="s2">"EUCLIDEAN"</span><span class="o">)</span>
 hcpcs_pipelineModel <span class="o">=</span> PipelineModel<span class="o">(</span>
@@ -909,7 +909,7 @@ sbert_embedder <span class="o">=</span> BertSentenceEmbeddings.pretrained<span c
       .setOutputCol<span class="o">(</span><span class="s2">"sentence_embeddings"</span><span class="o">)</span>
 
 icd_resolver <span class="o">=</span> SentenceEntityResolverModel.pretrained<span class="o">(</span><span class="s2">"sbiobertresolve_icd10cm_generalised"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span> <span class="se">\</span>
-      .setInputCols<span class="o">([</span><span class="s2">"ner_chunk"</span>, <span class="s2">"sentence_embeddings"</span><span class="o">])</span> <span class="se">\</span>
+      .setInputCols<span class="o">([</span><span class="s2">"sentence_embeddings"</span><span class="o">])</span> <span class="se">\</span>
       .setOutputCol<span class="o">(</span><span class="s2">"icd_code"</span><span class="o">)</span><span class="se">\</span>
       .setDistanceFunction<span class="o">(</span><span class="s2">"EUCLIDEAN"</span><span class="o">)</span>
 
@@ -947,7 +947,7 @@ sbert_embedder <span class="o">=</span> BertSentenceEmbeddings.pretrained<span c
       .setOutputCol<span class="o">(</span><span class="s2">"sentence_embeddings"</span><span class="o">)</span>
 
 rxnorm_ndc_resolver <span class="o">=</span> SentenceEntityResolverModel.pretrained<span class="o">(</span><span class="s2">"sbiobertresolve_rxnorm_ndc"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span> <span class="se">\</span>
-      .setInputCols<span class="o">([</span><span class="s2">"ner_chunk"</span>, <span class="s2">"sentence_embeddings"</span><span class="o">])</span> <span class="se">\</span>
+      .setInputCols<span class="o">([</span><span class="s2">"sentence_embeddings"</span><span class="o">])</span> <span class="se">\</span>
       .setOutputCol<span class="o">(</span><span class="s2">"rxnorm_code"</span><span class="o">)</span><span class="se">\</span>
       .setDistanceFunction<span class="o">(</span><span class="s2">"EUCLIDEAN"</span><span class="o">)</span>
 

@@ -630,7 +630,7 @@ sbert_embedder <span class="o">=</span> BertSentenceEmbeddings.pretrained<span c
     .setOutputCol<span class="o">(</span><span class="s2">"sbert_embeddings"</span><span class="o">)</span>
 
 icd10gm_resolver <span class="o">=</span> SentenceEntityResolverModel.pretrained<span class="o">(</span><span class="s2">"sbertresolve_icd10gm"</span>, <span class="s2">"de"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span><span class="se">\</span>
-    .setInputCols<span class="o">([</span><span class="s2">"ner_chunk"</span>, <span class="s2">"sbert_embeddings"</span><span class="o">])</span><span class="se">\</span>
+    .setInputCols<span class="o">([</span><span class="s2">"sbert_embeddings"</span><span class="o">])</span><span class="se">\</span>
     .setOutputCol<span class="o">(</span><span class="s2">"icd10gm_code"</span><span class="o">)</span>
 
 icd10gm_pipelineModel <span class="o">=</span> PipelineModel<span class="o">(</span> stages <span class="o">=</span> <span class="o">[</span>documentAssembler, sbert_embedder, icd10gm_resolver]<span class="o">)</span>
@@ -677,7 +677,7 @@ sbert_embedder <span class="o">=</span> BertSentenceEmbeddings.pretrained<span c
     .setOutputCol<span class="o">(</span><span class="s2">"sbert_embeddings"</span><span class="o">)</span>
 
 snomed_resolver <span class="o">=</span> SentenceEntityResolverModel.pretrained<span class="o">(</span><span class="s2">"sbertresolve_snomed"</span>, <span class="s2">"de"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span><span class="se">\</span>
-    .setInputCols<span class="o">([</span><span class="s2">"ner_chunk"</span>, <span class="s2">"sbert_embeddings"</span><span class="o">])</span><span class="se">\</span>
+    .setInputCols<span class="o">([</span><span class="s2">"sbert_embeddings"</span><span class="o">])</span><span class="se">\</span>
     .setOutputCol<span class="o">(</span><span class="s2">"snomed_code"</span><span class="o">)</span>
 
 snomed_pipelineModel <span class="o">=</span> PipelineModel<span class="o">(</span> stages <span class="o">=</span> <span class="o">[</span> documentAssembler, sbert_embedder, snomed_resolver]<span class="o">)</span>

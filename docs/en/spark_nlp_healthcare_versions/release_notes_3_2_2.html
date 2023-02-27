@@ -612,7 +612,7 @@ sbert_embedder <span class="o">=</span> BertSentenceEmbeddings.pretrained<span c
       .setOutputCol<span class="o">(</span><span class="s2">"sbert_embeddings"</span><span class="o">)</span>
 
 rxnorm_resolver <span class="o">=</span> SentenceEntityResolverModel.pretrained<span class="o">(</span><span class="s2">"sbertresolve_rxnorm_disposition"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span> <span class="se">\</span>
-      .setInputCols<span class="o">([</span><span class="s2">"ner_chunk"</span>, <span class="s2">"sbert_embeddings"</span><span class="o">])</span> <span class="se">\</span>
+      .setInputCols<span class="o">([</span><span class="s2">"sbert_embeddings"</span><span class="o">])</span> <span class="se">\</span>
       .setOutputCol<span class="o">(</span><span class="s2">"rxnorm_code"</span><span class="o">)</span><span class="se">\</span>
       .setDistanceFunction<span class="o">(</span><span class="s2">"EUCLIDEAN"</span><span class="o">)</span>
 
@@ -647,7 +647,7 @@ sbert_embedder <span class="o">=</span> BertSentenceEmbeddings.pretrained<span c
       .setOutputCol<span class="o">(</span><span class="s2">"sbert_embeddings"</span><span class="o">)</span>
 
 snomed_resolver <span class="o">=</span> SentenceEntityResolverModel.pretrained<span class="o">(</span><span class="s2">"sbertresolve_snomed_conditions"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span> <span class="se">\</span>
-      .setInputCols<span class="o">([</span><span class="s2">"ner_chunk"</span>, <span class="s2">"sbert_embeddings"</span><span class="o">])</span> <span class="se">\</span>
+      .setInputCols<span class="o">([</span><span class="s2">"sbert_embeddings"</span><span class="o">])</span> <span class="se">\</span>
       .setOutputCol<span class="o">(</span><span class="s2">"snomed_code"</span><span class="o">)</span><span class="se">\</span>
       .setDistanceFunction<span class="o">(</span><span class="s2">"EUCLIDEAN"</span><span class="o">)</span>
 
@@ -726,14 +726,14 @@ router_sentence_rxnorm <span class="o">=</span> Router<span class="o">()</span> 
 
 <span class="c"># use problem_embeddings only</span>
 icd_resolver <span class="o">=</span> SentenceEntityResolverModel.pretrained<span class="o">(</span><span class="s2">"sbiobertresolve_icd10cm_slim_billable_hcc"</span>,<span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span> <span class="se">\</span>
-        .setInputCols<span class="o">([</span><span class="s2">"clinical_ner_chunk"</span>, <span class="s2">"problem_embeddings"</span><span class="o">])</span> <span class="se">\</span>
+        .setInputCols<span class="o">([</span><span class="s2">"problem_embeddings"</span><span class="o">])</span> <span class="se">\</span>
         .setOutputCol<span class="o">(</span><span class="s2">"icd10cm_code"</span><span class="o">)</span><span class="se">\</span>
         .setDistanceFunction<span class="o">(</span><span class="s2">"EUCLIDEAN"</span><span class="o">)</span>
 
 
 <span class="c"># use drug_embeddings only</span>
 rxnorm_resolver <span class="o">=</span> SentenceEntityResolverModel.pretrained<span class="o">(</span><span class="s2">"sbiobertresolve_rxnorm"</span>,<span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span> <span class="se">\</span>
-        .setInputCols<span class="o">([</span><span class="s2">"posology_ner_chunk"</span>, <span class="s2">"drug_embeddings"</span><span class="o">])</span> <span class="se">\</span>
+        .setInputCols<span class="o">([</span><span class="s2">"drug_embeddings"</span><span class="o">])</span> <span class="se">\</span>
         .setOutputCol<span class="o">(</span><span class="s2">"rxnorm_code"</span><span class="o">)</span><span class="se">\</span>
         .setDistanceFunction<span class="o">(</span><span class="s2">"EUCLIDEAN"</span><span class="o">)</span>
 

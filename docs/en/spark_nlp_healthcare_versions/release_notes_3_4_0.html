@@ -999,7 +999,7 @@ results <span class="o">=</span> abb_model.transform<span class="o">(</span>spar
 
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
 umls_resolver <span class="o">=</span> SentenceEntityResolverModel.pretrained<span class="o">(</span><span class="s2">"sbiobertresolve_umls_drug_substance"</span>,<span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span><span class="se">\</span>
-  .setInputCols<span class="o">([</span><span class="s2">"ner_chunk"</span>, <span class="s2">"sbert_embeddings"</span><span class="o">])</span><span class="se">\</span>
+  .setInputCols<span class="o">([</span><span class="s2">"sbert_embeddings"</span><span class="o">])</span><span class="se">\</span>
   .setOutputCol<span class="o">(</span><span class="s2">"resolution"</span><span class="o">)</span><span class="se">\</span>
   .setDistanceFunction<span class="o">(</span><span class="s2">"EUCLIDEAN"</span><span class="o">)</span>
 ...
@@ -1030,7 +1030,7 @@ results <span class="o">=</span> model.fullAnnotate<span class="o">([</span><spa
 
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
 loinc_resolver <span class="o">=</span> SentenceEntityResolverModel.pretrained<span class="o">(</span><span class="s2">"sbiobertresolve_loinc_cased"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span><span class="se">\</span>
-  .setInputCols<span class="o">([</span><span class="s2">"ner_chunk"</span>, <span class="s2">"sbert_embeddings"</span><span class="o">])</span><span class="se">\</span>
+  .setInputCols<span class="o">([</span><span class="s2">"sbert_embeddings"</span><span class="o">])</span><span class="se">\</span>
   .setOutputCol<span class="o">(</span><span class="s2">"resolution"</span><span class="o">)</span><span class="se">\</span>
   .setDistanceFunction<span class="o">(</span><span class="s2">"EUCLIDEAN"</span><span class="o">)</span>
 ...
@@ -1059,7 +1059,7 @@ result <span class="o">=</span> model.transform<span class="o">(</span>spark.cre
 
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
 loinc_resolver <span class="o">=</span> SentenceEntityResolverModel.pretrained<span class="o">(</span><span class="s2">"sbluebertresolve_loinc_uncased"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span><span class="se">\</span>
-  .setInputCols<span class="o">([</span><span class="s2">"jsl_ner_chunk"</span>, <span class="s2">"sbert_embeddings"</span><span class="o">])</span><span class="se">\</span>
+  .setInputCols<span class="o">([</span><span class="s2">"sbert_embeddings"</span><span class="o">])</span><span class="se">\</span>
   .setOutputCol<span class="o">(</span><span class="s2">"resolution"</span><span class="o">)</span><span class="se">\</span>
   .setDistanceFunction<span class="o">(</span><span class="s2">"EUCLIDEAN"</span><span class="o">)</span>
 ...
@@ -1087,7 +1087,7 @@ result <span class="o">=</span> model.transform<span class="o">(</span>spark.cre
 
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
 snomed_resolver <span class="o">=</span> SentenceEntityResolverModel.pretrained<span class="o">(</span><span class="s2">"sbiobertresolve_snomed_drug"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span> <span class="se">\</span>
-    .setInputCols<span class="o">([</span><span class="s2">"ner_chunk"</span>, <span class="s2">"sentence_embeddings"</span><span class="o">])</span> <span class="se">\</span>
+    .setInputCols<span class="o">([</span><span class="s2">"sentence_embeddings"</span><span class="o">])</span> <span class="se">\</span>
     .setOutputCol<span class="o">(</span><span class="s2">"snomed_code"</span><span class="o">)</span><span class="se">\</span>
     .setDistanceFunction<span class="o">(</span><span class="s2">"EUCLIDEAN"</span><span class="o">)</span>
 ...

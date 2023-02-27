@@ -737,7 +737,7 @@ sbert_embedder <span class="o">=</span> BertSentenceEmbeddings.pretrained<span c
       .setOutputCol<span class="o">(</span><span class="s2">"sbert_embeddings"</span><span class="o">)</span>
 
 rxnorm_resolver <span class="o">=</span> SentenceEntityResolverModel.pretrained<span class="o">(</span><span class="s2">"sbiobertresolve_rxnorm_disposition"</span>, <span class="s2">"en"</span>, <span class="s2">"clinical/models"</span><span class="o">)</span> <span class="se">\</span>
-      .setInputCols<span class="o">([</span><span class="s2">"ner_chunk"</span>, <span class="s2">"sbert_embeddings"</span><span class="o">])</span> <span class="se">\</span>
+      .setInputCols<span class="o">([</span><span class="s2">"sbert_embeddings"</span><span class="o">])</span> <span class="se">\</span>
       .setOutputCol<span class="o">(</span><span class="s2">"rxnorm_code"</span><span class="o">)</span><span class="se">\</span>
       .setDistanceFunction<span class="o">(</span><span class="s2">"EUCLIDEAN"</span><span class="o">)</span>
 
@@ -1213,7 +1213,7 @@ sentence_chunk_embeddings = BertSentenceChunkEmbeddings\
     .setChunkWeight(0.5)
 
 resolver = SentenceEntityResolverModel.pretrained('sbiobertresolve_icd10cm', 'en', 'clinical/models')\
-            .setInputCols(["ner_chunk", "sentence_chunk_embeddings"]) \
+            .setInputCols(["sentence_chunk_embeddings"]) \
               .setOutputCol("resolution")
 
 text = """A 20 year old female patient badly tripped while going down stairs. She complains of right leg pain.
