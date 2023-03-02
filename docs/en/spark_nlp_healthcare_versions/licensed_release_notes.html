@@ -568,6 +568,9 @@
     <li>8 new clinical models and pipelines added &amp; updated in total</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="the-first-voice-of-patients-vop-named-entity-recognition-model">The First Voice of Patients (VOP) Named Entity Recognition Model</h4>
 
   <p>We are releasing a new VOP NER model that was trained on the conversations gathered from patients forums.</p>
@@ -627,6 +630,9 @@
 |daily               |715  |719 |Frequency             |
 +--------------------+-----+----+----------------------+
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-social-determinants-of-health-sdoh-named-entity-recognition-models">New Social Determinants of Health (SDOH) Named Entity Recognition Models</h4>
 
@@ -782,6 +788,9 @@
 
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-entity-resolver-model-for-mapping-rxnorm-codes-according-to-the-national-institute-of-health-nih-database">New Entity Resolver Model for Mapping Rxnorm Codes According To the National Institute of Health (NIH) Database</h4>
 
   <p>We are releasing <code class="language-plaintext highlighter-rouge">sbiobertresolve_rxnorm_nih</code> pretrained model to map clinical entities and concepts (like drugs/ingredients) to RxNorm codes according to the National Institute of Health (NIH) database using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> Sentence Bert Embeddings.</p>
@@ -806,7 +815,10 @@
 | aspirin 81 mg        | DRUG   |   12278696 | ['</span>12278696<span class="s1">', '</span>12299811<span class="s1">', '</span>12298729<span class="s1">', ...| ['</span>aspirin 81 MG <span class="o">[</span>aspirin 81 MG]<span class="s1">', '</span>aspirin 81 MG <span class="o">[</span>YSP Aspirin] <span class="o">[</span>aspirin 81 MG ...|
 </code></pre></div>  </div>
 
-  <p>#### New Chunk Mapper Models For Mapping NDC Codes to Drug Brand Names As Well As Clinical Entities (like drugs/ingredients) to Rxnorm Codes</p>
+</div>
+<div class="h3-box">
+
+  <h4 id="new-chunk-mapper-models-for-mapping-ndc-codes-to-drug-brand-names-as-well-as-clinical-entities-like-drugsingredients-to-rxnorm-codes">New Chunk Mapper Models For Mapping NDC Codes to Drug Brand Names As Well As Clinical Entities (like drugs/ingredients) to Rxnorm Codes</h4>
 
   <p>We have two new chunk mapper models.</p>
 
@@ -858,6 +870,9 @@
 +-------------------------+-------------+-----------+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="format-consistency-for-formatted-entity-obfuscation-in-deidentification-module">Format Consistency For Formatted Entity Obfuscation In <code class="language-plaintext highlighter-rouge">Deidentification</code> Module</h4>
 
   <p>We have added a new <code class="language-plaintext highlighter-rouge">setSameLengthFormattedEntities</code> parameter that obfuscates the formatted entities like <code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">FAX</code>, <code class="language-plaintext highlighter-rouge">ID</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">BIOID</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">VIN</code>, <code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">DLN</code>, <code class="language-plaintext highlighter-rouge">PLATE</code> and <code class="language-plaintext highlighter-rouge">LICENSE</code> with the fake ones in the same format. Default is an empty list (<code class="language-plaintext highlighter-rouge">[]</code>).</p>
@@ -893,6 +908,9 @@ Phone: (302) 786-5227"""</span>
 +--------------------------------+--------------------------------+------------------------------+
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-parameters-for-controlling-the-validation-set-while-training-a-ner-model-with-medicalnerapproach">New Parameters For Controlling The Validation Set While Training a NER Model With <code class="language-plaintext highlighter-rouge">MedicalNerApproach</code></h4>
 
   <p>We added a new parameter to <code class="language-plaintext highlighter-rouge">MedicalNerApproach</code> for controlling the validation set while training.</p>
@@ -911,6 +929,9 @@ Phone: (302) 786-5227"""</span>
     <span class="p">.</span><span class="n">setRandomSeed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>\
     <span class="p">...</span>
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h4 id="whitelisting-the-entities-while-merging-multiple-entities-in-chunkmergeapproach">Whitelisting The Entities While Merging Multiple Entities In <code class="language-plaintext highlighter-rouge">ChunkMergeApproach</code></h4>
 
@@ -945,6 +966,9 @@ Phone: (302) 786-5227"""</span>
 | 1     | May 2006                | DATE     |
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h4 id="core-improvements-and-bug-fixes">Core Improvements and Bug Fixes</h4>
 
   <ul>
@@ -952,11 +976,17 @@ Phone: (302) 786-5227"""</span>
     <li>Updated documentation pages with corrections and additions.</li>
   </ul>
 
+</div>
+<div class="h3-box">
+
   <h4 id="new-and-updated-notebooks">New and Updated Notebooks</h4>
 
   <ul>
     <li>Updated <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/00.SparkNLP_for_Healthcare_3h_Notebook.ipynb">Spark NLP for Healthcare Workshop in 3 hr</a> with latest examples.</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-and-updated-demos">New and Updated Demos</h4>
 
@@ -964,6 +994,9 @@ Phone: (302) 786-5227"""</span>
     <li><a href="https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_ALCOHOL/">SOCIAL_DETERMINANT_ALCOHOL</a> demo</li>
     <li><a href="https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_TOBACCO/">SOCIAL_DETERMINANT_TOBACCO</a> demo</li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <h4 id="new-clinical-models-and-pipelines-added--updated-in-total">8 New Clinical Models and Pipelines Added &amp; Updated in Total</h4>
 
@@ -977,6 +1010,9 @@ Phone: (302) 786-5227"""</span>
     <li><code class="language-plaintext highlighter-rouge">ndc_drug_brandname_mapper</code></li>
     <li><code class="language-plaintext highlighter-rouge">rxnorm_nih_mapper</code></li>
   </ul>
+
+</div>
+<div class="h3-box">
 
   <p>For all Spark NLP for Healthcare models, please check: <a href="https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP">Models Hub Page</a></p>
 
